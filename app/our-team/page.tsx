@@ -135,7 +135,7 @@ export default function OurTeam() {
                         {mechanicalTeam.map((person) => (
                             <div
                                 key={person.id}
-                                className="p-[2px] rounded-2xl bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 shadow-md hover:shadow-blue-400/50 transition"
+                                className="p-[2px] rounded-2xl bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 shadow-md hover:shadow-blue-400/50 hover:shadow-xl transition duration-300"
                             >
                                 <div className="bg-white rounded-2xl p-6 w-80 text-center">
 
@@ -174,7 +174,7 @@ export default function OurTeam() {
                         {electricalTeam.map((person) => (
                             <div
                                 key={person.id}
-                                className="p-[2px] rounded-2xl bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 shadow-md hover:shadow-blue-400/50 transition"
+                                className="p-[2px] rounded-2xl bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 shadow-md hover:shadow-blue-400/50 hover:shadow-xl transition duration-300"
                             >
                                 <div className="bg-white rounded-2xl p-6 w-80 text-center">
 
@@ -213,7 +213,7 @@ export default function OurTeam() {
                         {scienceTeam.map((person) => (
                             <div
                                 key={person.id}
-                                className="p-[2px] rounded-2xl bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 shadow-md hover:shadow-blue-400/50 transition"
+                                className="p-[2px] rounded-2xl bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 shadow-md hover:shadow-blue-400/50 hover:shadow-xl transition duration-300"
                             >
                                 <div className="bg-white rounded-2xl p-6 w-80 text-center">
 
@@ -251,7 +251,7 @@ export default function OurTeam() {
                         {softwareTeam.map((person) => (
                             <div
                                 key={person.id}
-                                className="p-[2px] rounded-2xl bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 shadow-md hover:shadow-blue-400/50 transition"
+                                className="p-[2px] rounded-2xl bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 shadow-md hover:shadow-blue-400/50 hover:shadow-xl transition duration-300"
                             >
                                 <div className="bg-white rounded-2xl p-6 w-80 text-center">
 
@@ -294,23 +294,20 @@ export default function OurTeam() {
                                 Want to join the team?
                             </h3>
 
+                            <p className="text-blue-100 mt-2 max-w-xl mx-auto">
+                                Interested in joining the McMaster Advanced Space Systems team? Join one of our subteams — Mechanical, Electrical, Software, or Science — and get involved.                            </p>
+
                             <a
                                 href="mailto:careers@company.com"
                                 className="inline-block mt-4 bg-white text-blue-600 px-5 py-2 rounded-full font-medium hover:bg-blue-100 transition"
                             >
-                                Click here to apply
+                                Apply Now
                             </a>
                         </div>
 
                         <div className="border-t border-blue-400 pt-6 text-sm text-blue-100 flex flex-col md:flex-row justify-between items-center gap-4">
 
-                            <p>© {new Date().getFullYear()} Your Team Name. All rights reserved.</p>
-
-                            <div className="flex gap-6">
-                                <a href="#home" className="hover:text-white">Home</a>
-                                <a href="#team" className="hover:text-white">Team</a>
-                                <a href="#contact" className="hover:text-white">Contact</a>
-                            </div>
+                            <p className="text-center w-full">© {new Date().getFullYear()} MASS CAN-SBX.</p>
 
                         </div>
 
