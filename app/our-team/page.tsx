@@ -68,15 +68,17 @@ export default function OurTeam() {
         <div className="min-h-screen bg-white">
 
             {/* top navigation bar */}
-            <nav className="bg-blue-600 text-white">
-                <div className="max-w-7xl mx-auto px-4 py-4 flex justify-center gap-8">
-                    <a href="#home">Home</a>
-                    <a href="#team">Our Team</a>
-                    <a href="#project">Project</a>
-                    <a href="#contact">Sponsors</a>
-                    <a href="#contact">Recruitment</a>
-                    <a href="#contact">Contact Us</a>
-                    <a href="#contact">Data</a>
+            <nav className="bg-blue-600 text-white w-full">
+                <div className="max-w-7xl mx-auto px-4 py-3 flex flex-wrap justify-center gap-6 text-sm md:text-base">
+
+                    <a href="#home" className="hover:text-blue-200 transition">Home</a>
+                    <a href="#team" className="hover:text-blue-200 transition">Team</a>
+                    <a href="#project" className="hover:text-blue-200 transition">Project</a>
+                    <a href="#sponsors" className="hover:text-blue-200 transition">Sponsors</a>
+                    <a href="#recruitment" className="hover:text-blue-200 transition">Recruitment</a>
+                    <a href="#contact" className="hover:text-blue-200 transition">Contact</a>
+                    <a href="#data" className="hover:text-blue-200 transition">Data</a>
+
                 </div>
             </nav>
 
@@ -279,6 +281,46 @@ export default function OurTeam() {
 
 
             </main>
+
+
+            {/* Footer */}
+            <footer className="bg-blue-600 text-white mt-24 w-full">
+                <div className="w-full">
+
+                    <div className="max-w-7xl mx-auto px-4 py-10">
+
+                        <div className="text-center mb-6">
+                            <h3 className="text-xl font-semibold">
+                                Want to join the team?
+                            </h3>
+
+                            <a
+                                href="mailto:careers@company.com"
+                                className="inline-block mt-4 bg-white text-blue-600 px-5 py-2 rounded-full font-medium hover:bg-blue-100 transition"
+                            >
+                                Click here to apply
+                            </a>
+                        </div>
+
+                        <div className="border-t border-blue-400 pt-6 text-sm text-blue-100 flex flex-col md:flex-row justify-between items-center gap-4">
+
+                            <p>© {new Date().getFullYear()} Your Team Name. All rights reserved.</p>
+
+                            <div className="flex gap-6">
+                                <a href="#home" className="hover:text-white">Home</a>
+                                <a href="#team" className="hover:text-white">Team</a>
+                                <a href="#contact" className="hover:text-white">Contact</a>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </footer>
+
+
+
         </div>
     );
 }
