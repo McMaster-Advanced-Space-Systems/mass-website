@@ -5,7 +5,7 @@ type TeamMember = {
     imageUrl: string;
     linkedin: string;
 };
-const leadershipTeam: TeamMember[] = [
+const leadTeam: TeamMember[] = [
     { id: '1', name: 'name1', role: 'co-lead1', imageUrl: 'https://via.placeholder.com/150', linkedin: 'https://linkedin.com', },
     { id: '2', name: 'name2', role: 'co-lead2', imageUrl: 'https://via.placeholder.com/150', linkedin: 'https://linkedin.com', },
     { id: '3', name: 'name3', role: 'co-lead3', imageUrl: 'https://via.placeholder.com/150', linkedin: 'https://linkedin.com', },
@@ -61,6 +61,30 @@ const softwareTeam: TeamMember[] = [
     { id: 'so10', name: 'Person 10', role: 'Team Member', imageUrl: 'https://via.placeholder.com/150', linkedin: '#' },
 ];
 
+
+function TeamCard({ person }: { person: TeamMember }) {
+  return (
+    <div className="p-[2px] rounded-2xl bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 shadow-md hover:shadow-blue-400/50 hover:shadow-xl transition duration-300">
+      <div className="bg-white rounded-2xl p-6 w-80 text-center">
+        <img
+          src={person.imageUrl}
+          className="w-24 h-24 rounded-full mx-auto mb-4 object-cover"
+        />
+        <h3 className="font-semibold">{person.name}</h3>
+        <p className="text-gray-500 mb-2">{person.role}</p>
+        <a
+          href={person.linkedin}
+          target="_blank"
+          className="text-blue-600 text-sm underline"
+        >
+          LinkedIn
+        </a>
+      </div>
+    </div>
+  );
+}
+
+
 export default function OurTeam() {
 
 
@@ -92,35 +116,13 @@ export default function OurTeam() {
 
                 {/* Leads */}
                 <div className="mt-16">
-
                     <div className="flex flex-wrap justify-center gap-20">
 
-                        {leadershipTeam.map((person) => (
-                            <div
-                                key={person.id}
-                                className="p-[2px] rounded-2xl bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 shadow-md hover:shadow-blue-400/50 hover:shadow-xl transition">
-                                <div className="bg-white rounded-2xl p-6 w-80 text-center">
-                                    <img
-                                        src={person.imageUrl}
-                                        className="w-24 h-24 rounded-full mx-auto mb-4 object-cover"
-                                    />
-                                    <h3 className="font-semibold text-lg">{person.name}</h3>
-                                    <p className="text-gray-500 mb-3">{person.role}</p>
-                                    <a
-                                        href={person.linkedin}
-                                        target="_blank"
-                                        className="text-blue-600 text-sm underline"
-                                    >
-                                        LinkedIn
-                                    </a>
-
-
-                                </div>
-                            </div>
+                        {leadTeam.map((person) => (
+                            <TeamCard key={person.id} person={person} />
                         ))}
 
                     </div>
-
                 </div>
 
 
@@ -129,36 +131,11 @@ export default function OurTeam() {
                     <h2 className="text-center text-2xl font-semibold text-blue-600 mb-8">
                         Mechanical Team
                     </h2>
-
                     <div className="flex flex-wrap justify-center gap-12">
 
                         {mechanicalTeam.map((person) => (
-                            <div
-                                key={person.id}
-                                className="p-[2px] rounded-2xl bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 shadow-md hover:shadow-blue-400/50 hover:shadow-xl transition duration-300"
-                            >
-                                <div className="bg-white rounded-2xl p-6 w-80 text-center">
-
-                                    <img
-                                        src={person.imageUrl}
-                                        className="w-24 h-24 rounded-full mx-auto mb-4 object-cover"
-                                    />
-
-                                    <h3 className="font-semibold">{person.name}</h3>
-                                    <p className="text-gray-500 mb-2">{person.role}</p>
-
-                                    <a
-                                        href={person.linkedin}
-                                        target="_blank"
-                                        className="text-blue-600 text-sm underline"
-                                    >
-                                        LinkedIn
-                                    </a>
-
-                                </div>
-                            </div>
+                            <TeamCard key={person.id} person={person} />
                         ))}
-
                     </div>
                 </div>
 
@@ -168,36 +145,11 @@ export default function OurTeam() {
                     <h2 className="text-center text-2xl font-semibold text-blue-600 mb-8">
                         Electrical Team
                     </h2>
-
                     <div className="flex flex-wrap justify-center gap-12">
 
                         {electricalTeam.map((person) => (
-                            <div
-                                key={person.id}
-                                className="p-[2px] rounded-2xl bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 shadow-md hover:shadow-blue-400/50 hover:shadow-xl transition duration-300"
-                            >
-                                <div className="bg-white rounded-2xl p-6 w-80 text-center">
-
-                                    <img
-                                        src={person.imageUrl}
-                                        className="w-24 h-24 rounded-full mx-auto mb-4 object-cover"
-                                    />
-
-                                    <h3 className="font-semibold">{person.name}</h3>
-                                    <p className="text-gray-500 mb-2">{person.role}</p>
-
-                                    <a
-                                        href={person.linkedin}
-                                        target="_blank"
-                                        className="text-blue-600 text-sm underline"
-                                    >
-                                        LinkedIn
-                                    </a>
-
-                                </div>
-                            </div>
+                            <TeamCard key={person.id} person={person} />
                         ))}
-
                     </div>
                 </div>
 
@@ -207,36 +159,11 @@ export default function OurTeam() {
                     <h2 className="text-center text-2xl font-semibold text-blue-600 mb-8">
                         Science Team
                     </h2>
-
                     <div className="flex flex-wrap justify-center gap-12">
 
                         {scienceTeam.map((person) => (
-                            <div
-                                key={person.id}
-                                className="p-[2px] rounded-2xl bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 shadow-md hover:shadow-blue-400/50 hover:shadow-xl transition duration-300"
-                            >
-                                <div className="bg-white rounded-2xl p-6 w-80 text-center">
-
-                                    <img
-                                        src={person.imageUrl}
-                                        className="w-24 h-24 rounded-full mx-auto mb-4 object-cover"
-                                    />
-
-                                    <h3 className="font-semibold">{person.name}</h3>
-                                    <p className="text-gray-500 mb-2">{person.role}</p>
-
-                                    <a
-                                        href={person.linkedin}
-                                        target="_blank"
-                                        className="text-blue-600 text-sm underline"
-                                    >
-                                        LinkedIn
-                                    </a>
-
-                                </div>
-                            </div>
+                            <TeamCard key={person.id} person={person} />
                         ))}
-
                     </div>
                 </div>
 
@@ -245,44 +172,15 @@ export default function OurTeam() {
                     <h2 className="text-center text-2xl font-semibold text-blue-600 mb-8">
                         Software Team
                     </h2>
-
                     <div className="flex flex-wrap justify-center gap-12">
-
+                        
                         {softwareTeam.map((person) => (
-                            <div
-                                key={person.id}
-                                className="p-[2px] rounded-2xl bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 shadow-md hover:shadow-blue-400/50 hover:shadow-xl transition duration-300"
-                            >
-                                <div className="bg-white rounded-2xl p-6 w-80 text-center">
-
-                                    <img
-                                        src={person.imageUrl}
-                                        className="w-24 h-24 rounded-full mx-auto mb-4 object-cover"
-                                    />
-
-                                    <h3 className="font-semibold">{person.name}</h3>
-                                    <p className="text-gray-500 mb-2">{person.role}</p>
-
-                                    <a
-                                        href={person.linkedin}
-                                        target="_blank"
-                                        className="text-blue-600 text-sm underline"
-                                    >
-                                        LinkedIn
-                                    </a>
-
-                                </div>
-                            </div>
+                            <TeamCard key={person.id} person={person} />
                         ))}
-
                     </div>
                 </div>
 
-
-
             </main>
-
-
             {/* Footer */}
             <footer className="bg-blue-600 text-white mt-24 w-full">
                 <div className="w-full">
@@ -298,7 +196,7 @@ export default function OurTeam() {
                                 Interested in joining the McMaster Advanced Space Systems team? Join one of our subteams — Mechanical, Electrical, Software, or Science — and get involved.                            </p>
 
                             <a
-                                href="mailto:careers@company.com"
+                                href="/app"
                                 className="inline-block mt-4 bg-white text-blue-600 px-5 py-2 rounded-full font-medium hover:bg-blue-100 transition"
                             >
                                 Apply Now
