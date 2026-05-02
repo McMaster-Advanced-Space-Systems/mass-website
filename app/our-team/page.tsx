@@ -63,7 +63,7 @@ const softwareTeam: TeamMember[] = [
 function TeamCard({ person }: { person: TeamMember }) {
     return (
         <div className="p-[2px] rounded-2xl bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 shadow-md hover:-translate-y-1 hover:shadow-lg transition duration-150">
-            <div className="bg-white rounded-2xl p-6 w-80 text-center h-full flex flex-col">
+            <div className="bg-white rounded-2xl p-6 w-64 text-center h-full flex flex-col">
                 <img
                     src={person.imageUrl}
                     className="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-2 border-blue-600"
@@ -111,11 +111,12 @@ export default function OurTeam() {
                     Meet the Team
                 </h1>
 
-                {/* Leads */}
+                {/* Team Leads */}
                 <div className="mt-16">
-                    <h2 className="text-center text-2xl font-semibold text-blue-600 mb-8">
+                    <h2 className="text-center text-2xl font-semibold text-blue-600">
                         Team Leads
                     </h2>
+                    <div className="mt-2 h-1 w-20 bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 rounded-full mx-auto mb-8"></div>
                     <div className="flex flex-wrap justify-center gap-20">
 
                         {leadTeam.map((person) => (
@@ -128,11 +129,11 @@ export default function OurTeam() {
 
                 {/* Mechanical Team */}
                 <div className="mt-20">
-                    <h2 className="text-center text-2xl font-semibold text-blue-600 mb-8">
+                    <h2 className="text-center text-2xl font-semibold text-blue-600">
                         Mechanical Team
                     </h2>
+                    <div className="mt-2 h-1 w-20 bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 rounded-full mx-auto mb-8"></div>
                     <div className="flex flex-wrap justify-center gap-12">
-
                         {mechanicalTeam.map((person) => (
                             <TeamCard key={person.id} person={person} />
                         ))}
@@ -142,9 +143,10 @@ export default function OurTeam() {
 
                 {/* Electrical Team */}
                 <div className="mt-20">
-                    <h2 className="text-center text-2xl font-semibold text-blue-600 mb-8">
+                    <h2 className="text-center text-2xl font-semibold text-blue-600">
                         Electrical Team
                     </h2>
+                    <div className="mt-2 h-1 w-20 bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 rounded-full mx-auto mb-8"></div>
                     <div className="flex flex-wrap justify-center gap-12">
 
                         {electricalTeam.map((person) => (
@@ -156,9 +158,10 @@ export default function OurTeam() {
 
                 {/* Science Team */}
                 <div className="mt-20">
-                    <h2 className="text-center text-2xl font-semibold text-blue-600 mb-8">
+                    <h2 className="text-center text-2xl font-semibold text-blue-600">
                         Science Team
                     </h2>
+                    <div className="mt-2 h-1 w-20 bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 rounded-full mx-auto mb-8"></div>
                     <div className="flex flex-wrap justify-center gap-12">
 
                         {scienceTeam.map((person) => (
@@ -169,9 +172,10 @@ export default function OurTeam() {
 
                 {/* Software Team */}
                 <div className="mt-20">
-                    <h2 className="text-center text-2xl font-semibold text-blue-600 mb-8">
+                    <h2 className="text-center text-2xl font-semibold text-blue-600">
                         Software Team
                     </h2>
+                    <div className="mt-2 h-1 w-20 bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 rounded-full mx-auto mb-8"></div>
                     <div className="flex flex-wrap justify-center gap-12">
 
                         {softwareTeam.map((person) => (
@@ -181,8 +185,10 @@ export default function OurTeam() {
                 </div>
 
             </main>
+            
+            <div className="h-1 w-20 mx-auto mb-6 bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 rounded-full"></div>
             {/* Footer */}
-            <footer className="bg-blue-600 text-white mt-24 w-full">
+            <footer className="bg-blue-600 text-white mt-15 w-full">
                 <div className="w-full">
 
                     <div className="max-w-7xl mx-auto px-4 py-10">
@@ -199,13 +205,13 @@ export default function OurTeam() {
                                 href="#"
                                 className="inline-block mt-4 bg-white text-blue-600 px-5 py-2 rounded-full font-medium hover:bg-blue-100 transition"
                             >
-                                Apply Now
+                                Click to Register
                             </a>
                         </div>
 
                         <div className="border-t border-blue-400 pt-6 text-sm text-blue-100 flex flex-col md:flex-row justify-between items-center gap-4">
 
-                            <p className="text-center w-full"> {new Date().getFullYear()} MASS CAN-SBX.</p>
+                            <p className="text-center w-full"> {new Date().getFullYear()} MASS CAN-SBX</p>
 
                         </div>
 
