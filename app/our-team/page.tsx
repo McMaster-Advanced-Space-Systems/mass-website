@@ -9,67 +9,67 @@ type TeamMember = {
     linkedin: string;
 };
 const leadTeam: TeamMember[] = [
-    { id: 'l1', name: 'Chloe', role: 'Electrical Lead', program: 'program', imageUrl: '/team/MASS.jpeg', linkedin: 'https://linkedin.com', },
-    { id: 'l2', name: 'Tharani Elilvannan', role: 'Software Lead', program: 'Software Engineering', imageUrl: '/team/MASS.jpeg', linkedin: 'https://www.linkedin.com/in/tharani-elilvannan/', },
-    { id: 'l3', name: 'Name', role: 'Science Lead', program: 'program', imageUrl: '/team/MASS.jpeg', linkedin: 'https://linkedin.com', },
+    { id: 'l1', name: 'Tharani Elilvannan', role: 'Software Lead', program: 'Software Engineering', imageUrl: '/team/Tharani Elilvannan.JPG', linkedin: 'https://www.linkedin.com/in/tharani-elilvannan/', },
+    { id: 'l2', name: 'Parul', role: 'Science Lead', program: 'program', imageUrl: '/team/MASS.jpeg', linkedin: '#', },
+    { id: 'l3', name: 'Chloe Hoang', role: 'Electrical Lead', program: 'Engineering Physics', imageUrl: '/team/MASS.jpeg', linkedin: '#', },
 ];
 
 const mechanicalTeam: TeamMember[] = [
     { id: 'm1', name: 'Ciara Doody', role: 'Team member', program: 'Engineering 1', imageUrl: '/team/MASS.jpeg', linkedin: 'http://www.linkedin.com/in/ciaradoody' },
-    { id: 'm2', name: 'Catharine Santos', role: 'Team member', program: 'Engineering 1', imageUrl: '/team/MASS.jpeg', linkedin: 'http://www.linkedin.com/in/catharine-santos' },
-    { id: 'm3', name: 'Minaya Karunarathne', role: 'Team member', program: 'Mechanical Engineering', imageUrl: '/team/MASS.jpeg', linkedin: 'https://www.linkedin.com/in/minaya-karunarathne-b4a472240/' },
-    { id: 'm4', name: 'Franco Lau', role: 'Team member', program: 'Mechanical Engineering', imageUrl: '/team/MASS.jpeg', linkedin: 'https://www.linkedin.com/in/franco-lau-b3366a2b9/' },
-    { id: 'm5', name: 'Hilary Tse', role: 'Team member', program: 'Engineering 1', imageUrl: '/team/MASS.jpeg', linkedin: 'https://www.linkedin.com/in/hilary-tse-b6a430286?utm_source=share_via&utm_content=profile&utm_medium=member_ios' },
-    { id: 'm6', name: 'Adithya Rajesh', role: 'Team member', program: 'Mechanical Engineering', imageUrl: '/team/MASS.jpeg', linkedin: 'http://www.linkedin.com/in/adithya-rajesh-5208bb28b' },
-    { id: 'm7', name: 'Aysha  Isovic', role: 'Team member', program: 'Engineering Physics', imageUrl: '/team/MASS.jpeg', linkedin: 'https://www.linkedin.com/in/aysha-isovic?utm_source=share_via&utm_content=profile&utm_medium=member_ios' },
-    { id: 'm8', name: 'Muhammad  Hassaan', role: 'Team member', program: 'Mechanical Engineering', imageUrl: '/team/MASS.jpeg', linkedin: 'https://www.linkedin.com/in/muhammad-hassaan-ba02ba383?utm_source=share_via&utm_content=profile&utm_medium=member_ios' },
-    { id: 'm9', name: 'Dhruv Phadnis', role: 'Team member', program: 'Mechanical Engineering', imageUrl: '/team/MASS.jpeg', linkedin: 'https://ca.linkedin.com/in/dhruv-phadnis-139158315' },
-    { id: 'm10', name: 'Shoaib Khawar', role: 'Team member', program: 'Mechanical and Biomedical Engineering', imageUrl: '/team/MASS.jpeg', linkedin: 'http://www.linkedin.com/in/shoaib-khawar-30abb0385' },
+    { id: 'm2', name: 'Muhammad Hassaan', role: 'Team member', program: 'Mechanical Engineering', imageUrl: '/team/Muhammad Hassaan.jpeg', linkedin: 'https://www.linkedin.com/in/muhammad-hassaan-ba02ba383?utm_source=share_via&utm_content=profile&utm_medium=member_ios' },
+    { id: 'm3', name: 'Aysha Isovic', role: 'Team member', program: 'Engineering Physics', imageUrl: '/team/Aysha Isovic.jpeg', linkedin: 'https://www.linkedin.com/in/aysha-isovic?utm_source=share_via&utm_content=profile&utm_medium=member_ios' },
+    { id: 'm4', name: 'Minaya Karunarathne', role: 'Team member', program: 'Mechanical Engineering', imageUrl: '/team/Minaya Karunarathne.jpg', linkedin: 'https://www.linkedin.com/in/minaya-karunarathne-b4a472240/' },
+    { id: 'm5', name: 'Shoaib Khawar', role: 'Team member', program: 'Mechanical and Biomedical Engineering', imageUrl: '/team/MASS.jpeg', linkedin: 'http://www.linkedin.com/in/shoaib-khawar-30abb0385' },
+    { id: 'm6', name: 'Franco Lau', role: 'Team member', program: 'Mechanical Engineering', imageUrl: '/team/Franco Lau.png', linkedin: 'https://www.linkedin.com/in/franco-lau-b3366a2b9/' },
+    { id: 'm7', name: 'Dhruv Phadnis', role: 'Team member', program: 'Mechanical Engineering', imageUrl: '/team/MASS.jpeg', linkedin: 'https://ca.linkedin.com/in/dhruv-phadnis-139158315' },
+    { id: 'm8', name: 'Adithya Rajesh', role: 'Team member', program: 'Mechanical Engineering', imageUrl: '/team/Adithya Rajesh.png', linkedin: 'http://www.linkedin.com/in/adithya-rajesh-5208bb28b' },
+    { id: 'm9', name: 'Catharine Santos', role: 'Team member', program: 'Engineering 1', imageUrl: '/team/Catharine Santos.jpeg', linkedin: 'http://www.linkedin.com/in/catharine-santos' },
+    { id: 'm10', name: 'Hilary Tse', role: 'Team member', program: 'Engineering 1', imageUrl: '/team/Hilary Tse.png', linkedin: 'https://www.linkedin.com/in/hilary-tse-b6a430286?utm_source=share_via&utm_content=profile&utm_medium=member_ios' },
 ];
 
 const electricalTeam: TeamMember[] = [
-    { id: 'e1', name: 'Carter Sider', role: 'Team member', program: 'Computer Engineering', imageUrl: '/team/MASS.jpeg', linkedin: 'https://www.linkedin.com/in/carter-sider-710198331/' },
-    { id: 'e2', name: 'Seungbe Oh', role: 'Team member', program: 'Engineering Physics', imageUrl: '/team/MASS.jpeg', linkedin: 'https://www.linkedin.com/in/seungbe-oh/' },
+    { id: 'e1', name: 'Dominic Clarke', role: 'Team member', program: 'Engineering Physics', imageUrl: '/team/Dominic Clarke.jpeg', linkedin: 'https://www.linkedin.com/in/dominicccclarke/' },
+    { id: 'e2', name: 'Arjun Mangal', role: 'Team member', program: 'Electrical Engineering and Management', imageUrl: '/team/Arjun Mangal.jpeg', linkedin: 'http://www.linkedin.com/in/arjun-mangal' },
     { id: 'e3', name: 'Aymaan Mirza', role: 'Team member', program: 'Electrical Engineering', imageUrl: '/team/MASS.jpeg', linkedin: 'https://www.linkedin.com/in/aymaan-mirza?utm_source=share_via&utm_content=profile&utm_medium=member_ios' },
-    { id: 'e4', name: 'Arjun Mangal', role: 'Team member', program: 'Electrical Engineering and Management', imageUrl: '/team/MASS.jpeg', linkedin: 'http://www.linkedin.com/in/arjun-mangal' },
-    { id: 'e5', name: 'Keerath Singh', role: 'Team member', program: 'Mechatronics Engineering', imageUrl: '/team/MASS.jpeg', linkedin: 'https://www.linkedin.com/in/keerath-singh/' },
-    { id: 'e6', name: 'Dominic Clarke', role: 'Team member', program: 'Engineering Physics', imageUrl: '/team/MASS.jpeg', linkedin: 'https://www.linkedin.com/in/dominicccclarke/' },
-    { id: 'e7', name: 'Shrey Talati', role: 'Team member', program: 'Computer Engineering and Management', imageUrl: '/team/MASS.jpeg', linkedin: 'http://www.linkedin.com/in/shreytalati08' },
-    { id: 'e8', name: 'Ryan Su', role: 'Team member', program: 'Mechatronics Engineering', imageUrl: '/team/MASS.jpeg', linkedin: 'https://www.linkedin.com/in/ryan-su-51847625a/' },
+    { id: 'e4', name: 'Seungbe Oh', role: 'Team member', program: 'Engineering Physics', imageUrl: '/team/Seungbe Oh.jpg', linkedin: 'https://www.linkedin.com/in/seungbe-oh/' },
+    { id: 'e5', name: 'Carter Sider', role: 'Team member', program: 'Computer Engineering', imageUrl: '/team/Carter Sider.png', linkedin: 'https://www.linkedin.com/in/carter-sider-710198331/' },
+    { id: 'e6', name: 'Keerath Singh', role: 'Team member', program: 'Mechatronics Engineering', imageUrl: '/team/Keerath Singh.jpeg', linkedin: 'https://www.linkedin.com/in/keerath-singh/' },
+    { id: 'e7', name: 'Ryan Su', role: 'Team member', program: 'Mechatronics Engineering', imageUrl: '/team/MASS.jpeg', linkedin: 'https://www.linkedin.com/in/ryan-su-51847625a/' },
+    { id: 'e8', name: 'Shrey Talati', role: 'Team member', program: 'Computer Engineering and Management', imageUrl: '/team/MASS.jpeg', linkedin: 'http://www.linkedin.com/in/shreytalati08' },
 ];
 
 const scienceTeam: TeamMember[] = [
-    { id: 's1', name: 'Sarah Newallo', role: 'Team Member', program: 'Material Science Engineering', imageUrl: '/team/MASS.jpeg', linkedin: '#' },
-    { id: 's2', name: 'Sophia Bianchi', role: 'Team Member', program: 'Engineering 1', imageUrl: '/team/MASS.jpeg', linkedin: 'https://www.linkedin.com/in/sophia-bianchi-7841152b3/' },
-    { id: 's3', name: 'Udval Altansukh', role: 'Team Member', program: 'Chemical and Physical Sciences Gateway', imageUrl: '/team/MASS.jpeg', linkedin: 'http://linkedin.com/in/udval-altansukh-92bb773a7' },
+    { id: 's1', name: 'Udval Altansukh', role: 'Team Member', program: 'Chemical and Physical Sciences Gateway', imageUrl: '/team/Udval A.png', linkedin: 'http://linkedin.com/in/udval-altansukh-92bb773a7' },
+    { id: 's2', name: 'Sophia Bianchi', role: 'Team Member', program: 'Engineering 1', imageUrl: '/team/sophia.png', linkedin: 'https://www.linkedin.com/in/sophia-bianchi-7841152b3/' },
+    { id: 's3', name: 'Sarah Newallo', role: 'Team Member', program: 'Material Science Engineering', imageUrl: '/team/Sarah Newallo.jpeg', linkedin: '#' },
     { id: 's4', name: 'Marut Shah', role: 'Team Member', program: 'Software and Biomedical Engineering ', imageUrl: '/team/MASS.jpeg', linkedin: 'http://www.linkedin.com/in/marut-shah' },
     { id: 's5', name: 'Kayla Siriban', role: 'Team Member', program: 'Mechanical Engineering', imageUrl: '/team/MASS.jpeg', linkedin: 'http://www.linkedin.com/in/kaylasiriban' },
 ];
 
 const softwareTeam: TeamMember[] = [
-    { id: 'so1', name: 'Viho Huang', role: 'Embedded Team Member', program: 'Software Engineering', imageUrl: '/team/MASS.jpeg', linkedin: 'https://www.linkedin.com/in/viho-huang' },
-    { id: 'so2', name: 'Ranica Chawla', role: 'Embedded Team Member', program: 'Software Engineering', imageUrl: '/team/MASS.jpeg', linkedin: 'https://www.linkedin.com/in/ranica-chawla' },
-    { id: 'so3', name: 'Komabasi Bassey', role: 'Embedded Team Member', program: 'Engineering 1', imageUrl: '/team/MASS.jpeg', linkedin: 'https://www.linkedin.com/in/komabasi-bassey' },
-    { id: 'so4', name: 'Braden Chan', role: 'Web Dev Team Member', program: 'Computer Science', imageUrl: '/team/MASS.jpeg', linkedin: 'https://www.linkedin.com/in/bradenchan/' },
-    { id: 'so5', name: 'Oscar Zhao', role: 'Web Dev Team Member', program: 'Engineering 1', imageUrl: '/team/MASS.jpeg', linkedin: 'https://www.linkedin.com/in/zhaooscar/' },
-    { id: 'so6', name: 'Varsha Kotturri', role: 'Embedded Team Member', program: 'Engineering 1', imageUrl: '/team/MASS.jpeg', linkedin: 'https://www.linkedin.com/in/varsha-kotturri-a8b694282/' },
-    { id: 'so7', name: 'Maria Loucaides', role: 'Embedded Team Member', program: 'Electrical Engineering and Management ', imageUrl: '/team/MASS.jpeg', linkedin: 'http://www.linkedin.com/in/maria-loucaides-938a62380' },
-    { id: 'so8', name: 'Raiya Kassam', role: 'Embedded Team Member', program: 'Computer Engineering and Management', imageUrl: '/team/MASS.jpeg', linkedin: 'https://www.linkedin.com/in/raiya-kassam-83b578291' },
-    { id: 'so9', name: 'Youssef Khafagy', role: 'Web Dev Team Member', program: 'Software Engineering', imageUrl: '/team/MASS.jpeg', linkedin: '#' },
-    { id: 'so10', name: 'Meigan Rogers', role: 'Web Dev Team Member', program: 'Software Engineering', imageUrl: '/team/MASS.jpeg', linkedin: 'https://www.linkedin.com/in/meigan-rogers/' },
+    { id: 'so1', name: 'Komabasi Bassey', role: 'Embedded Team Member', program: 'Engineering 1', imageUrl: '/team/Komabasi Bassey.jpg', linkedin: 'https://www.linkedin.com/in/komabasi-bassey' },
+    { id: 'so2', name: 'Braden Chan', role: 'Web Dev Team Member', program: 'Computer Science', imageUrl: '/team/Braden Chan.png', linkedin: 'https://www.linkedin.com/in/bradenchan/' },
+    { id: 'so3', name: 'Ranica Chawla', role: 'Embedded Team Member', program: 'Software Engineering', imageUrl: '/team/Ranica Chawla.jpeg', linkedin: 'https://www.linkedin.com/in/ranica-chawla' },
+    { id: 'so4', name: 'Viho Huang', role: 'Embedded Team Member', program: 'Software Engineering', imageUrl: '/team/Viho.jpg', linkedin: 'https://www.linkedin.com/in/viho-huang' },
+    { id: 'so5', name: 'Raiya Kassam', role: 'Embedded Team Member', program: 'Computer Engineering and Management', imageUrl: '/team/Raiya Kassam.png', linkedin: 'https://www.linkedin.com/in/raiya-kassam-83b578291' },
+    { id: 'so6', name: 'Youssef Khafagy', role: 'Web Dev Team Member', program: 'Software Engineering', imageUrl: '/team/MASS.jpeg', linkedin: '#' },
+    { id: 'so7', name: 'Varsha Kotturri', role: 'Embedded Team Member', program: 'Engineering 1', imageUrl: '/team/MASS.jpeg', linkedin: 'https://www.linkedin.com/in/varsha-kotturri-a8b694282/' },
+    { id: 'so8', name: 'Maria Loucaides', role: 'Embedded Team Member', program: 'Electrical Engineering and Management ', imageUrl: '/team/Maria Loucaides.jpg', linkedin: 'http://www.linkedin.com/in/maria-loucaides-938a62380' },
+    { id: 'so9', name: 'Meigan Rogers', role: 'Web Dev Team Member', program: 'Software Engineering', imageUrl: '/team/Meigan.png', linkedin: 'https://www.linkedin.com/in/meigan-rogers/' },
+    { id: 'so10', name: 'Oscar Zhao', role: 'Web Dev Team Member', program: 'Engineering 1', imageUrl: '/team/Oscar Zhao.jpg', linkedin: 'https://www.linkedin.com/in/zhaooscar/' },
 ];
 
 {/* UI for the team cards */ }
 function TeamCard({ person }: { person: TeamMember }) {
     return (
-        <div className="p-[2px] rounded-2xl bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 shadow-md hover:shadow-blue-400/50 hover:shadow-xl transition duration-300">
+        <div className="p-[2px] rounded-2xl bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 shadow-md hover:-translate-y-1 hover:shadow-lg transition duration-150">
             <div className="bg-white rounded-2xl p-6 w-80 text-center h-full flex flex-col">
                 <img
                     src={person.imageUrl}
-                    className="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-2 border-blue-200"
+                    className="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-2 border-blue-600"
                 />
                 <h3 className="text-lg font-bold text-black">{person.name}</h3>
-                
+                <p className="text-gray-600 text-base font-medium mt-0.5">{person.role} </p>
                 <p className="text-gray-600 text-base font-medium mt-0.5">{person.program}</p>
                 <a
                     href={person.linkedin}
@@ -111,10 +111,11 @@ export default function OurTeam() {
                     Meet the Team
                 </h1>
 
-
-
                 {/* Leads */}
                 <div className="mt-16">
+                    <h2 className="text-center text-2xl font-semibold text-blue-600 mb-8">
+                        Team Leads
+                    </h2>
                     <div className="flex flex-wrap justify-center gap-20">
 
                         {leadTeam.map((person) => (
