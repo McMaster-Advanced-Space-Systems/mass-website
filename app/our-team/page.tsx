@@ -1,4 +1,19 @@
 import { FaLinkedin } from "react-icons/fa";
+import { Julius_Sans_One, Archivo_Narrow, Alice } from "next/font/google";
+const julius = Julius_Sans_One({
+  subsets: ["latin"],
+  weight: "400",
+});
+
+const archivo = Archivo_Narrow({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+});
+
+const alice = Alice({
+  subsets: ["latin"],
+  weight: "400",
+});
 
 type TeamMember = {
     id: string;
@@ -10,7 +25,7 @@ type TeamMember = {
 };
 const leadTeam: TeamMember[] = [
     { id: 'l1', name: 'Tharani Elilvannan', role: 'Software Lead', program: 'Software Engineering', imageUrl: '/team/Tharani Elilvannan.JPG', linkedin: 'https://www.linkedin.com/in/tharani-elilvannan/', },
-    { id: 'l2', name: 'Parul', role: 'Science Lead', program: 'program', imageUrl: '/team/MASS.jpeg', linkedin: '#', },
+    { id: 'l2', name: 'Parul Hedau', role: 'Science Lead', program: 'program', imageUrl: '/team/MASS.jpeg', linkedin: '#', },
     { id: 'l3', name: 'Chloe Hoang', role: 'Electrical Lead', program: 'Engineering Physics', imageUrl: '/team/MASS.jpeg', linkedin: '#', },
 ];
 
@@ -62,13 +77,13 @@ const softwareTeam: TeamMember[] = [
 {/* UI for the team cards */ }
 function TeamCard({ person }: { person: TeamMember }) {
     return (
-        <div className="p-[2px] rounded-2xl bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 shadow-md hover:-translate-y-1 hover:shadow-lg transition duration-150">
+        <div className="p-[2px] rounded-2xl bg-[#4648FF] shadow-md hover:-translate-y-1 hover:shadow-lg transition duration-150">
             <div className="bg-white rounded-2xl p-6 w-64 text-center h-full flex flex-col">
                 <img
                     src={person.imageUrl}
-                    className="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-2 border-blue-600"
+                    className="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-2 border-[#4648FF]"
                 />
-                <h3 className="text-lg font-bold text-black">{person.name}</h3>
+                <h3 className="text-lg font-bold text-[#010101]">{person.name}</h3>
                 <p className="text-gray-400 text-sm font-medium mt-0.5">{person.role} </p>
                 <p className="text-gray-600 text-sm font-medium mt-0.5">{person.program}</p>
                 <a
@@ -86,12 +101,11 @@ function TeamCard({ person }: { person: TeamMember }) {
 
 export default function OurTeam() {
 
-
     return (
-        <div className="min-h-screen bg-white">
+        <div className="min-h-screen bg-[#F2F2F0]">
 
             {/* top navigation bar */}
-            <nav className="bg-gradient-to-r from-blue-700 via-blue-600 to-blue-500 text-white w-full shadow-md">
+            <nav className={`bg-[#4648FF] text-white w-full shadow-md ${julius.className}`}>
                 <div className="max-w-7xl mx-auto px-4 py-3 flex flex-wrap justify-center gap-6 text-sm md:text-base">
 
                     <a href="#home" className="hover:text-blue-200 transition">Home</a>
@@ -106,17 +120,17 @@ export default function OurTeam() {
             </nav>
 
             {/* main content */}
-            <main className="max-w-7xl mx-auto px-4 py-12">
-                <h1 className="text-center text-4xl font-bold text-blue-600">
+            <main className={`max-w-7xl mx-auto px-4 py-12 ${alice.className}`}>
+                <h1 className={`text-center text-4xl font-bold text-[#4648FF] ${archivo.className}`}>
                     The CAN-SBX Team
                 </h1>
 
                 {/* Team Leads */}
                 <div className="mt-16">
-                    <h2 className="text-center text-2xl font-semibold text-blue-600">
+                    <h2 className={`text-center text-2xl font-semibold text-[#4648FF] ${archivo.className}`}>
                         Team Leads
                     </h2>
-                    <div className="mt-2 h-1 w-20 bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 rounded-full mx-auto mb-8"></div>
+                    <div className="mt-2 h-1 w-20 bg-[#4648FF] rounded-full mx-auto mb-8"></div>
                     <div className="flex flex-wrap justify-center gap-20">
 
                         {leadTeam.map((person) => (
@@ -129,10 +143,10 @@ export default function OurTeam() {
 
                 {/* Mechanical Team */}
                 <div className="mt-20">
-                    <h2 className="text-center text-2xl font-semibold text-blue-600">
+                    <h2 className={`text-center text-2xl font-semibold text-[#4648FF] ${archivo.className}`}>
                         Mechanical Team
                     </h2>
-                    <div className="mt-2 h-1 w-20 bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 rounded-full mx-auto mb-8"></div>
+                    <div className="mt-2 h-1 w-20 bg-[#4648FF] rounded-full mx-auto mb-8"></div>
                     <div className="flex flex-wrap justify-center gap-12">
                         {mechanicalTeam.map((person) => (
                             <TeamCard key={person.id} person={person} />
@@ -143,10 +157,10 @@ export default function OurTeam() {
 
                 {/* Electrical Team */}
                 <div className="mt-20">
-                    <h2 className="text-center text-2xl font-semibold text-blue-600">
+                    <h2 className={`text-center text-2xl font-semibold text-[#4648FF] ${archivo.className}`}>
                         Electrical Team
                     </h2>
-                    <div className="mt-2 h-1 w-20 bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 rounded-full mx-auto mb-8"></div>
+                    <div className="mt-2 h-1 w-20 bg-[#4648FF] rounded-full mx-auto mb-8"></div>
                     <div className="flex flex-wrap justify-center gap-12">
 
                         {electricalTeam.map((person) => (
@@ -158,10 +172,10 @@ export default function OurTeam() {
 
                 {/* Science Team */}
                 <div className="mt-20">
-                    <h2 className="text-center text-2xl font-semibold text-blue-600">
+                    <h2 className={`text-center text-2xl font-semibold text-[#4648FF] ${archivo.className}`}>
                         Science Team
                     </h2>
-                    <div className="mt-2 h-1 w-20 bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 rounded-full mx-auto mb-8"></div>
+                    <div className="mt-2 h-1 w-20 bg-[#4648FF] rounded-full mx-auto mb-8"></div>
                     <div className="flex flex-wrap justify-center gap-12">
 
                         {scienceTeam.map((person) => (
@@ -172,10 +186,10 @@ export default function OurTeam() {
 
                 {/* Software Team */}
                 <div className="mt-20">
-                    <h2 className="text-center text-2xl font-semibold text-blue-600">
+                    <h2 className={`text-center text-2xl font-semibold text-[#4648FF] ${archivo.className}`}>
                         Software Team
                     </h2>
-                    <div className="mt-2 h-1 w-20 bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 rounded-full mx-auto mb-8"></div>
+                    <div className="mt-2 h-1 w-20 bg-[#4648FF] rounded-full mx-auto mb-8"></div>
                     <div className="flex flex-wrap justify-center gap-12">
 
                         {softwareTeam.map((person) => (
@@ -186,36 +200,13 @@ export default function OurTeam() {
 
             </main>
             
-            <div className="h-1 w-20 mx-auto mb-6 bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 rounded-full"></div>
-            
-            
             {/* Footer */}
-            <footer className="bg-gradient-to-r from-blue-700 via-blue-600 to-blue-500 text-white mt-24 w-full">
+            <footer className={`bg-[#4648FF] text-white mt-14 w-full ${julius.className}`}>
                 <div className="w-full">
 
-                    <div className="max-w-7xl mx-auto px-4 py-10">
+                    <div className="max-w-7xl mx-auto px-4 py-6">
 
-                        <div className="text-center mb-6">
-                            <h3 className="text-xl font-semibold">
-                                Want to join the team?
-                            </h3>
-
-                            <p className="text-blue-100 mt-2 max-w-xl mx-auto">
-                                Interested in joining the McMaster Advanced Space Systems team? Join one of our subteams — Mechanical, Electrical, Software, or Science — and get involved.                            </p>
-
-                            <a
-                                href="#"
-                                className="inline-block mt-4 bg-white text-blue-600 px-5 py-2 rounded-full font-medium hover:bg-blue-100 transition"
-                            >
-                                Register
-                            </a>
-                        </div>
-
-                        <div className="border-t border-blue-400 pt-6 text-sm text-blue-100 flex flex-col md:flex-row justify-between items-center gap-4">
-
-                            <p className="text-center w-full"> {new Date().getFullYear()} MASS CAN-SBX</p>
-
-                        </div>
+                         <p className="text-center w-full"> {new Date().getFullYear()} MASS CAN-SBX</p>
 
                     </div>
 
