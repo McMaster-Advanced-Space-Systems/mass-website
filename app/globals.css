@@ -1,8 +1,12 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #F2F2F0;
+  --foreground: #010109;
+  --accent: #4648FF;
+  --accent-green: #4FDD83;
+  --accent-red: #F63D68;
+  --accent-purple: #8952FD;
 }
 
 @theme inline {
@@ -12,15 +16,34 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Contact page form inputs */
+.contact-input {
+  display: block;
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1.5px solid rgba(1, 1, 9, 0.25);
+  padding: 0.5rem 0 0.7rem;
+  outline: none;
+  font-family: var(--font-alice), Georgia, serif;
+  font-size: 1rem;
+  color: #010109;
+  transition: border-color 0.2s ease;
+}
+
+.contact-input:focus {
+  border-color: #4648FF;
+}
+
+.contact-input::placeholder {
+  color: rgba(1, 1, 9, 0.28);
+}
+
+textarea.contact-input {
+  resize: none;
 }
