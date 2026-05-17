@@ -1,174 +1,317 @@
+"use client";
+
+import { useState } from "react";
+
 export default function Home() {
   const palette = {
-    deepBlue: "#355872",
-    skyBlue: "#7AAACE",
-    lightBlue: "#9CD5FF",
-    cream: "#F7F8F0",
+    black: "#010109",
+    white: "#f2f2f0",
+    blue: "#4648FF",
+    darkBlue:	"#172554",
   };
 
-  const colorList = [palette.deepBlue, palette.skyBlue, palette.lightBlue, palette.cream];
-
   return (
-    <div style={{ minHeight: "100vh", backgroundColor: colorList[3], color: colorList[0] }}>
+    <div style={{ minHeight: "100vh", backgroundColor: palette.black, color: palette.darkBlue }}>
       <nav
-        className="sticky top-0 z-10 flex flex-wrap items-center justify-center gap-3 border-b-2 px-6 py-4 sm:justify-end"
+        className="sticky top-0 z-10 flex items-center border-b-2 py-7"
         style={{
-          backgroundColor: colorList[0],
-          borderColor: colorList[1],
+          backgroundColor: palette.black,
+          borderColor: palette.darkBlue,
+          color: palette.white,
+          paddingLeft: '250px',
+          paddingRight: '200px',
         }}
       >
-        <a
-          href="#"
-          className="inline-block rounded-lg border-2 px-4 py-2 text-sm font-semibold transition-opacity hover:opacity-90"
-          style={{
-            backgroundColor: colorList[1],
-            color: colorList[0],
-            borderColor: colorList[3],
-          }}
-        >
-          Home
-        </a>
-        <a
-          href="#"
-          className="inline-block rounded-lg border-2 px-4 py-2 text-sm font-semibold transition-opacity hover:opacity-90"
-          style={{
-            backgroundColor: colorList[1],
-            color: colorList[0],
-            borderColor: colorList[3],
-          }}
-        >
-          Contact Us
-        </a>
-        <a
-          href="#"
-          className="inline-block rounded-lg border-2 px-4 py-2 text-sm font-semibold transition-opacity hover:opacity-90"
-          style={{
-            backgroundColor: colorList[1],
-            color: colorList[0],
-            borderColor: colorList[3],
-          }}
-        >
-          About Us
-        </a>
+        <div className="font-bold text-lg mr-8">MASS</div>
+        <div className="flex gap-4 flex-1 justify-end">
+          <a
+            href="#"
+            className="inline-block rounded-lg px-6 py-3 text-sm font-semibold bg-transparent transition-colors hover:bg-blue-950"
+            style={{ color: palette.white }}
+          >
+            HOME
+          </a>
+
+          <a
+            href="#"
+            className="inline-block rounded-lg px-6 py-3 text-sm font-semibold bg-transparent transition-colors hover:bg-blue-950"
+            style={{ color: palette.white }}
+          >
+            COMPETITIONS
+          </a>
+          <a
+            href="#"
+            className="inline-block rounded-lg px-6 py-3 text-sm font-semibold bg-transparent transition-colors hover:bg-blue-950"
+            style={{ color: palette.white }}
+          >
+            CONTACT US
+          </a>
+          <a
+            href="#"
+            className="inline-block rounded-lg px-6 py-3 text-sm font-semibold bg-transparent transition-colors hover:bg-blue-950"
+            style={{ color: palette.white }}
+          >
+            OUR TEAM
+          </a>
+        </div>
       </nav>
 
       <section
-        className="flex min-h-screen items-center justify-center px-6"
-        style={{ backgroundColor: colorList[3] }}
+        className="flex items-center justify-center px-6"
+        style={{ backgroundColor: palette.white, height: 'calc(100vh - 70px)' }}
       >
         <div className="w-full max-w-2xl text-center">
           <h1
-            className="mb-5 rounded-xl px-6 py-4 text-4xl font-semibold sm:text-5xl"
-            style={{ backgroundColor: colorList[0], color: colorList[3] }}
+            className="inline-block mb-5 px-6 py-4 text-4xl font-semibold sm:text-5xl"
+            style={{ color: palette.black, fontFamily: "'Archivo', sans-serif"  }}
           >
-            McMaster Advanced Space Systems
+            McMaster Advanced<br />Space Systems
           </h1>
           <p
             className="mb-7 rounded-lg px-5 py-3 text-lg"
-            style={{ backgroundColor: colorList[2], color: colorList[0] }}
+            style={{ backgroundColor: palette.white, color: palette.black }}
           >
-            Designing, building, and testing autonomous rover systems for planetary exploration challenges.
+            Designing, building, and testing autonomous <br/>technologies for various challenges.
           </p>
-          <button
-            className="rounded-lg border-2 px-6 py-3 font-semibold"
-            style={{
-              backgroundColor: colorList[1],
-              color: colorList[0],
-              borderColor: colorList[0],
-            }}
+          <a
+            className="rounded-lg border-2 px-6 py-3 font-semibold shadow-black/50 transition-colors bg-[var(--bg)] hover:bg-[var(--bghover)] hover:shadow-xl"
+            style={
+              {
+                color: palette.white,
+                borderColor: palette.black,
+                "--bg": palette.darkBlue,
+                "--bghover": palette.blue,
+              } as React.CSSProperties
+            }
+            href="#"
           >
             Learn More
-          </button>
+          </a>
         </div>
       </section>
 
-      <main className="mx-auto flex w-full max-w-6xl flex-col gap-6 px-6 py-12 sm:px-10">
-        <section
-          className="rounded-2xl border-2 p-6"
-          style={{ backgroundColor: colorList[2], borderColor: colorList[0] }}
-        >
+      <main
+        className="mx-auto flex w-full flex-col items-center py-12"
+        style={{ backgroundColor: palette.black }}
+      >
+        <div className="flex justify-center w-full h-128 text-center">
+            <div className="w-full h-96 mt-16" style={{backgroundColor: palette.darkBlue}}>
+              <div className="flex flex-row justify-center items-center mt-16 gap-4 px-64">
+                <div className="w-full h-64 mx-4 bg-black rounded-3xl p-8 md:p-10 backdrop-blur-sm flex items-center justify-center text-white">
+                  <p className="text-center text-2xl font-semibold">8000</p>
+                </div>
+                <div className="w-full h-64 mx-4 bg-black rounded-3xl p-8 md:p-10 backdrop-blur-sm flex items-center justify-center text-white">
+                  <p className="text-center text-2xl">8000</p>
+                </div>
+                <div className="w-full h-64 mx-4 bg-black rounded-3xl p-8 md:p-10 backdrop-blur-sm flex items-center justify-center text-white">
+                  <p className="text-center text-2xl">8000</p>
+                </div>
+                <div className="w-full h-64 mx-4 bg-black rounded-3xl p-8 md:p-10 backdrop-blur-sm flex items-center justify-center text-white">
+                  <p className="text-center text-2xl">8000</p>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div className="w-full max-w-512 text-center">
           <h2
-            className="mb-4 rounded-md px-4 py-2 text-2xl font-semibold"
-            style={{ backgroundColor: colorList[0], color: colorList[3] }}
+            className="mb-8 rounded-md text-4xl mt-32 font-semibold"
+            style={{ color: palette.white, fontFamily: "'Archivo', sans-serif" }}
           >
-            About the Team
+            Our Competitions
           </h2>
-          <p className="mb-3">
-            The team develops advanced rover platforms focused on mobility, manipulation, and autonomy under
-            realistic mission constraints.
-          </p>
-          <p>
-            Work spans mechanical design, embedded systems, software integration, and field testing for dependable
-            performance in extreme environments.
-          </p>
-        </section>
 
-        <section className="grid gap-4 md:grid-cols-3">
-          <article
-            className="rounded-xl border-2 p-5"
-            style={{ backgroundColor: colorList[3], borderColor: colorList[0] }}
-          >
-            <h3
-              className="mb-3 rounded px-3 py-2 font-semibold"
-              style={{ backgroundColor: colorList[0], color: colorList[3] }}
-            >
-              Mission
-            </h3>
-            <p
-              className="rounded-md px-3 py-4"
-              style={{ backgroundColor: colorList[2], color: colorList[0] }}
-            >
-              Build robust rover systems for competitive analog Mars missions.
-            </p>
-          </article>
-          <article
-            className="rounded-xl border-2 p-5"
-            style={{ backgroundColor: colorList[3], borderColor: colorList[0] }}
-          >
-            <h3
-              className="mb-3 rounded px-3 py-2 font-semibold"
-              style={{ backgroundColor: colorList[0], color: colorList[3] }}
-            >
-              Projects
-            </h3>
-            <p
-              className="rounded-md px-3 py-4"
-              style={{ backgroundColor: colorList[2], color: colorList[0] }}
-            >
-              Ongoing subsystems include drivetrain, navigation, science, and communications.
-            </p>
-          </article>
-          <article
-            className="rounded-xl border-2 p-5"
-            style={{ backgroundColor: colorList[3], borderColor: colorList[0] }}
-          >
-            <h3
-              className="mb-3 rounded px-3 py-2 font-semibold"
-              style={{ backgroundColor: colorList[0], color: colorList[3] }}
-            >
-              Community
-            </h3>
-            <p
-              className="rounded-md px-3 py-4"
-              style={{ backgroundColor: colorList[2], color: colorList[0] }}
-            >
-              Students collaborate across disciplines while mentoring new members each term.
-            </p>
-          </article>
-        </section>
+          <QueueCards palette={palette}/>
+        </div>
       </main>
 
       <footer
         style={{
-          backgroundColor: colorList[0],
-          color: colorList[3],
-          borderTop: `2px solid ${colorList[0]}`,
+          backgroundColor: palette.black,
+          color: palette.darkBlue,
+          borderTop: `2px solid ${palette.black}`,
         }}
       >
         <div className="mx-auto w-full max-w-6xl px-6 py-6 sm:px-10">
           <p className="text-center"></p>
         </div>
       </footer>
+    </div>
+  );
+}
+
+function QueueCards({ palette }: { palette: { black: string; white: string; blue: string; darkBlue: string } }) {
+  const competitions = [
+    {
+      title: "CAN-SBX",
+      description:
+        "Design and operate an autonomous rover to complete science and navigation tasks in a simulated Martian environment.",
+    },
+    {
+      title: "Competition",
+      description:
+        "Develop a habitat concept for crewed exploration, focusing on systems integration, sustainability, and human factors.",
+    },
+    {
+      title: "Competition",
+      description:
+        "Build an intelligent robotic system for satellite servicing, debris removal, and cooperative payload deployment.",
+    },
+  ];
+
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+
+  const handlePrev = () => {
+    setIsTransitioning(true);
+    setActiveIndex((current) => (current === 0 ? competitions.length - 1 : current - 1));
+    setTimeout(() => setIsTransitioning(false), 500);
+  };
+
+  const handleNext = () => {
+    setIsTransitioning(true);
+    setActiveIndex((current) => (current === competitions.length - 1 ? 0 : current + 1));
+    setTimeout(() => setIsTransitioning(false), 500);
+  };
+
+  // Get card position (left=-1, center=0, right=1)
+  const getCardPosition = (index: number) => {
+    const distance = index - activeIndex;
+    if (distance > competitions.length / 2) {
+      return distance - competitions.length;
+    } else if (distance < -competitions.length / 2) {
+      return distance + competitions.length;
+    }
+    return distance;
+  };
+
+  return (
+    <div className="w-full">
+      {/* Carousel with Buttons */}
+      <div className="flex items-center justify-center">
+        {/* Left Button */}
+        <button
+          onClick={handlePrev}
+          disabled={isTransitioning}
+          className="flex-shrink-0 inline-flex h-14 w-14 items-center justify-center rounded-full bg-black text-white transition-all duration-200 hover:bg-gray-800 disabled:opacity-50 disabled:cursor-not-allowed"
+          aria-label="Previous competition"
+          style={{
+            border: `2px solid ${palette.blue}`,
+          }}
+        >
+          <svg
+            className="h-6 w-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M15 19l-7-7 7-7"
+            />
+          </svg>
+        </button>
+
+        {/* Carousel Container */}
+        <div className="relative mx-auto w-full overflow-hidden">
+          {/* Cards Container */}
+          <div className="relative h-160">
+            {competitions.map((competition, index) => {
+              const position = getCardPosition(index);
+              const isActive = position === 0;
+              const isVisible = Math.abs(position) <= 1;
+
+              return (
+                <div
+                  key={index}
+                  className="absolute inset-0 flex items-center justify-center transition-all duration-500 ease-out"
+                  style={{
+                    opacity: isVisible ? (isActive ? 1 : 0.4) : 0,
+                    transform: `translateX(${position * 110}%) scale(${isActive ? 1 : 0.85})`,
+                    pointerEvents: isActive ? "auto" : "none",
+                    zIndex: isActive ? 10 : 5 - Math.abs(position),
+                  }}
+                >
+                  <div
+                    className="w-full h-128 mx-16 rounded-3xl border shadow-2xl p-8 md:p-10 backdrop-blur-sm"
+                    style={{
+                      backgroundColor: palette.white,
+                      borderColor: isActive ? palette.blue : `${palette.darkBlue}40`,
+                      color: palette.black,
+                    }}
+                  >
+                    <h3
+                      className="text-left text-2xl md:text-3xl px-8 mt-16 mb-8 font-semibold"
+                      style={{
+                        color: palette.black,
+                        fontFamily: "'Archivo', sans-serif",
+                      }}
+                    >
+                      {competition.title}
+                    </h3>
+                    <p className="text-left leading-7 px-8 mb-4 text-slate-700">
+                      {competition.description}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Right Button */}
+        <button
+          onClick={handleNext}
+          disabled={isTransitioning}
+          className="flex-shrink-0 inline-flex h-14 w-14 items-center justify-center rounded-full bg-black text-white transition-all duration-200 hover:bg-gray-800 disabled:opacity-50 disabled:cursor-not-allowed"
+          aria-label="Next competition"
+          style={{
+            border: `2px solid ${palette.blue}`,
+          }}
+        >
+          <svg
+            className="h-6 w-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M9 5l7 7-7 7"
+            />
+          </svg>
+        </button>
+      </div>
+
+      {/* Indicator Dots */}
+      <div className="flex items-center justify-center gap-2">
+        {competitions.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => {
+              setIsTransitioning(true);
+              setActiveIndex(index);
+              setTimeout(() => setIsTransitioning(false), 500);
+            }}
+            className="transition-all duration-300"
+            style={{
+              width: activeIndex === index ? 32 : 10,
+              height: 10,
+              backgroundColor: activeIndex === index ? palette.blue : palette.darkBlue,
+              borderRadius: 5,
+              border: "none",
+              cursor: "pointer",
+              opacity: activeIndex === index ? 1 : 0.5,
+            }}
+            aria-label={`Go to competition ${index + 1}`}
+          />
+        ))}
+      </div>
+
+
     </div>
   );
 }
