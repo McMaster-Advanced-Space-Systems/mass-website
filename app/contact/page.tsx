@@ -102,12 +102,12 @@ export default function ContactPage() {
     <>
       <style>{`
         .contact-nav-link { color: rgba(242,242,240,0.6); transition: color 0.15s ease; text-decoration: none; }
-        .contact-nav-link[data-active] { color: #4648FF; font-weight: 600; }
+        .contact-nav-link[data-active] { color: #F2F2F0; font-weight: 700; }
         .contact-nav-link:hover { color: rgba(242,242,240,0.9); }
-        .contact-nav-link[data-active]:hover { color: #4648FF; }
+        .contact-nav-link[data-active]:hover { color: #F2F2F0; }
         .contact-btn-submit:hover:not(:disabled) { background-color: #3335e0; }
-        .contact-btn-submit:focus-visible { outline: 2px solid #4648FF; outline-offset: 3px; }
-        .contact-pill:focus-visible { outline: 2px solid #4648FF; outline-offset: 2px; }
+        .contact-btn-submit:focus-visible { outline: 2px solid #000649; outline-offset: 3px; }
+        .contact-pill:focus-visible { outline: 2px solid #000649; outline-offset: 2px; }
         .contact-input[aria-invalid="true"] { border-bottom-color: #F63D68; }
         .contact-input[aria-invalid="true"]:focus { border-color: #F63D68; }
         @media (prefers-reduced-motion: reduce) {
@@ -220,7 +220,7 @@ export default function ContactPage() {
             <p
               style={{
                 fontFamily: "var(--font-julius-sans-one), sans-serif",
-                color: "#4648FF",
+                color: "#8083a4",
                 fontSize: "0.65rem",
                 letterSpacing: "0.3em",
                 marginBottom: "1.75rem",
@@ -245,8 +245,7 @@ export default function ContactPage() {
               the Team.
             </h1>
 
-            {/* Blue accent rule */}
-            <div style={{ width: "4.5rem", height: "3px", backgroundColor: "#4648FF" }} />
+            <div style={{ width: "4.5rem", height: "3px", backgroundColor: "#8083a4" }} />
           </div>
         </header>
 
@@ -281,7 +280,7 @@ export default function ContactPage() {
               {/* Success state */}
               {status === "sent" ? (
                 <div>
-                  <div style={{ width: "3rem", height: "3px", backgroundColor: "#4648FF", marginBottom: "2rem" }} />
+                  <div style={{ width: "3rem", height: "3px", backgroundColor: "#000649", marginBottom: "2rem" }} />
                   <p
                     style={{
                       fontFamily: "var(--font-archivo-narrow), sans-serif",
@@ -311,7 +310,7 @@ export default function ContactPage() {
                       fontFamily: "var(--font-archivo-narrow), sans-serif",
                       fontSize: "0.72rem",
                       letterSpacing: "0.14em",
-                      color: "#4648FF",
+                      color: "#000649",
                       background: "none",
                       border: "none",
                       cursor: "pointer",
@@ -393,8 +392,8 @@ export default function ContactPage() {
                               letterSpacing: "0.1em",
                               fontWeight: 500,
                               padding: "0.45rem 1.1rem",
-                              border: `1.5px solid ${active ? "#4648FF" : "rgba(1,1,9,0.22)"}`,
-                              backgroundColor: active ? "#4648FF" : "transparent",
+                              border: `1.5px solid ${active ? "#000649" : "rgba(1,1,9,0.22)"}`,
+                              backgroundColor: active ? "#000649" : "transparent",
                               color: active ? "#F2F2F0" : "#010109",
                               cursor: "pointer",
                               transition: "all 0.15s ease",
@@ -439,7 +438,7 @@ export default function ContactPage() {
                         fontSize: "0.78rem",
                         letterSpacing: "0.12em",
                         padding: "0.9rem 2.25rem",
-                        backgroundColor: status === "sending" ? "rgba(70,72,255,0.55)" : "#4648FF",
+                        backgroundColor: status === "sending" ? "rgba(70,72,255,0.55)" : "#000649",
                         color: "#F2F2F0",
                         border: "none",
                         cursor: status === "sending" ? "not-allowed" : "pointer",
@@ -471,7 +470,7 @@ export default function ContactPage() {
           {/* Info panel */}
           <div
             className="md:sticky md:top-16 md:self-start"
-            style={{ backgroundColor: "#4648FF", padding: "4rem 2.5rem" }}
+            style={{ backgroundColor: "#000649", padding: "4rem 2.5rem" }}
           >
             <p
               style={{

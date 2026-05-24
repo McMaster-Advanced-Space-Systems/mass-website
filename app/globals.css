@@ -3,10 +3,7 @@
 :root {
   --background: #F2F2F0;
   --foreground: #010109;
-  --accent: #4648FF;
-  --accent-green: #4FDD83;
-  --accent-red: #F63D68;
-  --accent-purple: #8952FD;
+  --accent: #000649;
 }
 
 @theme inline {
@@ -37,7 +34,7 @@ body {
 }
 
 .contact-input:focus {
-  border-color: #4648FF;
+  border-color: #000649;
 }
 
 .contact-input::placeholder {
