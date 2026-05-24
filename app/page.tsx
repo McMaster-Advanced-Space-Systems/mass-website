@@ -6,8 +6,8 @@ export default function Home() {
   const palette = {
     black: "#010109",
     white: "#f2f2f0",
-    blue: "#4648FF",
-    darkBlue:	"#172554",
+    blue: "#33386d",
+    darkBlue:	"#000649",
   };
 
   return (
@@ -63,7 +63,7 @@ export default function Home() {
         <div className="w-full max-w-2xl text-center">
           <h1
             className="inline-block mb-5 px-6 py-4 text-4xl font-semibold sm:text-5xl"
-            style={{ color: palette.black, fontFamily: "'Archivo', sans-serif"  }}
+            style={{ color: palette.black }}
           >
             McMaster Advanced<br />Space Systems
           </h1>
@@ -95,19 +95,19 @@ export default function Home() {
         style={{ backgroundColor: palette.black }}
       >
         <div className="flex justify-center w-full h-128 text-center">
-            <div className="w-full h-96 mt-16" style={{backgroundColor: palette.darkBlue}}>
+            <div className="w-full h-96 mt-16" style={{ backgroundImage: `linear-gradient(135deg, ${palette.blue}, ${palette.darkBlue})` }}>
               <div className="flex flex-row justify-center items-center mt-16 gap-4 px-64">
                 <div className="w-full h-64 mx-4 bg-black rounded-3xl p-8 md:p-10 backdrop-blur-sm flex items-center justify-center text-white">
-                  <p className="text-center text-2xl font-semibold">8000</p>
+                  <h1 className="text-center text-2xl font-semibold">8000</h1>
                 </div>
                 <div className="w-full h-64 mx-4 bg-black rounded-3xl p-8 md:p-10 backdrop-blur-sm flex items-center justify-center text-white">
-                  <p className="text-center text-2xl">8000</p>
+                  <h1 className="text-center text-2xl font-semibold">8000</h1>
                 </div>
                 <div className="w-full h-64 mx-4 bg-black rounded-3xl p-8 md:p-10 backdrop-blur-sm flex items-center justify-center text-white">
-                  <p className="text-center text-2xl">8000</p>
+                  <h1 className="text-center text-2xl font-semibold">8000</h1>
                 </div>
                 <div className="w-full h-64 mx-4 bg-black rounded-3xl p-8 md:p-10 backdrop-blur-sm flex items-center justify-center text-white">
-                  <p className="text-center text-2xl">8000</p>
+                  <h1 className="text-center text-2xl font-semibold">8000</h1>
                 </div>
               </div>
             </div>
@@ -115,7 +115,7 @@ export default function Home() {
         <div className="w-full max-w-512 text-center">
           <h2
             className="mb-8 rounded-md text-4xl mt-32 font-semibold"
-            style={{ color: palette.white, fontFamily: "'Archivo', sans-serif" }}
+            style={{ color: palette.white }}
           >
             Our Competitions
           </h2>
@@ -243,10 +243,7 @@ function QueueCards({ palette }: { palette: { black: string; white: string; blue
                   >
                     <h3
                       className="text-left text-2xl md:text-3xl px-8 mt-16 mb-8 font-semibold"
-                      style={{
-                        color: palette.black,
-                        fontFamily: "'Archivo', sans-serif",
-                      }}
+                      style={{ color: palette.black }}
                     >
                       {competition.title}
                     </h3>
