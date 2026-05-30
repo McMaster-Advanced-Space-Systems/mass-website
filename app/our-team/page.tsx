@@ -77,11 +77,11 @@ const softwareTeam: TeamMember[] = [
 {/* UI for the team cards */ }
 function TeamCard({ person }: { person: TeamMember }) {
     return (
-        <div className="p-[2px] rounded-2xl bg-[#4648FF] shadow-md hover:-translate-y-1 hover:shadow-lg transition duration-150">
+        <div className="p-[2px] rounded-2xl bg-[#000649] shadow-md hover:-translate-y-1 hover:shadow-lg transition duration-150">
             <div className="bg-white rounded-2xl p-6 w-64 text-center h-full flex flex-col">
                 <img
                     src={person.imageUrl}
-                    className="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-2 border-[#4648FF]"
+                    className="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-2 border-[#000649]"
                 />
                 <h3 className="text-lg font-bold text-[#010101]">{person.name}</h3>
                 <p className="text-gray-400 text-sm font-medium mt-0.5">{person.role} </p>
@@ -105,7 +105,7 @@ export default function OurTeam() {
         <div className="min-h-screen bg-[#F2F2F0]">
 
             {/* top navigation bar */}
-            <nav className={`bg-[#4648FF] text-white w-full shadow-md ${julius.className}`}>
+            <nav className={`bg-[#000649] text-white w-full shadow-md ${julius.className}`}>
                 <div className="max-w-7xl mx-auto px-4 py-3 flex flex-wrap justify-center gap-6 text-sm md:text-base">
 
                     <a href="#home" className="hover:text-blue-200 transition">Home</a>
@@ -121,16 +121,16 @@ export default function OurTeam() {
 
             {/* main content */}
             <main className={`max-w-7xl mx-auto px-4 py-12 ${alice.className}`}>
-                <h1 className={`text-center text-4xl font-bold text-[#4648FF] ${archivo.className}`}>
+                <h1 className={`text-center text-4xl font-bold text-[#000649] ${archivo.className}`}>
                     The CAN-SBX Team
                 </h1>
 
                 {/* Team Leads */}
                 <div className="mt-16">
-                    <h2 className={`text-center text-2xl font-semibold text-[#4648FF] ${archivo.className}`}>
+                    <h2 className={`text-center text-2xl font-semibold text-[#000649] ${archivo.className}`}>
                         Team Leads
                     </h2>
-                    <div className="mt-2 h-1 w-20 bg-[#4648FF] rounded-full mx-auto mb-8"></div>
+                    <div className="mt-2 h-1 w-20 bg-[#000649] rounded-full mx-auto mb-8"></div>
                     <div className="flex flex-wrap justify-center gap-20">
 
                         {leadTeam.map((person) => (
@@ -143,10 +143,10 @@ export default function OurTeam() {
 
                 {/* Mechanical Team */}
                 <div className="mt-20">
-                    <h2 className={`text-center text-2xl font-semibold text-[#4648FF] ${archivo.className}`}>
+                    <h2 className={`text-center text-2xl font-semibold text-[#000649] ${archivo.className}`}>
                         Mechanical Team
                     </h2>
-                    <div className="mt-2 h-1 w-20 bg-[#4648FF] rounded-full mx-auto mb-8"></div>
+                    <div className="mt-2 h-1 w-20 bg-[#000649] rounded-full mx-auto mb-8"></div>
                     <div className="flex flex-wrap justify-center gap-12">
                         {mechanicalTeam.map((person) => (
                             <TeamCard key={person.id} person={person} />
@@ -157,10 +157,10 @@ export default function OurTeam() {
 
                 {/* Electrical Team */}
                 <div className="mt-20">
-                    <h2 className={`text-center text-2xl font-semibold text-[#4648FF] ${archivo.className}`}>
+                    <h2 className={`text-center text-2xl font-semibold text-[#000649] ${archivo.className}`}>
                         Electrical Team
                     </h2>
-                    <div className="mt-2 h-1 w-20 bg-[#4648FF] rounded-full mx-auto mb-8"></div>
+                    <div className="mt-2 h-1 w-20 bg-[#000649] rounded-full mx-auto mb-8"></div>
                     <div className="flex flex-wrap justify-center gap-12">
 
                         {electricalTeam.map((person) => (
@@ -172,10 +172,10 @@ export default function OurTeam() {
 
                 {/* Science Team */}
                 <div className="mt-20">
-                    <h2 className={`text-center text-2xl font-semibold text-[#4648FF] ${archivo.className}`}>
+                    <h2 className={`text-center text-2xl font-semibold text-[#000649] ${archivo.className}`}>
                         Science Team
                     </h2>
-                    <div className="mt-2 h-1 w-20 bg-[#4648FF] rounded-full mx-auto mb-8"></div>
+                    <div className="mt-2 h-1 w-20 bg-[#000649] rounded-full mx-auto mb-8"></div>
                     <div className="flex flex-wrap justify-center gap-12">
 
                         {scienceTeam.map((person) => (
@@ -186,10 +186,10 @@ export default function OurTeam() {
 
                 {/* Software Team */}
                 <div className="mt-20">
-                    <h2 className={`text-center text-2xl font-semibold text-[#4648FF] ${archivo.className}`}>
+                    <h2 className={`text-center text-2xl font-semibold text-[#000649] ${archivo.className}`}>
                         Software Team
                     </h2>
-                    <div className="mt-2 h-1 w-20 bg-[#4648FF] rounded-full mx-auto mb-8"></div>
+                    <div className="mt-2 h-1 w-20 bg-[#000649] rounded-full mx-auto mb-8"></div>
                     <div className="flex flex-wrap justify-center gap-12">
 
                         {softwareTeam.map((person) => (
@@ -201,7 +201,7 @@ export default function OurTeam() {
             </main>
             
             {/* Footer */}
-            <footer className={`bg-[#4648FF] text-white mt-14 w-full ${julius.className}`}>
+            <footer className={`bg-[#000649] text-white mt-14 w-full ${julius.className}`}>
                 <div className="w-full">
 
                     <div className="max-w-7xl mx-auto px-4 py-6">
