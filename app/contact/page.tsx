@@ -84,9 +84,24 @@ export default function ContactPage() {
     setErrors({});
     setStatus("sending");
     try {
-      // TODO: Replace with your submission endpoint (Formspree, EmailJS, or /api/contact)
-      await new Promise(res => setTimeout(res, 800));
-      setStatus("sent");
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          access_key: process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY,
+          name: form.name,
+          email: form.email,
+          inquiry: form.inquiry || "general",
+          message: form.message,
+          subject: `[MASS Website] ${form.inquiry || "General"} inquiry from ${form.name}`,
+        }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        setStatus("sent");
+      } else {
+        setStatus("error");
+      }
     } catch {
       setStatus("error");
     }
