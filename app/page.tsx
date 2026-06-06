@@ -5,6 +5,7 @@ import { useState } from "react";
 export default function Home() {
   const palette = {
     black: "#010109",
+    gray: "#14141441",
     white: "#f2f2f0",
     blue: "#33386d",
     darkBlue:	"#000649",
@@ -96,7 +97,7 @@ export default function Home() {
       >
         <div className="flex justify-center w-full h-128 text-center">
             <div className="w-full h-96 mt-16" style={{ backgroundImage: `linear-gradient(135deg, ${palette.blue}, ${palette.darkBlue})` }}>
-              <div className="flex flex-row justify-center items-center mt-16 gap-4 px-64">
+              <div className="flex flex-row justify-center items-center mt-16 gap-4 px-[8%]">
                 <div className="w-full h-64 mx-4 bg-black rounded-3xl p-8 md:p-10 backdrop-blur-sm flex items-center justify-center text-white">
                   <h1 className="text-center text-2xl font-semibold">8000</h1>
                 </div>
@@ -126,13 +127,42 @@ export default function Home() {
 
       <footer
         style={{
-          backgroundColor: palette.black,
-          color: palette.darkBlue,
-          borderTop: `2px solid ${palette.black}`,
+          backgroundColor: palette.gray,
+          color: palette.white,
         }}
       >
-        <div className="mx-auto w-full max-w-6xl px-6 py-6 sm:px-10">
-          <p className="text-center"></p>
+        <div className="mx-auto w-full max-w-7xl px-6 py-12 mt-32 sm:px-10">
+          <div className="grid gap-8 my-20 md:grid-cols-[1.6fr_1fr]">
+            <div className="p-0">
+              <h2 className="text-3xl font-semibold tracking-tight text-white md:text-4xl">
+                McMaster Advanced Space Systems
+              </h2>
+              <div className="mt-6 space-y-5 text-left text-sm sm:text-base text-slate-200">
+                <div>
+                  <h4 className="text-sm uppercase tracking-[0.32em] text-slate-400">Instagram</h4>
+                  <a
+                    href="https://www.instagram.com/mcmasteradvancedspacesystems"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-2 inline-flex items-center gap-3 rounded-2xl bg-black/20 px-4 py-3 text-white transition hover:bg-white/10"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      className="h-5 w-5"
+                    >
+                      <path d="M7.75 2h8.5C19.55 2 22 4.45 22 7.75v8.5C22 19.55 19.55 22 16.25 22h-8.5C4.45 22 2 19.55 2 16.25v-8.5C2 4.45 4.45 2 7.75 2Zm0 1.5C5.4 3.5 3.5 5.4 3.5 7.75v8.5c0 2.35 1.9 4.25 4.25 4.25h8.5c2.35 0 4.25-1.9 4.25-4.25v-8.5c0-2.35-1.9-4.25-4.25-4.25h-8.5ZM12 7.2a4.8 4.8 0 1 1 0 9.6 4.8 4.8 0 0 1 0-9.6Zm0 1.5a3.3 3.3 0 1 0 0 6.6 3.3 3.3 0 0 0 0-6.6Zm4.95-.3a1.05 1.05 0 1 1 0 2.1 1.05 1.05 0 0 1 0-2.1Z" />
+                    </svg>
+                    @mac.spacesystems
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="border-t border-white/10 pt-6 text-center text-sm text-slate-400">
+            © 2026 McMaster Advanced Space Systems. All rights reserved.
+          </div>
         </div>
       </footer>
     </div>

@@ -24,18 +24,11 @@ body {
   font-family: var(--font-alice), Arial, Helvetica, sans-serif;
 }
 
-nav {
-  font-family: var(--font-julius-sans-one), sans-serif;
-}
-
-h1 {
-  font-family: var(--font-archivo-narrow), sans-serif;
-}
-
-h2 {
-  font-family: var(--font-archivo-narrow), sans-serif;
-}
-
-h3 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-archivo-narrow), sans-serif;
 }
