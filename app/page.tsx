@@ -13,21 +13,24 @@ export default function Home() {
 
   return (
     <div style={{ minHeight: "100vh", backgroundColor: palette.black, color: palette.darkBlue }}>
+      <div
+        className="fixed inset-0 z-0 pointer-events-none bg-cover bg-center"
+        style={{ backgroundImage: "url(/earth.jpg)" }}
+      />
       <nav
-        className="sticky top-0 z-10 flex items-center border-b-2 py-7"
+        className="sticky top-0 z-50 flex flex-wrap items-center border-b-2 px-4 py-4 sm:px-8 sm:py-7 lg:px-24 xl:px-48"
         style={{
           backgroundColor: palette.black,
           borderColor: palette.darkBlue,
           color: palette.white,
-          paddingLeft: '250px',
-          paddingRight: '200px',
+          fontFamily: "var(--font-julius-sans-one)",
         }}
       >
-        <div className="font-bold text-lg mr-8">MASS</div>
-        <div className="flex gap-4 flex-1 justify-end">
+        <div className="font-bold text-lg mr-4 sm:mr-8">MASS</div>
+        <div className="flex flex-wrap gap-1 sm:gap-4 flex-1 justify-end">
           <a
             href="#"
-            className="inline-block rounded-lg px-6 py-3 text-sm font-semibold bg-transparent transition-colors hover:bg-blue-950"
+            className="inline-block rounded-lg px-3 py-2 sm:px-6 sm:py-3 text-xs sm:text-sm font-semibold bg-transparent transition-colors hover:bg-blue-950"
             style={{ color: palette.white }}
           >
             HOME
@@ -35,21 +38,21 @@ export default function Home() {
 
           <a
             href="#"
-            className="inline-block rounded-lg px-6 py-3 text-sm font-semibold bg-transparent transition-colors hover:bg-blue-950"
+            className="inline-block rounded-lg px-3 py-2 sm:px-6 sm:py-3 text-xs sm:text-sm font-semibold bg-transparent transition-colors hover:bg-blue-950"
             style={{ color: palette.white }}
           >
             COMPETITIONS
           </a>
           <a
             href="#"
-            className="inline-block rounded-lg px-6 py-3 text-sm font-semibold bg-transparent transition-colors hover:bg-blue-950"
+            className="inline-block rounded-lg px-3 py-2 sm:px-6 sm:py-3 text-xs sm:text-sm font-semibold bg-transparent transition-colors hover:bg-blue-950"
             style={{ color: palette.white }}
           >
             CONTACT US
           </a>
           <a
             href="#"
-            className="inline-block rounded-lg px-6 py-3 text-sm font-semibold bg-transparent transition-colors hover:bg-blue-950"
+            className="inline-block rounded-lg px-3 py-2 sm:px-6 sm:py-3 text-xs sm:text-sm font-semibold bg-transparent transition-colors hover:bg-blue-950"
             style={{ color: palette.white }}
           >
             OUR TEAM
@@ -58,21 +61,20 @@ export default function Home() {
       </nav>
 
       <section
-        className="flex items-center justify-center px-6"
-        style={{ backgroundColor: palette.white, height: 'calc(100vh - 70px)' }}
+        className="relative z-10 flex items-center justify-center px-6 min-h-[calc(100vh-70px)]"
       >
         <div className="w-full max-w-2xl text-center">
           <h1
             className="inline-block mb-5 px-6 py-4 text-4xl font-semibold sm:text-5xl"
-            style={{ color: palette.black }}
+            style={{ color: palette.white }}
           >
             McMaster Advanced<br />Space Systems
           </h1>
           <p
             className="mb-7 rounded-lg px-5 py-3 text-lg"
-            style={{ backgroundColor: palette.white, color: palette.black }}
+            style={{ color: palette.white }}
           >
-            Designing, building, and testing autonomous <br/>technologies for various challenges.
+            Designing, building, and testing autonomous <br className="hidden sm:block"/>technologies for various challenges.
           </p>
           <a
             className="rounded-lg border-2 px-6 py-3 font-semibold shadow-black/50 transition-colors bg-[var(--bg)] hover:bg-[var(--bghover)] hover:shadow-xl"
@@ -92,30 +94,32 @@ export default function Home() {
       </section>
 
       <main
-        className="mx-auto flex w-full flex-col items-center py-12"
-        style={{ backgroundColor: palette.black }}
+        className="relative z-10 mx-auto flex w-full flex-col items-center py-12"
+        style={{ backgroundColor: "rgba(1, 1, 9, 0.9)" }}
       >
-        <div className="flex justify-center w-full h-128 text-center">
-            <div className="w-full h-96 mt-16" style={{ backgroundImage: `linear-gradient(135deg, ${palette.blue}, ${palette.darkBlue})` }}>
-              <div className="flex flex-row justify-center items-center mt-16 gap-4 px-[8%]">
-                <div className="w-full h-64 mx-4 bg-black rounded-3xl p-8 md:p-10 backdrop-blur-sm flex items-center justify-center text-white">
-                  <h1 className="text-center text-2xl font-semibold">8000</h1>
-                </div>
-                <div className="w-full h-64 mx-4 bg-black rounded-3xl p-8 md:p-10 backdrop-blur-sm flex items-center justify-center text-white">
-                  <h1 className="text-center text-2xl font-semibold">8000</h1>
-                </div>
-                <div className="w-full h-64 mx-4 bg-black rounded-3xl p-8 md:p-10 backdrop-blur-sm flex items-center justify-center text-white">
-                  <h1 className="text-center text-2xl font-semibold">8000</h1>
-                </div>
-                <div className="w-full h-64 mx-4 bg-black rounded-3xl p-8 md:p-10 backdrop-blur-sm flex items-center justify-center text-white">
-                  <h1 className="text-center text-2xl font-semibold">8000</h1>
-                </div>
+        <div className="flex justify-center w-full text-center">
+            <div className="w-full py-24 md:py-24 mt-16" style={{ backgroundImage: `linear-gradient(135deg, ${palette.blue}, ${palette.darkBlue})` }}>
+              <div className="grid grid-cols-2 lg:grid-cols-4 justify-center items-stretch gap-4 md:gap-8 px-[8%]">
+                {[
+                  { value: "50+", label: "Club Members" },
+                  { value: "3", label: "Active Competitions" },
+                  { value: "5", label: "Engineering Sub-Teams" },
+                  { value: "2024", label: "Founded" },
+                ].map((stat) => (
+                  <div
+                    key={stat.label}
+                    className="w-full h-32 md:h-44 bg-black rounded-3xl p-4 md:p-6 backdrop-blur-sm flex flex-col items-center justify-center gap-2 md:gap-3 text-white"
+                  >
+                    <h1 className="text-center text-3xl md:text-4xl font-semibold">{stat.value}</h1>
+                    <h1 className="text-center text-sm md:text-lg text-slate-300">{stat.label}</h1>
+                  </div>
+                ))}
               </div>
             </div>
         </div>
-        <div className="w-full max-w-512 text-center">
+        <div className="w-full max-w-512 px-10 sm:px-24 lg:px-48 text-center">
           <h2
-            className="mb-8 rounded-md text-4xl mt-32 font-semibold"
+            className="mb-8 rounded-md text-3xl sm:text-4xl mt-16 md:mt-32 font-semibold text-left pl-14 sm:pl-22 lg:pl-30"
             style={{ color: palette.white }}
           >
             Our Competitions
@@ -126,12 +130,13 @@ export default function Home() {
       </main>
 
       <footer
+        className="relative z-10"
         style={{
-          backgroundColor: palette.gray,
+          backgroundColor: "rgba(1, 1, 9)",
           color: palette.white,
         }}
       >
-        <div className="mx-auto w-full max-w-7xl px-6 py-12 mt-32 sm:px-10">
+        <div className="mx-auto w-full max-w-7xl px-6 py-20 sm:px-10">
           <div className="grid gap-8 my-20 md:grid-cols-[1.6fr_1fr]">
             <div className="p-0">
               <h2 className="text-3xl font-semibold tracking-tight text-white md:text-4xl">
@@ -222,7 +227,7 @@ function QueueCards({ palette }: { palette: { black: string; white: string; blue
         <button
           onClick={handlePrev}
           disabled={isTransitioning}
-          className="flex-shrink-0 inline-flex h-14 w-14 items-center justify-center rounded-full bg-black text-white transition-all duration-200 hover:bg-gray-800 disabled:opacity-50 disabled:cursor-not-allowed"
+          className="flex-shrink-0 inline-flex h-10 w-10 sm:h-14 sm:w-14 items-center justify-center rounded-full bg-black text-white transition-all duration-200 hover:bg-gray-800 disabled:opacity-50 disabled:cursor-not-allowed"
           aria-label="Previous competition"
           style={{
             border: `2px solid ${palette.blue}`,
@@ -246,7 +251,7 @@ function QueueCards({ palette }: { palette: { black: string; white: string; blue
         {/* Carousel Container */}
         <div className="relative mx-auto w-full overflow-hidden">
           {/* Cards Container */}
-          <div className="relative h-160">
+          <div className="relative h-[28rem] sm:h-[32rem] lg:h-160">
             {competitions.map((competition, index) => {
               const position = getCardPosition(index);
               const isActive = position === 0;
@@ -264,7 +269,7 @@ function QueueCards({ palette }: { palette: { black: string; white: string; blue
                   }}
                 >
                   <div
-                    className="w-full h-128 mx-16 rounded-3xl border shadow-2xl p-8 md:p-10 backdrop-blur-sm"
+                    className="w-full h-[24rem] sm:h-[28rem] lg:h-128 mx-4 sm:mx-8 lg:mx-16 rounded-3xl border shadow-2xl p-6 sm:p-8 md:p-10 backdrop-blur-sm"
                     style={{
                       backgroundColor: palette.white,
                       borderColor: isActive ? palette.blue : `${palette.darkBlue}40`,
@@ -272,12 +277,12 @@ function QueueCards({ palette }: { palette: { black: string; white: string; blue
                     }}
                   >
                     <h3
-                      className="text-left text-2xl md:text-3xl px-8 mt-16 mb-8 font-semibold"
+                      className="text-left text-2xl md:text-3xl px-2 sm:px-8 mt-8 sm:mt-16 mb-6 sm:mb-8 font-semibold"
                       style={{ color: palette.black }}
                     >
                       {competition.title}
                     </h3>
-                    <p className="text-left leading-7 px-8 mb-4 text-slate-700">
+                    <p className="text-left leading-7 px-2 sm:px-8 mb-4 text-slate-700">
                       {competition.description}
                     </p>
                   </div>
@@ -291,7 +296,7 @@ function QueueCards({ palette }: { palette: { black: string; white: string; blue
         <button
           onClick={handleNext}
           disabled={isTransitioning}
-          className="flex-shrink-0 inline-flex h-14 w-14 items-center justify-center rounded-full bg-black text-white transition-all duration-200 hover:bg-gray-800 disabled:opacity-50 disabled:cursor-not-allowed"
+          className="flex-shrink-0 inline-flex h-10 w-10 sm:h-14 sm:w-14 items-center justify-center rounded-full bg-black text-white transition-all duration-200 hover:bg-gray-800 disabled:opacity-50 disabled:cursor-not-allowed"
           aria-label="Next competition"
           style={{
             border: `2px solid ${palette.blue}`,
@@ -314,7 +319,7 @@ function QueueCards({ palette }: { palette: { black: string; white: string; blue
       </div>
 
       {/* Indicator Dots */}
-      <div className="flex items-center justify-center gap-2">
+      <div className="flex items-center justify-center gap-2 mb-24">
         {competitions.map((_, index) => (
           <button
             key={index}
@@ -327,11 +332,11 @@ function QueueCards({ palette }: { palette: { black: string; white: string; blue
             style={{
               width: activeIndex === index ? 32 : 10,
               height: 10,
-              backgroundColor: activeIndex === index ? palette.blue : palette.darkBlue,
+              backgroundColor: activeIndex === index ? palette.white : palette.white,
               borderRadius: 5,
               border: "none",
               cursor: "pointer",
-              opacity: activeIndex === index ? 1 : 0.5,
+              opacity: activeIndex === index ? 1 : 0.6,
             }}
             aria-label={`Go to competition ${index + 1}`}
           />

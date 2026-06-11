@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Alice, Archivo_Narrow } from "next/font/google";
+import { Alice, Archivo_Narrow, Julius_Sans_One } from "next/font/google";
 import "./globals.css";
 
 const alice = Alice({
@@ -10,6 +10,12 @@ const alice = Alice({
 
 const archivoNarrow = Archivo_Narrow({
   variable: "--font-archivo-narrow",
+  weight: "400",
+  subsets: ["latin"],
+});
+
+const juliusSansOne = Julius_Sans_One({
+  variable: "--font-julius-sans-one",
   weight: "400",
   subsets: ["latin"],
 });
@@ -26,7 +32,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${alice.variable} ${archivoNarrow.variable} antialiased`}>
+      <body className={`${alice.variable} ${archivoNarrow.variable} ${juliusSansOne.variable} antialiased`}>
         {children}
       </body>
     </html>
