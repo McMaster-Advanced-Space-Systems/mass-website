@@ -83,4 +83,34 @@ h6 {
     opacity: 1;
     transform: none;
   }
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+/* Contact page form inputs */
+.contact-input {
+  display: block;
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1.5px solid rgba(1, 1, 9, 0.25);
+  padding: 0.5rem 0 0.7rem;
+  outline: none;
+  font-family: var(--font-alice), Georgia, serif;
+  font-size: 1rem;
+  color: #010109;
+  transition: border-color 0.2s ease;
+}
+
+.contact-input:focus {
+  border-color: #000649;
+}
+
+.contact-input::placeholder {
+  color: rgba(1, 1, 9, 0.28);
+}
+
+textarea.contact-input {
+  resize: none;
 }

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Alice, Archivo_Narrow, Julius_Sans_One } from "next/font/google";
+import { Geist, Geist_Mono, Archivo_Narrow, Alice, Julius_Sans_One } from "next/font/google";
 import "./globals.css";
 
 const alice = Alice({
@@ -18,6 +18,24 @@ const juliusSansOne = Julius_Sans_One({
   variable: "--font-julius-sans-one",
   weight: "400",
   subsets: ["latin"],
+});
+
+const archivoNarrow = Archivo_Narrow({
+  weight: ["400", "500", "600", "700"],
+  subsets: ["latin"],
+  variable: "--font-archivo-narrow",
+});
+
+const alice = Alice({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-alice",
+});
+
+const juliusSansOne = Julius_Sans_One({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-julius-sans-one",
 });
 
 export const metadata: Metadata = {
