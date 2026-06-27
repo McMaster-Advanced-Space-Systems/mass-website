@@ -2,13 +2,21 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Archivo_Narrow, Alice, Julius_Sans_One } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const alice = Alice({
+  variable: "--font-alice",
+  weight: "400",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const archivoNarrow = Archivo_Narrow({
+  variable: "--font-archivo-narrow",
+  weight: "400",
+  subsets: ["latin"],
+});
+
+const juliusSansOne = Julius_Sans_One({
+  variable: "--font-julius-sans-one",
+  weight: "400",
   subsets: ["latin"],
 });
 
@@ -31,8 +39,15 @@ const juliusSansOne = Julius_Sans_One({
 });
 
 export const metadata: Metadata = {
-  title: "MASS | McMaster Advanced Space Systems",
-  description: "McMaster Advanced Space Systems — CAN-SBX 2026 Project",
+  title: "McMaster Advanced Space Systems",
+  description:
+    "McMaster Advanced Space Systems (MASS): designing, building, and testing autonomous technologies for various challenges.",
+  openGraph: {
+    title: "McMaster Advanced Space Systems",
+    description:
+      "McMaster Advanced Space Systems (MASS): designing, building, and testing autonomous technologies for various challenges.",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
@@ -42,9 +57,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} ${archivoNarrow.variable} ${alice.variable} ${juliusSansOne.variable} antialiased`}
-      >
+      <body className={`${alice.variable} ${archivoNarrow.variable} ${juliusSansOne.variable} antialiased`}>
         {children}
       </body>
     </html>

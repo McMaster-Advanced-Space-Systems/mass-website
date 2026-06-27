@@ -1,18 +1,88 @@
 @import "tailwindcss";
 
 :root {
-  --background: #F2F2F0;
-  --foreground: #010109;
-  --accent: #000649;
+  --background: #ffffff;
+  --foreground: #171717;
+
+  /* MASS brand palette */
+  --mass-black: #010109;
+  --mass-gray: #14141441;
+  --mass-white: #f2f2f0;
+  --mass-blue: #33386d;
+  --mass-darkblue: #000649;
+  --mass-darkblue-soft: #00064940; /* translucent card border */
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-alice);
 }
 
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+  overscroll-behavior: none;
+}
+
+body {
+  overscroll-behavior: none;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-alice), Arial, Helvetica, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-archivo-narrow), sans-serif;
+}
+
+/* Keyboard focus indicator — white reads on the dark/accent backgrounds in use */
+:focus-visible {
+  outline: 2px solid var(--mass-white);
+  outline-offset: 2px;
+}
+
+/* Subtle entrance animation */
+@keyframes mass-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* `backwards` (not `both`) so the entrance has no flash, yet the resting
+   transform stays free for hover lifts on cards/buttons. */
+.animate-fade-up {
+  animation: mass-fade-up 0.6s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .animate-fade-up {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
 body {
   background: var(--background);
   color: var(--foreground);
