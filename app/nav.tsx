@@ -7,7 +7,7 @@ import { useState } from "react";
 const NAV_LINKS = [
   { label: "HOME", href: "/" },
   { label: "COMPETITIONS", href: "/competitions" },
-  { label: "CONTACT US", href: "#" },
+  { label: "CONTACT US", href: "/contact" },
   { label: "OUR TEAM", href: "#" },
 ];
 

@@ -8,12 +8,6 @@ const alice = Alice({
   subsets: ["latin"],
 });
 
-const archivoNarrow = Archivo_Narrow({
-  variable: "--font-archivo-narrow",
-  weight: "400",
-  subsets: ["latin"],
-});
-
 const juliusSansOne = Julius_Sans_One({
   variable: "--font-julius-sans-one",
   weight: "400",
@@ -24,18 +18,6 @@ const archivoNarrow = Archivo_Narrow({
   weight: ["400", "500", "600", "700"],
   subsets: ["latin"],
   variable: "--font-archivo-narrow",
-});
-
-const alice = Alice({
-  weight: "400",
-  subsets: ["latin"],
-  variable: "--font-alice",
-});
-
-const juliusSansOne = Julius_Sans_One({
-  weight: "400",
-  subsets: ["latin"],
-  variable: "--font-julius-sans-one",
 });
 
 export const metadata: Metadata = {
