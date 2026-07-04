@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Nav from "./nav";
 import Footer from "./footer";
+import HeroBackground from "./hero-background";
 
 export default function Home() {
   const palette = {
@@ -15,11 +16,7 @@ export default function Home() {
 
   return (
     <div style={{ minHeight: "100vh", backgroundColor: palette.black, color: palette.darkBlue }}>
-      <div
-        aria-hidden="true"
-        className="fixed inset-0 z-0 pointer-events-none bg-cover bg-center"
-        style={{ backgroundImage: "url(/earth.jpg)" }}
-      />
+      <HeroBackground />
       <Nav />
 
       <section
@@ -58,10 +55,9 @@ export default function Home() {
 
       <main
         className="relative z-10 mx-auto flex w-full flex-col items-center py-12"
-        style={{ backgroundColor: "rgba(1, 1, 9, 0.9)" }}
       >
         <div className="flex justify-center w-full text-center">
-            <div className="w-full py-24 md:py-24 mt-16" style={{ backgroundImage: `linear-gradient(135deg, ${palette.blue}, ${palette.darkBlue})` }}>
+            <div className="w-full py-24 md:py-24 mt-16" style={{ backgroundImage: "linear-gradient(135deg, #33386d99, #00064999)" }}>
               <div className="grid grid-cols-2 lg:grid-cols-4 justify-center items-stretch gap-4 md:gap-8 px-[8%]">
                 {[
                   { value: "50+", label: "Club Members" },
