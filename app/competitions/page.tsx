@@ -10,10 +10,13 @@ export const metadata: Metadata = {
 
 export default function CompetitionsPage() {
   return (
-    <div style={{ minHeight: "100vh", backgroundColor: "var(--mass-black)" }}>
+    <div
+      className="flex min-h-screen flex-col"
+      style={{ backgroundColor: "var(--mass-black)" }}
+    >
       <Nav />
 
-      <main className="mx-auto w-full max-w-3xl px-6 pt-24 pb-16 sm:pt-32 sm:pb-24">
+      <main className="mx-auto w-full max-w-3xl flex-1 px-6 pt-40 pb-16 sm:pt-52 sm:pb-24">
         <h1
           className="animate-fade-up text-4xl font-semibold text-white sm:text-5xl"
           style={{ animationDelay: "0.05s" }}
