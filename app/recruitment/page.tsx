@@ -99,7 +99,7 @@ function SubteamCard({ team }: { team: typeof subteams[0] }) {
 
       {/* subteam */}
       <h3 style={{
-          fontFamily: "var(--font-display)", fontSize: "clamp(18px,2vw,22px)", fontWeight: 600, color: "#C9C6C5", margin: 0, lineHeight: 1.2,
+          fontFamily: "var(--font-display)", fontSize: "22px", fontWeight: 600, color: "#C9C6C5", margin: 0, lineHeight: 1.2,
         }}
       >
         {team.name}
@@ -215,6 +215,39 @@ export default function Recruitment() {
           {subteams.map(team => (
             <SubteamCard key={team.id} team={team} />
           ))}
+        </div>
+      </section>
+
+
+
+ {/* apply section */}
+<section style={{borderTop: "1px solid rgba(164,165,240,0.15)", borderBottom: "1px solid rgba(164,165,240,0.15)",
+          backgroundColor: "rgba(30,32,32,0.5)"}}>
+        <div style={{maxWidth: "1280px", margin: "0 auto", padding: "clamp(48px,6vw,80px) 32px", display: "flex", alignItems: "center",
+            justifyContent: "space-between", flexWrap: "wrap"}}>
+          <div style={{ display: "flex", flexDirection: "column", gap: "8px", maxWidth: "560px" }}>
+            
+            <p style={{fontFamily: "var(--font-display)", fontSize: "clamp(20px,2.5vw,30px)", fontWeight: 600,
+                color: "#f0f0f2", margin: 0}}>
+              Interested in joining the team?
+            </p>
+            <p style={{fontSize: "18px", color: "rgba(240,240,242,0.55)"}}>
+              We're looking for students of all experience levels who are ready to learn, create, and innovate! We look forward to hearing from you.
+            </p>
+          </div>
+
+           {/* apply button */}
+          <a
+            href="#apply"
+            className="cta-btn"
+            style={{display: "inline-flex", alignItems: "center", backgroundColor: "#ff81c6", color: "#121414",
+              fontFamily: "var(--font-display)", fontSize: "14px", padding: "14px 28px"}}
+            >
+            APPLY NOW
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path d="M2 7h10M8 3l4 4-4 4" stroke="#121414" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </a>
         </div>
       </section>
 
