@@ -13,17 +13,6 @@ const INQUIRY_OPTIONS = [
   { value: "general", label: "General" },
 ] as const;
 
-/*
-const NAV_LINKS = [
-  { href: "/",            label: "Home"        },
-  { href: "/team",        label: "Our Team"    },
-  { href: "/project",     label: "Project"     },
-  { href: "/sponsors",    label: "Sponsors"    },
-  { href: "/recruitment", label: "Recruitment" },
-  { href: "/contact",     label: "Contact Us"  },
-  { href: "/data",        label: "Data"        },
-];
-*/
 const FIELD_LABEL: React.CSSProperties = {
   fontFamily: "var(--font-archivo-narrow), sans-serif",
   fontSize: "0.65rem",
@@ -127,17 +116,13 @@ export default function ContactPage() {
   return (
     <>
       <style>{`
-        .contact-nav-link { color: rgba(242,242,240,0.6); transition: color 0.15s ease; text-decoration: none; }
-        .contact-nav-link[data-active] { color: #F2F2F0; font-weight: 700; }
-        .contact-nav-link:hover { color: rgba(242,242,240,0.9); }
-        .contact-nav-link[data-active]:hover { color: #F2F2F0; }
         .contact-btn-submit:hover:not(:disabled) { background-color: #3335e0; }
         .contact-btn-submit:focus-visible { outline: 2px solid #000649; outline-offset: 3px; }
         .contact-pill:focus-visible { outline: 2px solid #000649; outline-offset: 2px; }
         .contact-input[aria-invalid="true"] { border-bottom-color: #F63D68; }
         .contact-input[aria-invalid="true"]:focus { border-color: #F63D68; }
         @media (prefers-reduced-motion: reduce) {
-          .contact-nav-link, .contact-btn-submit, .contact-pill { transition: none; }
+          .contact-btn-submit, .contact-pill { transition: none; }
         }
       `}</style>
 

@@ -1,6 +1,42 @@
 @import "tailwindcss";
 
 :root {
+  --background: #F2F2F0;
+  --foreground: #010109;
+  --accent: #000649;
+
+  /* Orbital Precision palette */
+  --op-bg: #121414;
+  --op-surface: #0B0D17;
+  --op-surface-container: #1e2020;
+  --op-surface-container-low: #1a1c1c;
+  --op-surface-container-lowest: #0d0e0f;
+  --op-surface-container-high: #292a2a;
+  --op-surface-container-highest: #343535;
+  --op-on-surface: #e3e2e2;
+  --op-on-surface-variant: #c6c6cf;
+  --op-primary: #b9c5f6;
+  --op-primary-fixed: #dce1ff;
+  --op-on-primary: #222e56;
+  --op-primary-container: #1d2951;
+  --op-on-primary-container: #8591bf;
+  --op-secondary: #c9c6c5;
+  --op-tertiary: #ffb1c6;
+  --op-error: #ffb4ab;
+  --op-error-container: #93000a;
+  --op-outline: #909099;
+  --op-outline-variant: #45464e;
+  --op-maroon: #7A003C;
+  --op-deep-space: #050505;
+  --op-card-border: #262626;
+
+  /* Spacing */
+  --op-unit: 8px;
+  --op-container-padding-desktop: 64px;
+  --op-container-padding-mobile: 24px;
+  --op-gutter: 24px;
+  --op-section-gap: 80px;
+  --op-element-gap: 16px;
   --background: #ffffff;
   --foreground: #171717;
 
