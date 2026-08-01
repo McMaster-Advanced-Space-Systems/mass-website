@@ -1,14 +1,16 @@
 "use client";
 
 import { useState } from "react";
-import Navbar from "@/app/components/Navbar";
+import Link from "next/link";
+import Nav from "../nav";
+import Footer from "../footer";
 
 type InquiryType = "sponsorship" | "outreach" | "general" | "";
 
 const INQUIRY_OPTIONS = [
   { value: "sponsorship", label: "Sponsorship" },
-  { value: "outreach",    label: "Outreach"    },
-  { value: "general",     label: "General"     },
+  { value: "outreach", label: "Outreach" },
+  { value: "general", label: "General" },
 ] as const;
 
 const FIELD_LABEL: React.CSSProperties = {
@@ -36,8 +38,15 @@ export default function ContactPage() {
     inquiry: "" as InquiryType,
     message: "",
   });
-  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
-  const [errors, setErrors] = useState<{ name?: string; email?: string; message?: string }>({});
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">(
+    "idle",
+  );
+  const [errors, setErrors] = useState<{
+    name?: string;
+    email?: string;
+    message?: string;
+  }>({});
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   function validate() {
     const e: typeof errors = {};
@@ -51,16 +60,18 @@ export default function ContactPage() {
     return e;
   }
 
-  function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
+  function handleChange(
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) {
     const { name, value } = e.target;
-    setForm(prev => ({ ...prev, [name]: value }));
+    setForm((prev) => ({ ...prev, [name]: value }));
     if (errors[name as keyof typeof errors]) {
-      setErrors(prev => ({ ...prev, [name]: undefined }));
+      setErrors((prev) => ({ ...prev, [name]: undefined }));
     }
   }
 
   function selectInquiry(value: InquiryType) {
-    setForm(prev => ({ ...prev, inquiry: value }));
+    setForm((prev) => ({ ...prev, inquiry: value }));
   }
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -73,9 +84,24 @@ export default function ContactPage() {
     setErrors({});
     setStatus("sending");
     try {
-      // TODO: Replace with your submission endpoint (Formspree, EmailJS, or /api/contact)
-      await new Promise(res => setTimeout(res, 800));
-      setStatus("sent");
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          access_key: process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY,
+          name: form.name,
+          email: form.email,
+          inquiry: form.inquiry || "general",
+          message: form.message,
+          subject: `[MASS Website] ${form.inquiry || "General"} inquiry from ${form.name}`,
+        }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        setStatus("sent");
+      } else {
+        setStatus("error");
+      }
     } catch {
       setStatus("error");
     }
@@ -101,11 +127,12 @@ export default function ContactPage() {
       `}</style>
 
       <div style={{ minHeight: "100vh", backgroundColor: "#F2F2F0" }}>
-
-        <Navbar activeHref="/contact" />
+        <Nav />
 
         {/* Page header */}
-        <header style={{ backgroundColor: "#010109", padding: "5.5rem 2rem 5rem" }}>
+        <header
+          style={{ backgroundColor: "#010109", padding: "5.5rem 2rem 5rem" }}
+        >
           <div style={{ maxWidth: "80rem", margin: "0 auto" }}>
             <p
               style={{
@@ -135,7 +162,13 @@ export default function ContactPage() {
               the Team.
             </h1>
 
-            <div style={{ width: "4.5rem", height: "3px", backgroundColor: "#8083a4" }} />
+            <div
+              style={{
+                width: "4.5rem",
+                height: "3px",
+                backgroundColor: "#8083a4",
+              }}
+            />
           </div>
         </header>
 
@@ -144,7 +177,6 @@ export default function ContactPage() {
           className="grid grid-cols-1 md:grid-cols-[3fr_2fr]"
           style={{ maxWidth: "80rem", margin: "0 auto" }}
         >
-
           {/* Form column */}
           <div
             className="md:border-r"
@@ -163,14 +195,21 @@ export default function ContactPage() {
               >
                 Whether you represent a company interested in sponsoring our
                 research, a school looking to arrange an outreach visit, or are
-                simply curious about what we&rsquo;re building: we&rsquo;d love
+                simply curious about what we&rsquo;re building, we&rsquo;d love
                 to hear from you.
               </p>
 
               {/* Success state */}
               {status === "sent" ? (
                 <div>
-                  <div style={{ width: "3rem", height: "3px", backgroundColor: "#000649", marginBottom: "2rem" }} />
+                  <div
+                    style={{
+                      width: "3rem",
+                      height: "3px",
+                      backgroundColor: "#000649",
+                      marginBottom: "2rem",
+                    }}
+                  />
                   <p
                     style={{
                       fontFamily: "var(--font-archivo-narrow), sans-serif",
@@ -212,19 +251,18 @@ export default function ContactPage() {
                     SEND ANOTHER MESSAGE
                   </button>
                 </div>
-
               ) : (
-
                 /* Form */
                 <form onSubmit={handleSubmit} noValidate>
-
                   {/* Name + Email */}
                   <div
                     className="grid grid-cols-1 sm:grid-cols-2"
                     style={{ gap: "2.25rem 2rem", marginBottom: "2.25rem" }}
                   >
                     <div>
-                      <label htmlFor="name" style={FIELD_LABEL}>NAME</label>
+                      <label htmlFor="name" style={FIELD_LABEL}>
+                        NAME
+                      </label>
                       <input
                         id="name"
                         type="text"
@@ -235,15 +273,21 @@ export default function ContactPage() {
                         autoComplete="name"
                         placeholder="Your full name"
                         aria-invalid={!!errors.name}
-                        aria-describedby={errors.name ? "name-error" : undefined}
+                        aria-describedby={
+                          errors.name ? "name-error" : undefined
+                        }
                         className="contact-input"
                       />
                       {errors.name && (
-                        <span id="name-error" role="alert" style={FIELD_ERROR}>{errors.name}</span>
+                        <span id="name-error" role="alert" style={FIELD_ERROR}>
+                          {errors.name}
+                        </span>
                       )}
                     </div>
                     <div>
-                      <label htmlFor="email" style={FIELD_LABEL}>EMAIL</label>
+                      <label htmlFor="email" style={FIELD_LABEL}>
+                        EMAIL
+                      </label>
                       <input
                         id="email"
                         type="email"
@@ -254,20 +298,34 @@ export default function ContactPage() {
                         autoComplete="email"
                         placeholder="your@email.com"
                         aria-invalid={!!errors.email}
-                        aria-describedby={errors.email ? "email-error" : undefined}
+                        aria-describedby={
+                          errors.email ? "email-error" : undefined
+                        }
                         className="contact-input"
                       />
                       {errors.email && (
-                        <span id="email-error" role="alert" style={FIELD_ERROR}>{errors.email}</span>
+                        <span id="email-error" role="alert" style={FIELD_ERROR}>
+                          {errors.email}
+                        </span>
                       )}
                     </div>
                   </div>
 
                   {/* Inquiry type */}
                   <div style={{ marginBottom: "2.25rem" }}>
-                    <p id="inquiry-label" style={FIELD_LABEL}>INQUIRY TYPE</p>
-                    <div role="group" aria-labelledby="inquiry-label" style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap" }}>
-                      {INQUIRY_OPTIONS.map(opt => {
+                    <p id="inquiry-label" style={FIELD_LABEL}>
+                      INQUIRY TYPE
+                    </p>
+                    <div
+                      role="group"
+                      aria-labelledby="inquiry-label"
+                      style={{
+                        display: "flex",
+                        gap: "0.5rem",
+                        flexWrap: "wrap",
+                      }}
+                    >
+                      {INQUIRY_OPTIONS.map((opt) => {
                         const active = form.inquiry === opt.value;
                         return (
                           <button
@@ -277,13 +335,16 @@ export default function ContactPage() {
                             aria-pressed={active}
                             className="contact-pill"
                             style={{
-                              fontFamily: "var(--font-archivo-narrow), sans-serif",
+                              fontFamily:
+                                "var(--font-archivo-narrow), sans-serif",
                               fontSize: "0.7rem",
                               letterSpacing: "0.1em",
                               fontWeight: 500,
                               padding: "0.45rem 1.1rem",
                               border: `1.5px solid ${active ? "#000649" : "rgba(1,1,9,0.22)"}`,
-                              backgroundColor: active ? "#000649" : "transparent",
+                              backgroundColor: active
+                                ? "#000649"
+                                : "transparent",
                               color: active ? "#F2F2F0" : "#010109",
                               cursor: "pointer",
                               transition: "all 0.15s ease",
@@ -298,7 +359,9 @@ export default function ContactPage() {
 
                   {/* Message */}
                   <div style={{ marginBottom: "2.75rem" }}>
-                    <label htmlFor="message" style={FIELD_LABEL}>MESSAGE</label>
+                    <label htmlFor="message" style={FIELD_LABEL}>
+                      MESSAGE
+                    </label>
                     <textarea
                       id="message"
                       name="message"
@@ -308,16 +371,27 @@ export default function ContactPage() {
                       placeholder="Tell us what's on your mind..."
                       rows={5}
                       aria-invalid={!!errors.message}
-                      aria-describedby={errors.message ? "message-error" : undefined}
+                      aria-describedby={
+                        errors.message ? "message-error" : undefined
+                      }
                       className="contact-input"
                     />
                     {errors.message && (
-                      <span id="message-error" role="alert" style={FIELD_ERROR}>{errors.message}</span>
+                      <span id="message-error" role="alert" style={FIELD_ERROR}>
+                        {errors.message}
+                      </span>
                     )}
                   </div>
 
                   {/* Submit */}
-                  <div style={{ display: "flex", alignItems: "center", gap: "1.5rem", flexWrap: "wrap" }}>
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "1.5rem",
+                      flexWrap: "wrap",
+                    }}
+                  >
                     <button
                       type="submit"
                       disabled={status === "sending"}
@@ -328,10 +402,14 @@ export default function ContactPage() {
                         fontSize: "0.78rem",
                         letterSpacing: "0.12em",
                         padding: "0.9rem 2.25rem",
-                        backgroundColor: status === "sending" ? "rgba(70,72,255,0.55)" : "#000649",
+                        backgroundColor:
+                          status === "sending"
+                            ? "rgba(70,72,255,0.55)"
+                            : "#000649",
                         color: "#F2F2F0",
                         border: "none",
-                        cursor: status === "sending" ? "not-allowed" : "pointer",
+                        cursor:
+                          status === "sending" ? "not-allowed" : "pointer",
                         transition: "background-color 0.2s ease",
                       }}
                     >
@@ -351,7 +429,6 @@ export default function ContactPage() {
                       </p>
                     )}
                   </div>
-
                 </form>
               )}
             </div>
@@ -497,9 +574,9 @@ export default function ContactPage() {
               </div>
             </div>
           </div>
-
         </div>
       </div>
+      <Footer />
     </>
   );
 }

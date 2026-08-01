@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Archivo_Narrow, Alice, Julius_Sans_One, Space_Grotesk, Hanken_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const alice = Alice({
+  variable: "--font-alice",
+  weight: "400",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const juliusSansOne = Julius_Sans_One({
+  variable: "--font-julius-sans-one",
+  weight: "400",
   subsets: ["latin"],
 });
 
@@ -55,8 +57,15 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "MASS | McMaster Advanced Space Systems",
-  description: "McMaster Advanced Space Systems — CAN-SBX 2026 Project",
+  title: "McMaster Advanced Space Systems",
+  description:
+    "McMaster Advanced Space Systems (MASS): designing, building, and testing autonomous technologies for various challenges.",
+  openGraph: {
+    title: "McMaster Advanced Space Systems",
+    description:
+      "McMaster Advanced Space Systems (MASS): designing, building, and testing autonomous technologies for various challenges.",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
@@ -66,12 +75,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,0..1" />
-      </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} ${archivoNarrow.variable} ${alice.variable} ${juliusSansOne.variable} ${spaceGrotesk.variable} ${hankenGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable} antialiased`}
-      >
+      <body className={`${alice.variable} ${archivoNarrow.variable} ${juliusSansOne.variable} antialiased`}>
         {children}
       </body>
     </html>
