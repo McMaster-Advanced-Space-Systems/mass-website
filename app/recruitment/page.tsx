@@ -12,9 +12,8 @@ export const metadata: Metadata = {
 const subteams = [
   {
     id: "electrical",
-    label: "01",
     name: "Electrical Subteam",
-    tag: "HARDWARE",
+    num: "01",
     accent: false,
     requirements: [
       "Proficiency in communication protocols (UART, SPI, I2C, etc.)",
@@ -25,9 +24,8 @@ const subteams = [
   },
   {
     id: "mechanical",
-    label: "02",
     name: "Mechanical Subteam",
-    tag: "STRUCTURES",
+    num: "02",
     accent: false,
     requirements: [
       "Proficiency in CAD software (Inventor, AutoCAD, etc.)",
@@ -39,9 +37,8 @@ const subteams = [
   },
   {
     id: "science",
-    label: "03",
     name: "Science Subteam",
-    tag: "RESEARCH",
+    num: "03",
     accent: false,
     requirements: [
       "Familiarity with lab work",
@@ -52,9 +49,8 @@ const subteams = [
   },
   {
     id: "software",
-    label: "04",
     name: "Software Subteam",
-    tag: "EMBEDDED",
+    num: "04",
     accent: false,
     requirements: [
       "Proficiency in C/C++ and Python",
@@ -67,9 +63,8 @@ const subteams = [
   },
   {
     id: "science-lead",
-    label: "05",
     name: "Science Subteam Lead",
-    tag: "LEADERSHIP",
+    num: "05",
     accent: true,
     requirements: [
       "Strong leadership experience and/or willingness to lead",
@@ -79,9 +74,8 @@ const subteams = [
   },
   {
     id: "outreach-lead",
-    label: "06",
     name: "Outreach Lead",
-    tag: "LEADERSHIP",
+    num: "06",
     accent: true,
     requirements: [
       "Enthusiasm, proactive, excellent spoken and written communication skills, and a willingness to lead",
@@ -91,3 +85,69 @@ const subteams = [
     ],
   },
 ]
+
+function SubteamCard({ team }: { team: typeof subteams[0] }) {
+  return (
+    <div className={team.accent ? "subteam-card subteam-card--accent" : "subteam-card"}>
+
+      {/* card number */}
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
+        <span style={{fontFamily: "var(--font-display)", fontSize: "11px", fontWeight: 600, color: team.accent ? "#ffb1c6" : "#a4a5f0"}}>
+          {team.num}
+        </span>
+      </div>
+
+      {/* subteam */}
+      <h3 style={{
+          fontFamily: "var(--font-display)", fontSize: "clamp(18px,2vw,22px)", fontWeight: 600, color: "#C9C6C5", margin: 0, lineHeight: 1.2,
+        }}
+      >
+        {team.name}
+      </h3>
+
+      {/* line */}
+      <div style={{
+          height: "1px", backgroundColor: team.accent ? "rgba(255,129,198,0.2)" : "rgba(164,165,240,0.15)"}}
+      />
+
+      {/* requirements */}
+      <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+        <p style={{
+            fontFamily: "var(--font-body)", fontSize: "10px", fontWeight: 600, letterSpacing: "0.14em", color: "var(--muted)", margin: 0, textTransform: "uppercase",
+          }}
+        >
+          We are looking for
+        </p>
+        <ul style={{ margin: 0, padding: 0, listStyle: "none", display: "flex", flexDirection: "column", gap: "8px" }}>
+          {team.requirements.map((req, i) => (
+            <li
+              key={i}
+              style={{
+                display: "flex",
+                gap: "10px",
+                alignItems: "flex-start",
+                fontFamily: "var(--font-body)",
+                fontSize: "14px",
+                lineHeight: 1.55,
+                color: "rgba(240,240,242,0.75)",
+              }}
+            >
+              <span
+                style={{
+                  flexShrink: 0,
+                  marginTop: "7px",
+                  width: "4px",
+                  height: "4px",
+                  borderRadius: "50%",
+                  backgroundColor: team.accent ? "#ffb1c6" : "#a4a5f0",
+                  opacity: 0.7,
+                }}
+              />
+              {req}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  )
+}
