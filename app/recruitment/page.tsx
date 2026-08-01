@@ -151,3 +151,107 @@ function SubteamCard({ team }: { team: typeof subteams[0] }) {
     </div>
   )
 }
+
+export default function Recruitment() {
+  const container: CSSProperties = {
+    width: "100%", minHeight: "100vh", backgroundColor: "#121414",
+  }
+
+  return (
+    <div style={container}>
+      <Nav />
+
+      {/* top intro */}
+      <section style={{
+          maxWidth: "1280px", margin: "0 auto", padding: "clamp(64px,10vw,120px) 32px clamp(48px,6vw,80px)", display: "grid",
+          gridTemplateColumns: "1fr 1fr", gap: "64px", alignItems: "end",
+        }}
+        className="hero-grid"
+      >
+        {/* Left mini title */}
+        <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+            <div style={{ width: "32px", height: "1px", backgroundColor: "#ffb1c6" }} />
+            <span style={{
+                fontFamily: "var(--font-display)", fontSize: "10px", fontWeight: 600, letterSpacing: "0.18em", color: "#ffb1c6", 
+                textTransform: "uppercase",
+              }} >
+              Recruitment
+            </span>
+          </div>
+          <h1
+            style={{ fontFamily: "var(--font-display)", fontSize: "48px", fontWeight: 700, lineHeight: 1.05, color: "#f0f0f2",
+              margin: 0,letterSpacing: "-0.02em",
+            }}
+          >
+            Join the
+            <br /> <span style={{ color: "#a4a5f0" }}>CAN-SBX</span> <br />
+            Team
+          </h1>
+        </div>
+
+        {/* right description */}
+        <p style={{fontFamily: "var(--font-body)", fontSize: "18px", lineHeight: 1.7, color: "rgba(240,240,242,0.72)", margin: 0,}}>
+          CAN-SBX, hosted by SEDS, allows us to put a scientific experiment on a stratospheric
+          balloon. Our team consists of 5 subteams: mechanical, electrical, science, software,
+          and outreach. We&apos;re always on the lookout for more members, so feel free to send us
+          an application and we&apos;ll take a look at it as soon as possible!
+        </p>
+      </section>
+
+      {/* line */}
+      <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 32px" }}>
+        <div style={{ height: "1px", backgroundColor: "rgba(164,165,240,0.15)" }} />
+      </div>
+
+      {/* subteam cards */}
+      <section style={{ maxWidth: "1280px", margin: "0 auto", padding: "clamp(48px,6vw,80px) 32px clamp(64px,10vw,120px)" }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: "40px", flexWrap: "wrap", gap: "12px" }}>
+          <h2 style={{fontFamily: "var(--font-display)", fontSize: "clamp(20px,2.5vw,28px)", fontWeight: 600, color: "#f0f0f2"}}>
+            Our Teams:
+          </h2>
+        </div>
+        <div style={{display: "grid", gridTemplateColumns: "repeat(auto-fill,minmax(320px,1fr))", gap: "12px"}}>
+          {subteams.map(team => (
+            <SubteamCard key={team.id} team={team} />
+          ))}
+        </div>
+      </section>
+
+      <Footer />
+
+      {/* style */}
+      <style>{`
+        .subteam-card {
+          background-color: rgba(30,32,32,0.6);
+          border: 1px solid rgba(164,165,240,0.18);
+          border-radius: 2px;
+          padding: 28px 28px 32px;
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+          transition: background-color 0.2s ease, border-color 0.2s ease;
+          cursor: default;
+        }
+        .subteam-card:hover {
+          background-color: rgba(30,32,32,0.9);
+          border-color: rgba(164,165,240,0.4);
+        }
+        .subteam-card--accent:hover {
+          background-color: rgba(122,3,44,0.35);
+          border-color: rgba(255,129,198,0.5);
+        }
+        .cta-btn:hover {
+          background-color: #ffaad9 !important;
+        }
+        @media(max-width:768px){
+          .hero-grid {
+            grid-template-columns: 1fr !important;
+            gap: 32px !important;
+          }
+        }
+      `}</style>
+
+    </div>
+  )
+}
