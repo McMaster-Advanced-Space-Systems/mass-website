@@ -1,6 +1,7 @@
 "use client";
 
-import Navbar from "@/app/components/Navbar";
+import Footer from "../footer";
+import Nav from "../nav";
 
 export default function AboutPage() {
   return (
@@ -13,7 +14,7 @@ export default function AboutPage() {
 
       <div style={{ minHeight: "100vh", backgroundColor: "#121414" }}>
 
-        <Navbar activeHref="/about" />
+        <Nav />
 
         {/* ────────────── HERO ────────────── */}
         <header style={{ backgroundColor: "#0B0D17", padding: "6rem 1.5rem 5rem" }}>
@@ -102,8 +103,10 @@ export default function AboutPage() {
             </p>
           </div>
         </section>
+      <Footer />
 
       </div>
+      
     </>
   );
 }
