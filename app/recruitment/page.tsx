@@ -92,7 +92,7 @@ function SubteamCard({ team }: { team: typeof subteams[0] }) {
 
       {/* card number */}
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
-        <span style={{fontFamily: "var(--font-display)", fontSize: "11px", fontWeight: 600, color: team.accent ? "#ffb1c6" : "#a4a5f0"}}>
+        <span style={{fontFamily: "var(--font-display)", fontSize: "11px", fontWeight: 600, color: team.accent ? "#ffb1c6" : "#a4a3ea"}}>
           {team.num}
         </span>
       </div>
@@ -139,7 +139,7 @@ function SubteamCard({ team }: { team: typeof subteams[0] }) {
                   width: "4px",
                   height: "4px",
                   borderRadius: "50%",
-                  backgroundColor: team.accent ? "#ffb1c6" : "#a4a5f0",
+                  backgroundColor: team.accent ? "#ffb1c6" : "#a4a3ea",
                   opacity: 0.7,
                 }}
               />
@@ -185,7 +185,7 @@ export default function Recruitment() {
             }}
           >
             Join the
-            <br /> <span style={{ color: "#a4a5f0" }}>CAN-SBX</span> <br />
+            <br /> <span style={{ color: "#a4a3ea" }}>CAN-SBX</span> <br />
             Team
           </h1>
         </div>
@@ -236,11 +236,11 @@ export default function Recruitment() {
             </p>
           </div>
 
-           {/* apply button */}
+           {/* apply */}
           <a
             href="#apply"
             className="cta-btn"
-            style={{display: "inline-flex", alignItems: "center", backgroundColor: "#ff81c6", color: "#121414",
+            style={{display: "inline-flex", alignItems: "center", backgroundColor: "#ffb1c6", color: "#121414",
               fontFamily: "var(--font-display)", fontSize: "14px", padding: "14px 28px"}}
             >
             APPLY NOW
