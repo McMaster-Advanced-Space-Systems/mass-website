@@ -1,15 +1,25 @@
-"use client";
+﻿"use client";
 
 import Image from "next/image";
-import { useRef, useState } from "react";
+import Link from "next/link";
+import { useState } from "react";
 import { FaHandshake, FaTrophy, FaUsers, FaWrench } from "react-icons/fa";
 import Nav from "./nav";
 import Footer from "./footer";
 import HeroBackground from "./hero-background";
-import { nearestIndex } from "./nearest-index";
 
-const TIMELINE_LINE = 6; // rail thickness; the node centres on it
-const NODE_X = 40; // node/stem inset from a card's left edge
+const COMPETITIONS = [
+  {
+    title: "CAN-SBX",
+    description:
+      "SEDS Canada's stratospheric balloon experiment challenge. Teams design a payload that survives the ascent, collects data at altitude, and returns it intact.",
+  },
+  {
+    title: "CAN-ARX",
+    description:
+      "SEDS Canada's advanced rocketry experiment challenge, pairing an experimental payload with a launch vehicle and a full design-review process.",
+  },
+];
 
 const PILLARS = [
   {
@@ -161,7 +171,25 @@ export default function Home() {
             </h2>
           </div>
 
-          <QueueCards palette={palette}/>
+          <div className="mx-auto grid w-full max-w-7xl gap-8 px-6 pb-24 sm:grid-cols-2">
+            {COMPETITIONS.map((competition) => (
+              <Link
+                key={competition.title}
+                href="/competitions"
+                className="rounded-3xl border p-8 shadow-2xl transition-colors sm:p-10"
+                style={{
+                  backgroundColor: palette.white,
+                  borderColor: "#1050bf40",
+                  color: palette.black,
+                }}
+              >
+                <h3 className="mb-6 text-2xl font-semibold md:text-3xl">
+                  {competition.title}
+                </h3>
+                <p className="leading-7 text-slate-700">{competition.description}</p>
+              </Link>
+            ))}
+          </div>
         </div>
       </main>
 
@@ -207,189 +235,6 @@ function PillarCard({
         {pillar.title}
       </h3>
       <p className="text-sm leading-6 text-slate-400">{pillar.body}</p>
-    </div>
-  );
-}
-
-function QueueCards({ palette }: { palette: { black: string; white: string; blue: string; darkBlue: string } }) {
-  const competitions = [
-    {
-      title: "CAN-SBX",
-      description:
-        "SEDS Canada's stratospheric balloon experiment challenge. Teams design a payload that survives the ascent, collects data at altitude, and returns it intact.",
-    },
-    {
-      title: "CAN-ARX",
-      description:
-        "SEDS Canada's advanced rocketry experiment challenge, pairing an experimental payload with a launch vehicle and a full design-review process.",
-    },
-  ];
-
-  const railRef = useRef<HTMLDivElement>(null);
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [dragging, setDragging] = useState(false);
-
-  // ponytail: nearest card by offset rather than an IntersectionObserver —
-  // exact at both ends, and immune to the rail's padding/gap math.
-  const handleScroll = () => {
-    const rail = railRef.current;
-    if (!rail) return;
-    // Visual position, so the rail's padding and gaps need no accounting for.
-    const contentLeft =
-      rail.getBoundingClientRect().left + parseFloat(getComputedStyle(rail).paddingLeft);
-    const offsets = [...rail.children].map(
-      (el) => el.getBoundingClientRect().left - contentLeft,
-    );
-    setActiveIndex(nearestIndex(offsets, 0));
-  };
-
-  // Click-and-drag. Mouse only — touch already pans natively, and hijacking it
-  // would break the flick gesture people expect on a phone.
-  const drag = useRef<{ pointerX: number; scrollLeft: number } | null>(null);
-
-  const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
-    const rail = railRef.current;
-    if (!rail || e.pointerType !== "mouse" || e.button !== 0) return;
-    drag.current = { pointerX: e.clientX, scrollLeft: rail.scrollLeft };
-    // Stops the drag turning into a text selection across the card copy.
-    e.preventDefault();
-    // Throws if the pointer is no longer active; the drag still works without it.
-    try {
-      rail.setPointerCapture(e.pointerId);
-    } catch {}
-    setDragging(true);
-  };
-
-  const handlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
-    const rail = railRef.current;
-    if (!rail || !drag.current) return;
-    rail.scrollLeft = drag.current.scrollLeft - (e.clientX - drag.current.pointerX);
-  };
-
-  const endDrag = (e: React.PointerEvent<HTMLDivElement>) => {
-    const rail = railRef.current;
-    if (!rail || !drag.current) return;
-    drag.current = null;
-    try {
-      rail.releasePointerCapture(e.pointerId);
-    } catch {}
-    setDragging(false);
-  };
-
-  // The rail carries no padding of its own — the wrapper holds the column
-  // gutter, so cards clip exactly on the text column's edges. (A scroll
-  // container lets overflow bleed into its own padding, which would overshoot.)
-  // No scroll snapping: it yanked a part-scrolled rail back to the nearest card.
-  return (
-    <div className="mx-auto w-full max-w-7xl px-6">
-    <div
-      ref={railRef}
-      onScroll={handleScroll}
-      onPointerDown={handlePointerDown}
-      onPointerMove={handlePointerMove}
-      onPointerUp={endDrag}
-      onPointerCancel={endDrag}
-      tabIndex={0}
-      role="region"
-      aria-label="Current competitions"
-      style={{ scrollbarWidth: "none" }}
-      className={`flex w-full gap-8 overflow-x-auto pb-24 ${
-        dragging ? "cursor-grabbing select-none" : "cursor-grab"
-      }`}
-    >
-      {competitions.map((competition, index) => {
-        const isActive = activeIndex === index;
-
-        return (
-          <div
-            key={competition.title}
-            className="w-[92%] shrink-0"
-          >
-            {/* Timeline rides inside the rail, so it scrolls with the cards.
-                The rail line runs into the gap so segments join as one line;
-                each node drops a stem onto the card it belongs to. */}
-            <div className="relative h-12" aria-hidden>
-              {/* Rail line */}
-              <div
-                style={{
-                  position: "absolute",
-                  top: 0,
-                  left: 0,
-                  height: TIMELINE_LINE,
-                  width:
-                    index === competitions.length - 1
-                      ? "100%"
-                      : "calc(100% + 2rem)",
-                  backgroundColor: palette.white,
-                }}
-              />
-              {/* Stem down to the card */}
-              <div
-                className="transition-colors duration-300"
-                style={{
-                  position: "absolute",
-                  top: TIMELINE_LINE,
-                  left: NODE_X,
-                  transform: "translateX(-50%)",
-                  width: 4,
-                  bottom: 0,
-                  backgroundColor: isActive
-                    ? "var(--mass-highlight)"
-                    : "var(--mass-primary)",
-                }}
-              />
-              {/* Node, centred on the rail line */}
-              <div
-                className="transition-colors duration-300"
-                style={{
-                  position: "absolute",
-                  top: TIMELINE_LINE / 2,
-                  left: NODE_X,
-                  transform: "translate(-50%, -50%)",
-                  height: 20,
-                  width: 20,
-                  borderRadius: "9999px",
-                  border: `4px solid ${palette.black}`,
-                  backgroundColor: isActive
-                    ? "var(--mass-highlight)"
-                    : "var(--mass-primary)",
-                }}
-              />
-              <span
-                className="absolute text-xs tracking-[0.2em] transition-colors duration-300"
-                style={{
-                  top: TIMELINE_LINE + 14,
-                  left: NODE_X + 18,
-                  fontFamily: "var(--font-julius-sans-one), sans-serif",
-                  color: isActive ? "var(--mass-highlight)" : "#8083a4",
-                }}
-              >
-                {competition.title.toUpperCase()}
-              </span>
-            </div>
-
-            <div
-              className="h-[24rem] rounded-3xl border p-8 shadow-2xl backdrop-blur-sm sm:h-[28rem] sm:p-10"
-              style={{
-                backgroundColor: palette.white,
-                borderColor: isActive ? palette.blue : "#1050bf40",
-                color: palette.black,
-              }}
-            >
-              <h3
-                className="mt-8 mb-6 text-left text-2xl font-semibold sm:mt-12 md:text-3xl"
-                style={{ color: palette.black }}
-              >
-                {competition.title}
-              </h3>
-              <p className="max-w-2xl text-left leading-7 text-slate-700">
-                {competition.description}
-              </p>
-            </div>
-          </div>
-        );
-      })}
-    </div>
     </div>
   );
 }

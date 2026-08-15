@@ -6,11 +6,8 @@
 
   /* MASS brand palette */
   --mass-black: #010109;
-  --mass-gray: #14141441;
   --mass-white: #f2f2f0;
-  --mass-blue: #33386d;
   --mass-darkblue: #000649;
-  --mass-darkblue-soft: #00064940; /* translucent card border */
 
   /* 2026 brand refresh — homepage + nav only; the older vars above are still
      referenced by about/competitions/contact/our-team/footer. */
@@ -42,9 +39,6 @@ html {
 
 body {
   overscroll-behavior: none;
-}
-
-body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-alice), Arial, Helvetica, sans-serif;
@@ -92,10 +86,6 @@ h6 {
     opacity: 1;
     transform: none;
   }
-body {
-  background: var(--background);
-  color: var(--foreground);
-}
 }
 
 /* Contact page form inputs */
