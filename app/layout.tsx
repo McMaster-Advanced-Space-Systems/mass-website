@@ -2,19 +2,6 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Archivo_Narrow, Alice, Julius_Sans_One, Space_Grotesk, Hanken_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-
-const spaceGrotesk = Space_Grotesk({
-    variable: "--font-space-grotesk",
-    subsets: ["latin"],
-    weight: ["600", "700"],
-});
-
-const hankenGrotesk = Hanken_Grotesk({
-    variable: "--font-hanken-grotesk",
-    subsets: ["latin"],
-    weight: ["400", "500"],
-  });
-
 const archivoNarrow = Archivo_Narrow({
   weight: ["400", "500", "600", "700"],
   subsets: ["latin"],
