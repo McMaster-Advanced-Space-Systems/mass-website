@@ -11,6 +11,15 @@
   --mass-blue: #33386d;
   --mass-darkblue: #000649;
   --mass-darkblue-soft: #00064940; /* translucent card border */
+
+  /* 2026 brand refresh — homepage + nav only; the older vars above are still
+     referenced by about/competitions/contact/our-team/footer. */
+  --mass-ink: #101010; /* page background on dark surfaces */
+  --mass-paper: #f5f5f5; /* text on those surfaces */
+  --mass-primary: #1050bf;
+  --mass-secondary: #bf472f;
+  --mass-highlight: #f7901f;
+  --mass-surface: #1a1a1a; /* lifted card face */
 }
 
 @theme inline {
