@@ -8,7 +8,8 @@ const NAV_LINKS = [
   { label: "HOME", href: "/" },
   { label: "COMPETITIONS", href: "/competitions" },
   { label: "CONTACT US", href: "/contact" },
-  { label: "OUR TEAM", href: "#" },
+  { label: "OUR TEAM", href: "/our-team" },
+  { label: "ABOUT US", href: "/about" },
 ];
 
 export default function Nav() {
