@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Archivo_Narrow, Alice, Julius_Sans_One } from "next/font/google";
+import { Geist, Geist_Mono, Michroma, Space_Mono, Inter } from "next/font/google";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -12,22 +12,26 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const archivoNarrow = Archivo_Narrow({
-  weight: ["400", "500", "600", "700"],
-  subsets: ["latin"],
-  variable: "--font-archivo-narrow",
-});
-
-const alice = Alice({
+/* MASS branding standards: logo and titles */
+const michroma = Michroma({
   weight: "400",
   subsets: ["latin"],
-  variable: "--font-alice",
+  variable: "--font-michroma",
 });
 
-const juliusSansOne = Julius_Sans_One({
-  weight: "400",
+/* MASS branding standards: highlights */
+const spaceMono = Space_Mono({
+  weight: ["400", "700"],
   subsets: ["latin"],
-  variable: "--font-julius-sans-one",
+  variable: "--font-space-mono",
+});
+
+/* MASS branding standards: subtitles and body text. Akzidenz-Grotesk is a
+   licensed Berthold face and is not served by Google Fonts, so Inter stands
+   in for it; globals.css prefers a locally licensed copy when one exists. */
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
 });
 
 export const metadata: Metadata = {
@@ -43,7 +47,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${archivoNarrow.variable} ${alice.variable} ${juliusSansOne.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${michroma.variable} ${spaceMono.variable} ${inter.variable} antialiased`}
       >
         {children}
       </body>

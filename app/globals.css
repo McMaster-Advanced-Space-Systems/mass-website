@@ -18,27 +18,30 @@ body {
   color: var(--foreground);
 }
 
-/* Contact page form inputs */
+/* Contact page form inputs — MASS branding standards 2025-2026.
+   Red is a decorative colour only, never a font colour, so an invalid field
+   is marked with a red rule while the message itself stays Dark Azure. */
 .contact-input {
   display: block;
   width: 100%;
   background: transparent;
   border: none;
-  border-bottom: 1.5px solid rgba(1, 1, 9, 0.25);
+  border-bottom: 1.5px solid rgba(16, 16, 16, 0.25);
   padding: 0.5rem 0 0.7rem;
   outline: none;
-  font-family: var(--font-alice), Georgia, serif;
+  font-family: "Akzidenz-Grotesk", "Akzidenz-Grotesk Pro", var(--font-inter),
+    "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 1rem;
-  color: #010109;
+  color: #101010;
   transition: border-color 0.2s ease;
 }
 
 .contact-input:focus {
-  border-color: #000649;
+  border-color: #1050bf;
 }
 
 .contact-input::placeholder {
-  color: rgba(1, 1, 9, 0.28);
+  color: rgba(16, 16, 16, 0.28);
 }
 
 textarea.contact-input {
