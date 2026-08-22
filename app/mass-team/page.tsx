@@ -14,13 +14,13 @@ type TeamMember = {
   imageUrl: string;
 };
 const executiveTeam: TeamMember[] = [
-    { id: "e1", name: "Mateo Builes", role: "President", program: "Engineering Physics Level IV", imageUrl: "#" },
-    { id: "e2", name: "Delina Mekonnen", role: "VP Finance", program: "Computer Engineering & Managemeent Level IV", imageUrl: "#"},
-    { id: "e3", name: "Arub Syed", role: "Technical Advisor", program: "Mechanical Engineering & Management Level IV", imageUrl: "#"},
-    { id: "e4", name: "Gabriel Lonuzzo", role: "Technical Advisor", program: "Masters Biomedical Engineering", imageUrl: "#"},
-    { id: "e5", name: "Shayavan Shridar", role: "Technical Advisor", program: "Engineering Physics, Level V", imageUrl: "#"},
-    { id: "e6", name: "Sanya Khurana", role: "Co-VP Outreach", program: "Engineering Physics & Management Level IV", imageUrl: "#"},
-    { id: "e7", name: "Marco Puchetti", role: "Co-VP Outreach", program: "Mechanical Engineering Level III", imageUrl: "#"},
+    { id: "e1", name: "Mateo Builes", role: "President", program: "Engineering Physics Level IV", imageUrl: "team/MateoBuiles.png" },
+    { id: "e2", name: "Delina Mekonnen", role: "VP Finance", program: "Computer Engineering & Managemeent Level IV", imageUrl: "team/DelinaMekonnen.png"},
+    { id: "e3", name: "Arub Syed", role: "Technical Advisor", program: "Mechanical Engineering & Management Level IV", imageUrl: "team/ArubSyed.png"},
+    { id: "e4", name: "Gabriel Lonuzzo", role: "Technical Advisor", program: "Masters Biomedical Engineering", imageUrl: "team/GabrielLonuzzo.png"},
+    { id: "e5", name: "Shayavan Shridar", role: "Technical Advisor", program: "Engineering Physics, Level V", imageUrl: "team/ShayavanShridar.png"},
+    { id: "e6", name: "Sanya Khurana", role: "Co-VP Outreach", program: "Engineering Physics & Management Level IV", imageUrl: "team/SanyaKhurana.png"},
+    { id: "e7", name: "Marco Puchetti", role: "Co-VP Outreach", program: "Mechanical Engineering Level III", imageUrl: "team/MarcoPuchetti.png"},
 ];
 
 const can_sbxLeads: TeamMember[] = [
@@ -47,42 +47,37 @@ const StarDot = ({ color }: { color: string }) => (
 const TeamCard = ({ member, accent }: { member: TeamMember; accent: string }) => {
   const [hovered, setHovered] = useState(false);
   return (
-    <div
-      className="flex flex-col transition-all duration-200"
-      style={{
-        background: "#181818",
-        border: `1px solid ${hovered ? accent + "50" : "#ffffff10"}`,
-        borderRadius: "3px",
-        padding: "14px",
-        transform: hovered ? "translateY(-2px)" : "translateY(0)",
+    <div className="flex flex-col transition-all duration-200"
+      style={{background: "#181818", border: `1px solid ${hovered ? accent + "50" : "#ffffff10"}`, borderRadius: "3px", padding: "14px", transform: hovered ? "translateY(-2px)" : "translateY(0)",
       }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
 
+        {/* Photo */}
+      <div className="overflow-hidden mb-3 w-full" style={{ height: 200, borderRadius: "2px", background: "#1a1a1a" }}>
+        <img
+          src={member.imageUrl}
+          alt={member.name}
+          className="w-full h-full object-cover transition-transform duration-300"
+          style={{ filter: "grayscale(15%)" }}
+        />
+      </div>
+
       {/* Role */}
       <div className="mb-1">
-        <span
-          className="tracking-widest uppercase"
-          style={{ fontFamily: "'Space Mono', monospace", color: accent, fontSize: "8px" }}
-        >
+        <span className="tracking-widest uppercase" style={{ fontFamily: "'Space Mono', monospace", color: accent, fontSize: "8px" }} >
           {member.role}
         </span>
       </div>
 
       {/* Name */}
-      <p
-        className="leading-tight mb-1"
-        style={{ fontFamily: "'Michroma', sans-serif", color: "#dde2ee", fontSize: "12px" }}
-      >
+      <p className="leading-tight mb-1" style={{ fontFamily: "'Michroma', sans-serif", color: "#dde2ee", fontSize: "12px" }}>
         {member.name}
       </p>
 
       {/* Program */}
-      <p
-        className="leading-tight"
-        style={{ fontFamily: "'Space Mono', monospace", color: "#3d4f6e", fontSize: "9px" }}
-      >
+      <p className="leading-tight" style={{ fontFamily: "'Space Mono', monospace", color: "#3d4f6e", fontSize: "9px" }}>
         {member.program}
       </p>
     </div>
@@ -138,16 +133,10 @@ export default function MassTeam() {
         <header className="mt-16 mb-16 flex flex-col gap-4">
 
           <div className="mt-2">
-            <p
-              className="text-xs tracking-[0.2em] uppercase mb-2"
-              style={{ fontFamily: "'Space Mono', monospace", color: "#3d4f6e", fontSize: "10px" }}
-            >
+            <p className="text-xs tracking-[0.2em] uppercase mb-2" style={{ fontFamily: "'Space Mono', monospace", color: "#3d4f6e", fontSize: "10px" }}>
               2026 — 2027
             </p>
-            <h1
-              className="text-3xl md:text-4xl tracking-tight leading-tight"
-              style={{ fontFamily: "'Michroma', sans-serif", color: "#dde2ee" }}
-            >
+            <h1 className="text-3xl md:text-4xl tracking-tight leading-tight" style={{ fontFamily: "'Michroma', sans-serif", color: "#dde2ee" }}>
               Meet the Team
             </h1>
           </div>
@@ -175,8 +164,9 @@ export default function MassTeam() {
           columns={4}
         />
 
-      <Footer />
+      
        </div>
+       <Footer />
     </div>
   );
 }
