@@ -99,7 +99,7 @@ interface TeamSectionProps {
   columns?: number;
 }
 
-const TeamSection = ({title, members, accent, columns = 4 }: TeamSectionProps) => (
+const TeamSection = ({title, members, accent}: TeamSectionProps) => (
   <section className="mb-16">
     <div className="mb-6">
       <h2
@@ -112,7 +112,7 @@ const TeamSection = ({title, members, accent, columns = 4 }: TeamSectionProps) =
     <SectionDivider accent={accent} />
     <div
       className="grid gap-x-6 gap-y-8"
-      style={{ gridTemplateColumns: `repeat(${columns}, minmax(0, 1fr))` }}
+      style={{ gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))" }}
     >
       {members.map((m) => (
         <TeamCard key={m.id} member={m} accent={accent} />
@@ -163,8 +163,7 @@ export default function MassTeam() {
           accent="#1050bf"
           columns={4}
         />
-
-      
+        
        </div>
        <Footer />
     </div>
