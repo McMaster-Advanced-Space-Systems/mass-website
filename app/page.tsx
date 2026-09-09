@@ -18,41 +18,88 @@ export default function Home() {
       <div
         aria-hidden="true"
         className="fixed inset-0 z-0 pointer-events-none bg-cover bg-center"
-        style={{ backgroundImage: "url(/earth.jpg)" }}
+        style={{ backgroundImage: "url(/pexels_spacex_586072.jpg.png)" }}
+      />
+      <div
+        aria-hidden="true"
+        className="fixed inset-0 z-0 pointer-events-none"
+        style={{
+          backgroundImage:
+            "radial-gradient(ellipse at center, rgba(1,1,9,0.45) 0%, rgba(1,1,9,0.7) 55%, rgba(1,1,9,0.9) 100%)",
+        }}
       />
       <Nav />
 
       <section
         className="relative z-10 flex items-center justify-center px-6 min-h-screen"
       >
-        <div className="w-full max-w-2xl text-center">
+        <div className="w-full max-w-3xl text-center">
           <h1
-            className="animate-fade-up inline-block mb-5 px-6 py-4 text-4xl font-semibold sm:text-5xl"
-            style={{ color: palette.white, animationDelay: "0.05s" }}
+            className="animate-fade-up mb-6"
+            style={{
+              fontFamily: "var(--font-space-grotesk), sans-serif",
+              fontSize: "clamp(3rem, 8vw, 5.25rem)",
+              fontWeight: 700,
+              lineHeight: 1.08,
+              letterSpacing: "-0.02em",
+              color: "var(--op-on-surface)",
+              animationDelay: "0.05s",
+            }}
           >
-            McMaster Advanced<br />Space Systems
+            McMaster Advanced
+            <br />
+            <span style={{ color: "var(--op-primary)" }}>Space Systems</span>
           </h1>
           <p
-            className="animate-fade-up mb-7 rounded-lg px-5 py-3 text-lg"
-            style={{ color: palette.white, animationDelay: "0.15s" }}
+            className="animate-fade-up mx-auto mb-9 max-w-xl"
+            style={{
+              fontFamily: "var(--font-hanken-grotesk), sans-serif",
+              fontSize: "1.125rem",
+              lineHeight: 1.7,
+              color: "var(--op-on-surface-variant)",
+              animationDelay: "0.15s",
+            }}
           >
-            Designing, building, and testing autonomous <br className="hidden sm:block"/>technologies for various challenges.
+            A student-run club building real projects in space, aerospace, and
+            everything that supports them.
           </p>
-          <a
-            className="animate-fade-up inline-block rounded-lg border-2 px-6 py-3 font-semibold shadow-black/50 transition-all duration-200 bg-[var(--bg)] hover:bg-[var(--bghover)] hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0"
-            style={
-              {
-                color: palette.white,
-                borderColor: palette.black,
-                animationDelay: "0.25s",
-                "--bg": palette.darkBlue,
-                "--bghover": palette.blue,
-              } as React.CSSProperties
-            }
-            href="#"
+          <div
+            className="animate-fade-up flex flex-col items-center justify-center gap-4 sm:flex-row"
+            style={{ animationDelay: "0.25s" }}
           >
-            Learn More
-          </a>
+            <a
+              className="inline-block px-7 py-3 transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0"
+              style={{
+                fontFamily: "var(--font-hanken-grotesk), sans-serif",
+                fontSize: "0.75rem",
+                fontWeight: 600,
+                letterSpacing: "0.12em",
+                color: "var(--op-on-surface)",
+                backgroundColor: "var(--op-primary-container)",
+                border: "1px solid var(--op-primary)",
+                textDecoration: "none",
+              }}
+              href="/recruitment"
+            >
+              JOIN OUR TEAM
+            </a>
+            <a
+              className="inline-block px-7 py-3 transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0"
+              style={{
+                fontFamily: "var(--font-hanken-grotesk), sans-serif",
+                fontSize: "0.75rem",
+                fontWeight: 600,
+                letterSpacing: "0.12em",
+                color: "var(--op-on-surface)",
+                backgroundColor: "transparent",
+                border: "1px solid var(--op-outline)",
+                textDecoration: "none",
+              }}
+              href="/competitions"
+            >
+              EXPLORE OUR PROJECTS
+            </a>
+          </div>
         </div>
       </section>
 
