@@ -4,18 +4,125 @@
   --background: #F2F2F0;
   --foreground: #010109;
   --accent: #000649;
+
+  /* Orbital Precision palette */
+  --op-bg: #121414;
+  --op-surface: #0B0D17;
+  --op-surface-container: #1e2020;
+  --op-surface-container-low: #1a1c1c;
+  --op-surface-container-lowest: #0d0e0f;
+  --op-surface-container-high: #292a2a;
+  --op-surface-container-highest: #343535;
+  --op-on-surface: #e3e2e2;
+  --op-on-surface-variant: #c6c6cf;
+  --op-primary: #b9c5f6;
+  --op-primary-fixed: #dce1ff;
+  --op-on-primary: #222e56;
+  --op-primary-container: #1d2951;
+  --op-on-primary-container: #8591bf;
+  --op-secondary: #c9c6c5;
+  --op-tertiary: #ffb1c6;
+  --op-error: #ffb4ab;
+  --op-error-container: #93000a;
+  --op-outline: #909099;
+  --op-outline-variant: #45464e;
+  --op-maroon: #7A003C;
+  --op-deep-space: #050505;
+  --op-card-border: #262626;
+
+  /* Spacing */
+  --op-unit: 8px;
+  --op-container-padding-desktop: 64px;
+  --op-container-padding-mobile: 24px;
+  --op-gutter: 24px;
+  --op-section-gap: 80px;
+  --op-element-gap: 16px;
+  --background: #ffffff;
+  --foreground: #171717;
+
+  /* MASS brand palette */
+  --mass-black: #010109;
+  --mass-gray: #14141441;
+  --mass-white: #f2f2f0;
+  --mass-blue: #33386d;
+  --mass-darkblue: #000649;
+  --mass-darkblue-soft: #00064940; /* translucent card border */
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-alice);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+  overscroll-behavior: none;
+}
+
+body {
+  overscroll-behavior: none;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
+  font-family: var(--font-alice), Arial, Helvetica, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-archivo-narrow), sans-serif;
+}
+
+/* Keyboard focus indicator — white reads on the dark/accent backgrounds in use */
+:focus-visible {
+  outline: 2px solid var(--mass-white);
+  outline-offset: 2px;
+}
+
+/* Subtle entrance animation */
+@keyframes mass-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* `backwards` (not `both`) so the entrance has no flash, yet the resting
+   transform stays free for hover lifts on cards/buttons. */
+.animate-fade-up {
+  animation: mass-fade-up 0.6s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .animate-fade-up {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
 }
 
 /* Contact page form inputs — MASS branding standards 2025-2026.

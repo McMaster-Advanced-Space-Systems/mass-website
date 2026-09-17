@@ -15,6 +15,11 @@ const geistMono = Geist_Mono({
 /* MASS branding standards: logo and titles */
 const michroma = Michroma({
   weight: "400",
+import { Geist, Geist_Mono, Archivo_Narrow, Alice, Julius_Sans_One, Space_Grotesk, Hanken_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
+import "./globals.css";
+
+const archivoNarrow = Archivo_Narrow({
+  weight: ["400", "500", "600", "700"],
   subsets: ["latin"],
   variable: "--font-michroma",
 });
@@ -34,9 +39,40 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
+const spaceGrotesk = Space_Grotesk({
+  weight: ["400", "500", "600", "700"],
+  subsets: ["latin"],
+  variable: "--font-space-grotesk",
+});
+
+const hankenGrotesk = Hanken_Grotesk({
+  weight: ["400", "500", "600"],
+  subsets: ["latin"],
+  variable: "--font-hanken-grotesk",
+});
+
+const inter = Inter({
+  weight: ["400", "500", "600", "700"],
+  subsets: ["latin"],
+  variable: "--font-inter",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  weight: ["400", "500"],
+  subsets: ["latin"],
+  variable: "--font-jetbrains-mono",
+});
+
 export const metadata: Metadata = {
-  title: "MASS | McMaster Advanced Space Systems",
-  description: "McMaster Advanced Space Systems — CAN-SBX 2026 Project",
+  title: "McMaster Advanced Space Systems",
+  description:
+    "McMaster Advanced Space Systems (MASS): designing, building, and testing autonomous technologies for various challenges.",
+  openGraph: {
+    title: "McMaster Advanced Space Systems",
+    description:
+      "McMaster Advanced Space Systems (MASS): designing, building, and testing autonomous technologies for various challenges.",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
@@ -49,6 +85,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${michroma.variable} ${spaceMono.variable} ${inter.variable} antialiased`}
       >
+      <body className={`${hankenGrotesk.variable} ${spaceGrotesk.variable} ${alice.variable} ${archivoNarrow.variable} ${juliusSansOne.variable} antialiased`}>
         {children}
       </body>
     </html>
