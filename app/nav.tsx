@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
@@ -21,8 +22,8 @@ export default function Nav() {
   const linkClass = (href: string) =>
     `rounded-lg px-3 py-2 text-xs font-semibold transition-colors lg:text-sm ${
       isActive(href)
-        ? "bg-white/10 text-white"
-        : "text-slate-200 hover:bg-white/10 hover:text-white"
+        ? "bg-[#f7901f]/10 text-[var(--mass-highlight)]"
+        : "text-slate-200 hover:bg-[#f7901f]/10 hover:text-[var(--mass-highlight)]"
     }`;
 
   return (
@@ -30,7 +31,7 @@ export default function Nav() {
       aria-label="Primary"
       className="fixed inset-x-0 top-0 z-50 border-b backdrop-blur"
       style={{
-        backgroundColor: "rgba(1, 1, 9, 0.8)",
+        backgroundColor: "rgba(16, 16, 16, 0.8)",
         borderColor: "rgba(255, 255, 255, 0.1)",
         fontFamily: "var(--font-julius-sans-one)",
       }}
@@ -39,9 +40,19 @@ export default function Nav() {
         <Link
           href="/"
           onClick={() => setOpen(false)}
-          className="text-lg font-bold tracking-wide text-white"
+          className="flex shrink-0 items-center gap-2.5"
         >
-          MASS
+          <Image
+            src="/emblem.png"
+            alt="MASS — home"
+            width={182}
+            height={198}
+            priority
+            className="h-10 w-auto"
+          />
+          <span className="text-lg font-bold tracking-wide text-[var(--mass-paper)]">
+            MASS
+          </span>
         </Link>
 
         {/* Desktop links */}
@@ -94,8 +105,8 @@ export default function Nav() {
               aria-current={isActive(href) ? "page" : undefined}
               className={`rounded-lg px-3 py-3 text-sm font-semibold transition-colors ${
                 isActive(href)
-                  ? "bg-white/10 text-white"
-                  : "text-slate-200 hover:bg-white/10 hover:text-white"
+                  ? "bg-[#f7901f]/10 text-[var(--mass-highlight)]"
+                  : "text-slate-200 hover:bg-[#f7901f]/10 hover:text-[var(--mass-highlight)]"
               }`}
             >
               {label}
