@@ -7,24 +7,6 @@ import Footer from "../footer";
 
 type InquiryType = "sponsorship" | "outreach" | "general" | "";
 
-/* MASS branding standards 2025-2026
-   Red #bf472f and Blue #1050bf are decorative colours only, never font
-   colours. Yellow #f7901f is the highlight colour and may be set in type.
-   Dark Azure #101010 and Light Gray #f5f5f5 are the text colours, and the
-   background colours when inverted.
-   Michroma: logo and titles. Space Mono: highlights. Akzidenz-Grotesk:
-   subtitles and body text. */
-const INK = "#101010";
-const PAPER = "#f5f5f5";
-const BLUE = "#1050bf";
-const RED = "#bf472f";
-const YELLOW = "#f7901f";
-
-const DISPLAY = "var(--font-michroma), sans-serif";
-const HIGHLIGHT = "var(--font-space-mono), ui-monospace, monospace";
-const BODY =
-  '"Akzidenz-Grotesk", "Akzidenz-Grotesk Pro", var(--font-inter), "Helvetica Neue", Arial, sans-serif';
-
 const INQUIRY_OPTIONS = [
   { value: "sponsorship", label: "Sponsorship" },
   { value: "outreach", label: "Outreach" },
@@ -32,33 +14,21 @@ const INQUIRY_OPTIONS = [
 ] as const;
 
 const FIELD_LABEL: React.CSSProperties = {
-  fontFamily: HIGHLIGHT,
+  fontFamily: "var(--font-archivo-narrow), sans-serif",
   fontSize: "0.65rem",
   letterSpacing: "0.2em",
-  color: INK,
-  fontWeight: 700,
+  color: "#010109",
+  fontWeight: 600,
   display: "block",
   marginBottom: "0.55rem",
 };
 
-/* Dark Azure text with a red marker — red carries the signal decoratively
-   rather than as a font colour. */
 const FIELD_ERROR: React.CSSProperties = {
-  fontFamily: HIGHLIGHT,
-  fontSize: "0.72rem",
-  color: INK,
-  marginTop: "0.5rem",
-  display: "flex",
-  alignItems: "baseline",
-  gap: "0.45rem",
-};
-
-const ERROR_MARK: React.CSSProperties = {
+  fontFamily: "var(--font-alice), serif",
+  fontSize: "0.8rem",
+  color: "#F63D68",
+  marginTop: "0.4rem",
   display: "block",
-  width: "0.4rem",
-  height: "0.4rem",
-  backgroundColor: RED,
-  flex: "none",
 };
 
 export default function ContactPage() {
@@ -146,15 +116,6 @@ export default function ContactPage() {
   return (
     <>
       <style>{`
-        .contact-nav-link { color: rgba(245,245,245,0.6); transition: color 0.15s ease; text-decoration: none; }
-        .contact-nav-link[data-active] { color: ${YELLOW}; font-weight: 700; }
-        .contact-nav-link:hover { color: rgba(245,245,245,0.9); }
-        .contact-nav-link[data-active]:hover { color: ${YELLOW}; }
-        .contact-btn-submit:hover:not(:disabled) { background-color: ${RED}; }
-        .contact-btn-submit:focus-visible { outline: 2px solid ${BLUE}; outline-offset: 3px; }
-        .contact-pill:focus-visible { outline: 2px solid ${BLUE}; outline-offset: 2px; }
-        .contact-input[aria-invalid="true"] { border-bottom-color: ${RED}; }
-        .contact-input[aria-invalid="true"]:focus { border-color: ${RED}; }
         .contact-btn-submit:hover:not(:disabled) { background-color: #3335e0; }
         .contact-btn-submit:focus-visible { outline: 2px solid #000649; outline-offset: 3px; }
         .contact-pill:focus-visible { outline: 2px solid #000649; outline-offset: 2px; }
@@ -165,106 +126,6 @@ export default function ContactPage() {
         }
       `}</style>
 
-      <div style={{ minHeight: "100vh", backgroundColor: PAPER }}>
-
-        {/* Navbar */}
-        <nav style={{ backgroundColor: INK, position: "sticky", top: 0, zIndex: 50 }}>
-          <div
-            style={{
-              maxWidth: "80rem",
-              margin: "0 auto",
-              padding: "0 2rem",
-              height: "4rem",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-            }}
-          >
-            <span
-              style={{
-                fontFamily: DISPLAY,
-                color: PAPER,
-                fontSize: "1.05rem",
-                letterSpacing: "0.05em",
-              }}
-            >
-              MASS
-            </span>
-
-            {/* Desktop links */}
-            <div className="hidden md:flex" style={{ gap: "2rem" }}>
-              {NAV_LINKS.map(link => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  data-active={link.href === "/contact" ? "" : undefined}
-                  className="contact-nav-link"
-                  style={{
-                    fontFamily: HIGHLIGHT,
-                    fontSize: "0.72rem",
-                    letterSpacing: "0.1em",
-                  }}
-                >
-                  {link.label.toUpperCase()}
-                </Link>
-              ))}
-            </div>
-
-            {/* Mobile hamburger */}
-            <button
-              className="flex md:hidden"
-              onClick={() => setMobileOpen(o => !o)}
-              aria-label={mobileOpen ? "Close navigation" : "Open navigation"}
-              aria-expanded={mobileOpen}
-              aria-controls="mobile-menu"
-              style={{
-                background: "none",
-                border: "none",
-                cursor: "pointer",
-                padding: "0.5rem",
-                flexDirection: "column",
-                gap: "5px",
-                alignItems: "center",
-              }}
-            >
-              <span style={{ display: "block", width: "20px", height: "1.5px", backgroundColor: PAPER, transition: "transform 0.2s ease", transform: mobileOpen ? "rotate(45deg) translateY(6.5px)" : "none" }} />
-              <span style={{ display: "block", width: "20px", height: "1.5px", backgroundColor: PAPER, transition: "opacity 0.15s ease", opacity: mobileOpen ? 0 : 1 }} />
-              <span style={{ display: "block", width: "20px", height: "1.5px", backgroundColor: PAPER, transition: "transform 0.2s ease", transform: mobileOpen ? "rotate(-45deg) translateY(-6.5px)" : "none" }} />
-            </button>
-          </div>
-
-          {/* Mobile menu */}
-          {mobileOpen && (
-            <div
-              id="mobile-menu"
-              className="md:hidden"
-              style={{ backgroundColor: INK, borderTop: "1px solid rgba(245,245,245,0.08)", padding: "0.5rem 2rem 1.25rem" }}
-            >
-              {NAV_LINKS.map(link => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => setMobileOpen(false)}
-                  data-active={link.href === "/contact" ? "" : undefined}
-                  className="contact-nav-link"
-                  style={{
-                    fontFamily: HIGHLIGHT,
-                    fontSize: "0.78rem",
-                    letterSpacing: "0.1em",
-                    display: "block",
-                    padding: "0.7rem 0",
-                    borderBottom: "1px solid rgba(245,245,245,0.06)",
-                  }}
-                >
-                  {link.label.toUpperCase()}
-                </Link>
-              ))}
-            </div>
-          )}
-        </nav>
-
-        {/* Page header */}
-        <header style={{ backgroundColor: INK, padding: "5.5rem 2rem 5rem" }}>
       <div style={{ minHeight: "100vh", backgroundColor: "#F2F2F0" }}>
         <Nav />
 
@@ -275,8 +136,8 @@ export default function ContactPage() {
           <div style={{ maxWidth: "80rem", margin: "0 auto" }}>
             <p
               style={{
-                fontFamily: HIGHLIGHT,
-                color: "rgba(245,245,245,0.45)",
+                fontFamily: "var(--font-julius-sans-one), sans-serif",
+                color: "#8083a4",
                 fontSize: "0.65rem",
                 letterSpacing: "0.3em",
                 marginBottom: "1.75rem",
@@ -287,11 +148,12 @@ export default function ContactPage() {
 
             <h1
               style={{
-                fontFamily: DISPLAY,
-                color: PAPER,
-                fontSize: "clamp(2.5rem, 8vw, 6rem)",
-                lineHeight: "1.05",
-                letterSpacing: "-0.01em",
+                fontFamily: "var(--font-archivo-narrow), sans-serif",
+                color: "#F2F2F0",
+                fontWeight: 700,
+                fontSize: "clamp(4rem, 11vw, 9rem)",
+                lineHeight: "0.9",
+                letterSpacing: "-0.02em",
                 marginBottom: "2.25rem",
               }}
             >
@@ -300,7 +162,6 @@ export default function ContactPage() {
               the Team.
             </h1>
 
-            <div style={{ width: "4.5rem", height: "3px", backgroundColor: YELLOW }} />
             <div
               style={{
                 width: "4.5rem",
@@ -319,13 +180,13 @@ export default function ContactPage() {
           {/* Form column */}
           <div
             className="md:border-r"
-            style={{ padding: "4rem 2rem", borderColor: "rgba(16,16,16,0.1)" }}
+            style={{ padding: "4rem 2rem", borderColor: "rgba(1,1,9,0.1)" }}
           >
             <div style={{ maxWidth: "36rem" }}>
               <p
                 style={{
-                  fontFamily: BODY,
-                  color: INK,
+                  fontFamily: "var(--font-alice), serif",
+                  color: "#010109",
                   fontSize: "1.05rem",
                   lineHeight: "1.9",
                   opacity: 0.7,
@@ -341,7 +202,6 @@ export default function ContactPage() {
               {/* Success state */}
               {status === "sent" ? (
                 <div>
-                  <div style={{ width: "3rem", height: "3px", backgroundColor: RED, marginBottom: "2rem" }} />
                   <div
                     style={{
                       width: "3rem",
@@ -352,11 +212,11 @@ export default function ContactPage() {
                   />
                   <p
                     style={{
-                      fontFamily: DISPLAY,
-                      fontSize: "1.5rem",
-                      lineHeight: "1.3",
-                      color: INK,
-                      marginBottom: "1rem",
+                      fontFamily: "var(--font-archivo-narrow), sans-serif",
+                      fontSize: "2rem",
+                      fontWeight: 700,
+                      color: "#010109",
+                      marginBottom: "0.75rem",
                       letterSpacing: "-0.01em",
                     }}
                   >
@@ -364,8 +224,8 @@ export default function ContactPage() {
                   </p>
                   <p
                     style={{
-                      fontFamily: BODY,
-                      color: INK,
+                      fontFamily: "var(--font-alice), serif",
+                      color: "#010109",
                       opacity: 0.55,
                       lineHeight: "1.75",
                       marginBottom: "2.5rem",
@@ -376,17 +236,15 @@ export default function ContactPage() {
                   <button
                     onClick={resetForm}
                     style={{
-                      fontFamily: HIGHLIGHT,
+                      fontFamily: "var(--font-archivo-narrow), sans-serif",
                       fontSize: "0.72rem",
                       letterSpacing: "0.14em",
-                      color: INK,
+                      color: "#000649",
                       background: "none",
                       border: "none",
                       cursor: "pointer",
                       padding: 0,
                       textDecoration: "underline",
-                      textDecorationColor: YELLOW,
-                      textDecorationThickness: "1.5px",
                       textUnderlineOffset: "4px",
                     }}
                   >
@@ -422,7 +280,6 @@ export default function ContactPage() {
                       />
                       {errors.name && (
                         <span id="name-error" role="alert" style={FIELD_ERROR}>
-                          <span style={ERROR_MARK} />
                           {errors.name}
                         </span>
                       )}
@@ -448,7 +305,6 @@ export default function ContactPage() {
                       />
                       {errors.email && (
                         <span id="email-error" role="alert" style={FIELD_ERROR}>
-                          <span style={ERROR_MARK} />
                           {errors.email}
                         </span>
                       )}
@@ -479,13 +335,6 @@ export default function ContactPage() {
                             aria-pressed={active}
                             className="contact-pill"
                             style={{
-                              fontFamily: HIGHLIGHT,
-                              fontSize: "0.7rem",
-                              letterSpacing: "0.1em",
-                              padding: "0.5rem 1.15rem",
-                              border: `1.5px solid ${active ? BLUE : "rgba(16,16,16,0.22)"}`,
-                              backgroundColor: active ? BLUE : "transparent",
-                              color: active ? PAPER : INK,
                               fontFamily:
                                 "var(--font-archivo-narrow), sans-serif",
                               fontSize: "0.7rem",
@@ -529,7 +378,6 @@ export default function ContactPage() {
                     />
                     {errors.message && (
                       <span id="message-error" role="alert" style={FIELD_ERROR}>
-                        <span style={ERROR_MARK} />
                         {errors.message}
                       </span>
                     )}
@@ -549,16 +397,11 @@ export default function ContactPage() {
                       disabled={status === "sending"}
                       className="contact-btn-submit"
                       style={{
-                        fontFamily: HIGHLIGHT,
+                        fontFamily: "var(--font-archivo-narrow), sans-serif",
                         fontWeight: 700,
-                        fontSize: "0.75rem",
+                        fontSize: "0.78rem",
                         letterSpacing: "0.12em",
                         padding: "0.9rem 2.25rem",
-                        backgroundColor: BLUE,
-                        color: PAPER,
-                        border: "none",
-                        cursor: status === "sending" ? "not-allowed" : "pointer",
-                        opacity: status === "sending" ? 0.55 : 1,
                         backgroundColor:
                           status === "sending"
                             ? "rgba(70,72,255,0.55)"
@@ -574,8 +417,14 @@ export default function ContactPage() {
                     </button>
 
                     {status === "error" && (
-                      <p role="alert" style={FIELD_ERROR}>
-                        <span style={ERROR_MARK} />
+                      <p
+                        role="alert"
+                        style={{
+                          fontFamily: "var(--font-alice), serif",
+                          color: "#F63D68",
+                          fontSize: "0.9rem",
+                        }}
+                      >
                         Something went wrong. Please try again.
                       </p>
                     )}
@@ -588,15 +437,15 @@ export default function ContactPage() {
           {/* Info panel */}
           <div
             className="md:sticky md:top-16 md:self-start"
-            style={{ backgroundColor: BLUE, padding: "4rem 2.5rem" }}
+            style={{ backgroundColor: "#000649", padding: "4rem 2.5rem" }}
           >
             <p
               style={{
-                fontFamily: HIGHLIGHT,
-                color: PAPER,
+                fontFamily: "var(--font-julius-sans-one), sans-serif",
+                color: "#F2F2F0",
                 fontSize: "0.6rem",
                 letterSpacing: "0.3em",
-                opacity: 0.6,
+                opacity: 0.5,
                 marginBottom: "2.5rem",
               }}
             >
@@ -605,12 +454,13 @@ export default function ContactPage() {
 
             <h2
               style={{
-                fontFamily: DISPLAY,
-                color: PAPER,
-                fontSize: "1.5rem",
-                lineHeight: "1.3",
+                fontFamily: "var(--font-archivo-narrow), sans-serif",
+                color: "#F2F2F0",
+                fontWeight: 700,
+                fontSize: "1.85rem",
+                lineHeight: "1.15",
                 letterSpacing: "-0.01em",
-                marginBottom: "1.5rem",
+                marginBottom: "1.25rem",
               }}
             >
               Sending science to the stratosphere.
@@ -618,8 +468,8 @@ export default function ContactPage() {
 
             <p
               style={{
-                fontFamily: BODY,
-                color: PAPER,
+                fontFamily: "var(--font-alice), serif",
+                color: "#F2F2F0",
                 fontSize: "0.95rem",
                 lineHeight: "1.85",
                 opacity: 0.82,
@@ -634,7 +484,7 @@ export default function ContactPage() {
 
             <div
               style={{
-                borderTop: "1px solid rgba(245,245,245,0.2)",
+                borderTop: "1px solid rgba(242,242,240,0.2)",
                 paddingTop: "2.25rem",
                 display: "flex",
                 flexDirection: "column",
@@ -644,12 +494,12 @@ export default function ContactPage() {
               <div>
                 <p
                   style={{
-                    fontFamily: HIGHLIGHT,
-                    color: PAPER,
+                    fontFamily: "var(--font-archivo-narrow), sans-serif",
+                    color: "#F2F2F0",
                     fontSize: "0.6rem",
                     letterSpacing: "0.22em",
-                    opacity: 0.6,
-                    marginBottom: "0.45rem",
+                    opacity: 0.5,
+                    marginBottom: "0.35rem",
                   }}
                 >
                   EMAIL
@@ -657,12 +507,11 @@ export default function ContactPage() {
                 <a
                   href="mailto:mass@mcmaster.ca"
                   style={{
-                    fontFamily: BODY,
-                    color: PAPER,
+                    fontFamily: "var(--font-alice), serif",
+                    color: "#F2F2F0",
                     fontSize: "0.92rem",
                     textDecoration: "underline",
-                    textDecorationColor: YELLOW,
-                    textDecorationThickness: "1.5px",
+                    textDecorationColor: "rgba(242,242,240,0.35)",
                     textUnderlineOffset: "3px",
                   }}
                 >
@@ -673,20 +522,20 @@ export default function ContactPage() {
               <div>
                 <p
                   style={{
-                    fontFamily: HIGHLIGHT,
-                    color: PAPER,
+                    fontFamily: "var(--font-archivo-narrow), sans-serif",
+                    color: "#F2F2F0",
                     fontSize: "0.6rem",
                     letterSpacing: "0.22em",
-                    opacity: 0.6,
-                    marginBottom: "0.45rem",
+                    opacity: 0.5,
+                    marginBottom: "0.35rem",
                   }}
                 >
                   LOCATION
                 </p>
                 <p
                   style={{
-                    fontFamily: BODY,
-                    color: PAPER,
+                    fontFamily: "var(--font-alice), serif",
+                    color: "#F2F2F0",
                     fontSize: "0.92rem",
                     lineHeight: "1.65",
                   }}
@@ -700,20 +549,20 @@ export default function ContactPage() {
               <div>
                 <p
                   style={{
-                    fontFamily: HIGHLIGHT,
-                    color: PAPER,
+                    fontFamily: "var(--font-archivo-narrow), sans-serif",
+                    color: "#F2F2F0",
                     fontSize: "0.6rem",
                     letterSpacing: "0.22em",
-                    opacity: 0.6,
-                    marginBottom: "0.45rem",
+                    opacity: 0.5,
+                    marginBottom: "0.35rem",
                   }}
                 >
                   OUTREACH
                 </p>
                 <p
                   style={{
-                    fontFamily: BODY,
-                    color: PAPER,
+                    fontFamily: "var(--font-alice), serif",
+                    color: "#F2F2F0",
                     fontSize: "0.92rem",
                     lineHeight: "1.65",
                     opacity: 0.82,
