@@ -9,7 +9,7 @@ const NAV_LINKS = [
   { label: "HOME", href: "/" },
   { label: "COMPETITIONS", href: "/competitions" },
   { label: "CONTACT US", href: "/contact" },
-  { label: "OUR TEAM", href: "/our-team" },
+  { label: "OUR TEAM", href: "/mass-team" },
   { label: "ABOUT US", href: "/about" },
 ];
 
