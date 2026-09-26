@@ -5,12 +5,16 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 
+import logo from "../public/logo.png";
+import name from "../public/name.png";
+
 const NAV_LINKS = [
   { label: "HOME", href: "/" },
-  { label: "COMPETITIONS", href: "/competitions" },
-  { label: "CONTACT US", href: "/contact" },
+  { label: "PROJECTS", href: "/current-projects" },
   { label: "OUR TEAM", href: "/mass-team" },
   { label: "ABOUT US", href: "/about" },
+  { label: "CONTACT US", href: "/contact" },
+  { label: "COMPETITIONS", href: "/competitions" },
 ];
 
 export default function Nav() {
@@ -20,10 +24,9 @@ export default function Nav() {
   const isActive = (href: string) => href !== "#" && pathname === href;
 
   const linkClass = (href: string) =>
-    `rounded-lg px-3 py-2 text-xs font-semibold transition-colors lg:text-sm ${
-      isActive(href)
-        ? "bg-[#f7901f]/10 text-[var(--mass-highlight)]"
-        : "text-slate-200 hover:bg-[#f7901f]/10 hover:text-[var(--mass-highlight)]"
+    `rounded-lg px-3 py-2 text-xs font-semibold transition-colors lg:text-sm ${isActive(href)
+      ? "bg-[#f7901f]/10 text-[var(--mass-highlight)]"
+      : "text-slate-200 hover:bg-[#f7901f]/10 hover:text-[var(--mass-highlight)]"
     }`;
 
   return (
@@ -36,23 +39,29 @@ export default function Nav() {
         fontFamily: "var(--font-julius-sans-one)",
       }}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between py-8">
+      <div className="mx-auto flex max-w-7xl items-center justify-between py-6">
         <Link
           href="/"
           onClick={() => setOpen(false)}
-          className="flex shrink-0 items-center gap-2.5"
+          aria-label="MASS — McMaster Advanced Space Systems, home"
+          className="flex shrink-0 items-center gap-3"
         >
           <Image
-            src="/emblem.png"
-            alt="MASS — home"
-            width={182}
-            height={198}
+            src={logo}
+            alt=""
+            width={591}
+            height={658}
             priority
-            className="h-10 w-auto"
+            className="h-22 w-auto"
           />
-          <span className="text-lg font-bold tracking-wide text-[var(--mass-paper)]">
-            MASS
-          </span>
+          <Image
+            src={name}
+            alt=""
+            width={1106}
+            height={338}
+            priority
+            className="h-18 w-auto"
+          />
         </Link>
 
         {/* Desktop links */}
@@ -103,11 +112,10 @@ export default function Nav() {
               href={href}
               onClick={() => setOpen(false)}
               aria-current={isActive(href) ? "page" : undefined}
-              className={`rounded-lg px-3 py-3 text-sm font-semibold transition-colors ${
-                isActive(href)
+              className={`rounded-lg px-3 py-3 text-sm font-semibold transition-colors ${isActive(href)
                   ? "bg-[#f7901f]/10 text-[var(--mass-highlight)]"
                   : "text-slate-200 hover:bg-[#f7901f]/10 hover:text-[var(--mass-highlight)]"
-              }`}
+                }`}
             >
               {label}
             </Link>
