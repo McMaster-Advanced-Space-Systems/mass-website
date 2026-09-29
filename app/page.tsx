@@ -6,7 +6,7 @@ import { useState } from "react";
 import { FaHandshake, FaTrophy, FaUsers, FaWrench } from "react-icons/fa";
 import Nav from "./nav";
 import Footer from "./footer";
-import HeroBackground from "./hero-background";
+import background from "../public/background.jpg";
 
 const COMPETITIONS = [
   {
@@ -58,7 +58,19 @@ export default function Home() {
 
   return (
     <div style={{ minHeight: "100vh", backgroundColor: palette.black, color: palette.white }}>
-      <HeroBackground />
+
+      <div className="fixed inset-0 z-0" aria-hidden="true">
+        <Image
+          src={background}
+          alt=""
+          fill
+          priority
+          unoptimized
+          sizes="100vw"
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-black/70" />
+      </div>
       <Nav />
 
       <section
@@ -84,23 +96,42 @@ export default function Home() {
             className="animate-fade-up mb-7 rounded-lg px-5 py-3 text-lg"
             style={{ color: palette.white, animationDelay: "0.15s" }}
           >
-            Designing, building, and testing autonomous <br className="hidden sm:block"/>technologies for various challenges.
+            A student-run club building real projects in space, <br className="hidden sm:block" /> aerospace, and everything that supports them.
           </p>
-          <a
-            className="animate-fade-up inline-block rounded-lg border-2 px-6 py-3 font-semibold shadow-black/50 transition-all duration-200 bg-[var(--bg)] hover:bg-[var(--bghover)] hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0"
-            style={
-              {
-                color: palette.white,
-                borderColor: palette.black,
-                animationDelay: "0.25s",
-                "--bg": palette.blue,
-                "--bghover": palette.highlight,
-              } as React.CSSProperties
-            }
-            href="#"
+          <div
+            className="animate-fade-up flex flex-col items-center justify-center gap-4 sm:flex-row"
+            style={{ animationDelay: "0.25s" }}
           >
-            Learn More
-          </a>
+            <Link
+              href="/contact"
+              className="inline-block w-50 rounded-lg border-2 px-6 py-3 text-center font-semibold shadow-black/50 transition-all duration-200 bg-[var(--bg)] border-[var(--border)] hover:border-[var(--borderhover)] hover:shadow-l hover:-translate-y-0.5 active:translate-y-0"
+              style={
+                {
+                  color: palette.white,
+                  "--bg": palette.blue,
+                  "--border": palette.blue,
+                  "--borderhover": "white",
+                } as React.CSSProperties
+              }
+            >
+              Join Our Team
+            </Link>
+
+            <Link
+              href="/current-projects"
+              className="inline-block w-50 rounded-lg border-2 px-6 py-3 text-center font-semibold shadow-black/50 transition-all duration-200 bg-[var(--bg)] border-[var(--border)] hover:border-[var(--borderhover)] hover:shadow-l hover:-translate-y-0.5 active:translate-y-0"
+              style={
+                {
+                  color: palette.white,
+                  "--bg": palette.blue,
+                  "--border": palette.blue,
+                  "--borderhover": "white",
+                } as React.CSSProperties
+              }
+            >
+              Explore Projects
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -193,7 +224,9 @@ export default function Home() {
         </div>
       </main>
 
-      <Footer />
+      <div className="relative z-10">
+        <Footer />
+      </div>
     </div>
   );
 }
