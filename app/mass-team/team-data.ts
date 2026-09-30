@@ -17,7 +17,9 @@ export type Team = {
   id: string;
   /* Label on the tab; also the anchor, e.g. /mass-team#solaris. */
   tab: string;
-  description: string;
+  /* Shown in brackets beside the tab name, e.g. "Present" or "2023–2024". */
+  years?: string;
+  description?: string;
   groups: MemberGroup[];
 };
 
@@ -61,6 +63,7 @@ export const TEAMS: Team[] = [
   {
     id: "solaris",
     tab: "SOLARIS",
+    years: "Present",
     description:
       "SOLARIS investigates how atmospheric distortion affects optical signal transmission from ground level to 30 kilometres up, and how well optical coatings reduce it, to support ground-to-satellite laser communication.",
     groups: [
@@ -77,6 +80,28 @@ export const TEAMS: Team[] = [
       { name: "Software Subteam", members: [] },
       { name: "Science Subteam", members: [] },
     ],
+  },
+  {
+    id: "stellarscope",
+    tab: "Stellarscope",
+    years: "2023–2024",
+    description:
+      "Stellarscope is a multi-phase project to build an array of radio telescopes and the synchronization software that links them, to collect data from and image celestial objects.",
+    groups: [
+      {
+        name: "Project Leads",
+        members: [
+          { name: "Kamyar Lakdashti", role: "Project Manager", program: "Electrical Engineering, Level IV" },
+          { name: "Dhavin Tandon", role: "Electrical Engineering Team Lead", program: "Electrical Engineering, Level IV" },
+          { name: "Marco Puchetti", role: "Mechanical Engineering Team Lead", program: "Mechanical Engineering, Level III" },
+        ],
+      },
+    ],
+  },
+  {
+    id: "stratogene",
+    tab: "Stratogene",
+    groups: [{ name: "Stratogene Team", members: [] }],
   },
 ];
 
