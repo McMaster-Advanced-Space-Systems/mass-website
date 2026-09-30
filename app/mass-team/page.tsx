@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Inter, Michroma, Space_Mono } from "next/font/google";
 import Nav from "../nav";
 import Footer from "../footer";
 import TeamTabs from "./team-tabs";
+
+import teamPhoto from "../../public/projects/stellarscope/multi-team-photo.png";
 
 /* MASS Preliminary Branding Standards 2025-2026: Michroma for titles, Space
    Mono for highlights, Akzidenz-Grotesk for body text. Akzidenz-Grotesk has
@@ -40,18 +43,40 @@ const BODY =
 export const metadata: Metadata = {
   title: "Our Team — McMaster Advanced Space Systems",
   description:
-    "Meet the people behind McMaster Advanced Space Systems (MASS): the management team, the SOLARIS team, and the teams behind our past projects.",
+    "Meet the people behind McMaster Advanced Space Systems (MASS): the management team, our project teams, and the teams behind our past projects.",
 };
 
 export default function MassTeamPage() {
   return (
     <div
-      className={`${michroma.variable} ${spaceMono.variable} ${inter.variable}`}
+      className={`relative ${michroma.variable} ${spaceMono.variable} ${inter.variable}`}
       style={{ minHeight: "100vh", backgroundColor: INK, color: PAPER }}
     >
       <Nav />
 
-      <header className="px-6 pb-12 pt-32 md:px-10 xl:px-16">
+      {/* Photo behind the header and tabs, darkened for legibility and faded
+          into the page background before the cards start. */}
+      <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-[44rem] overflow-hidden md:h-[50rem]">
+        <Image
+          src={teamPhoto}
+          alt=""
+          fill
+          priority
+          placeholder="blur"
+          sizes="100vw"
+          className="object-cover object-[center_30%]"
+        />
+        <div
+          className="absolute inset-0"
+          style={{
+            background: `linear-gradient(90deg, rgba(16,16,16,0.9) 0%, rgba(16,16,16,0.6) 45%, rgba(16,16,16,0.3) 100%),
+              linear-gradient(180deg, rgba(16,16,16,0.2) 0%, rgba(16,16,16,0.45) 55%, ${INK} 100%)`,
+          }}
+        />
+      </div>
+
+      {/* Top padding clears the fixed nav (~136px tall). */}
+      <header className="relative px-6 pb-12 pt-44 md:px-10 xl:px-16">
         <div className="mx-auto max-w-[96rem]">
           <p
             style={{
@@ -81,13 +106,13 @@ export default function MassTeamPage() {
 
           <p style={{ fontFamily: BODY, fontSize: "1.05rem", lineHeight: 1.8, opacity: 0.78, maxWidth: "60ch" }}>
             The people behind McMaster&rsquo;s student-led space systems team: the
-            management team that runs the club, the SOLARIS project team, and the
-            teams behind our past projects.
+            management team that runs the club, our project teams, and the teams
+            behind our past projects.
           </p>
         </div>
       </header>
 
-      <main className="px-6 pb-24 md:px-10 xl:px-16">
+      <main className="relative px-6 pb-24 md:px-10 xl:px-16">
         <div className="mx-auto max-w-[96rem]">
           <TeamTabs />
         </div>

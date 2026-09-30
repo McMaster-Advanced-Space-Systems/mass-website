@@ -1,14 +1,14 @@
 "use client";
 
-import { useRef, useSyncExternalStore, type KeyboardEvent, type ReactNode } from "react";
+import { useEffect, useRef, useSyncExternalStore, type KeyboardEvent, type ReactNode } from "react";
 import { PAST_TEAMS, TEAMS, type MemberGroup, type PastTeam, type TeamMember } from "./team-data";
 
 /* Branding standards: Red and Blue are decorative only, never a font colour.
    Yellow is the highlight colour, matching the active item in the nav. */
-const ACCENT = "#1050bf";
 const YELLOW = "#f7901f";
-const INK = "#101010";
-const PAPER = "#f5f5f5";
+/* Same lifted surface as the homepage cards (--mass-surface). */
+const SURFACE = "#1a1a1a";
+const CARD_BORDER = "rgba(245,245,245,0.1)";
 
 const DISPLAY = "var(--font-michroma), sans-serif";
 const MONO = "var(--font-space-mono), ui-monospace, monospace";
@@ -18,8 +18,8 @@ const BODY =
 const PAST_ID = "past-teams";
 
 const TABS = [
-  ...TEAMS.map((team) => ({ id: team.id, label: team.tab })),
-  { id: PAST_ID, label: "Past Teams" },
+  ...TEAMS.map((team) => ({ id: team.id, label: team.tab, years: team.years })),
+  { id: PAST_ID, label: "Past Teams", years: undefined },
 ];
 
 /* Every member grid uses the same columns, so every card is the same width;
@@ -52,6 +52,20 @@ export default function TeamTabs() {
   const hash = useSyncExternalStore(subscribeToHash, readHash, readServerHash);
   const active = TABS.some((tab) => tab.id === hash) ? hash : TABS[0].id;
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
+  const tablistRef = useRef<HTMLDivElement>(null);
+
+  /* On narrow screens the tab bar scrolls sideways; keep the selected tab in
+     view. Only the bar scrolls, never the page. */
+  useEffect(() => {
+    const list = tablistRef.current;
+    const tab = tabRefs.current[TABS.findIndex((t) => t.id === active)];
+    if (!list || !tab) return;
+    const left = tab.offsetLeft - list.offsetLeft;
+    const right = left + tab.offsetWidth;
+    if (left < list.scrollLeft || right > list.scrollLeft + list.clientWidth) {
+      list.scrollTo({ left: Math.max(0, left - 24), behavior: "smooth" });
+    }
+  }, [active]);
 
   function onTabKeyDown(e: KeyboardEvent<HTMLButtonElement>, index: number) {
     const last = TABS.length - 1;
@@ -70,9 +84,10 @@ export default function TeamTabs() {
   return (
     <div>
       <div
+        ref={tablistRef}
         role="tablist"
         aria-label="MASS teams"
-        className="flex gap-x-6 border-b sm:gap-x-10"
+        className="flex gap-x-6 overflow-x-auto border-b [scrollbar-width:none] sm:gap-x-10"
         style={{ borderColor: "rgba(245,245,245,0.15)" }}
       >
         {TABS.map((tab, index) => {
@@ -97,6 +112,7 @@ export default function TeamTabs() {
               style={{ fontFamily: BODY, borderBottomColor: selected ? YELLOW : undefined }}
             >
               {tab.label}
+              {tab.years && <span className="ml-1.5 opacity-60">({tab.years})</span>}
             </button>
           );
         })}
@@ -114,7 +130,7 @@ export default function TeamTabs() {
           hidden={active !== team.id}
           className="animate-fade-up pt-10 focus-visible:outline-none md:pt-12"
         >
-          <PanelIntro>{team.description}</PanelIntro>
+          {team.description && <PanelIntro>{team.description}</PanelIntro>}
           <TeamGroups teamId={team.id} groups={team.groups} />
         </div>
       ))}
@@ -214,20 +230,33 @@ function formatProgram(program: string) {
 function MemberCard({ member }: { member: TeamMember }) {
   return (
     <li
-      className="flex h-full flex-col rounded-lg border-t-[3px] p-5"
-      style={{ backgroundColor: PAPER, color: INK, borderTopColor: ACCENT }}
+      className="flex h-full flex-col rounded-lg border p-5 transition-colors hover:border-[#f5f5f5]/25"
+      style={{ backgroundColor: SURFACE, borderColor: CARD_BORDER }}
     >
-      <h3 style={{ fontFamily: MONO, fontWeight: 700, fontSize: "1.05rem", lineHeight: 1.3 }}>{member.name}</h3>
-      <p className="mt-1" style={{ fontFamily: BODY, fontSize: "0.9rem", fontWeight: 600 }}>
+      <DefaultHeadshot />
+      <h3 className="mt-4" style={{ fontFamily: MONO, fontWeight: 700, fontSize: "1.05rem", lineHeight: 1.3 }}>
+        {member.name}
+      </h3>
+      <p className="mt-1" style={{ fontFamily: BODY, fontSize: "0.9rem", fontWeight: 600, opacity: 0.85 }}>
         {member.role}
       </p>
       <p
         className="mt-auto pt-5"
-        style={{ fontFamily: BODY, fontSize: "0.85rem", lineHeight: 1.5, color: "rgba(16,16,16,0.6)", textWrap: "pretty" }}
+        style={{ fontFamily: BODY, fontSize: "0.85rem", lineHeight: 1.5, opacity: 0.55, textWrap: "pretty" }}
       >
         {formatProgram(member.program)}
       </p>
     </li>
+  );
+}
+
+/* Grey placeholder shown until real headshots are added. */
+function DefaultHeadshot() {
+  return (
+    <svg viewBox="0 0 64 64" aria-hidden="true" className="h-16 w-16 shrink-0 rounded-full" style={{ backgroundColor: "#2e2e2e" }}>
+      <circle cx="32" cy="25" r="11" fill="#6b6b6b" />
+      <path d="M10 64c0-13 10-22 22-22s22 9 22 22Z" fill="#6b6b6b" />
+    </svg>
   );
 }
 
@@ -249,7 +278,7 @@ function PastTeamCard({ team }: { team: PastTeam }) {
   return (
     <li
       className="flex h-full flex-col rounded-lg border p-6 sm:p-7"
-      style={{ backgroundColor: "#1a1a1a", borderColor: "rgba(245,245,245,0.12)" }}
+      style={{ backgroundColor: SURFACE, borderColor: CARD_BORDER }}
     >
       <p style={{ fontFamily: MONO, fontSize: "0.75rem", letterSpacing: "0.12em", textTransform: "uppercase", opacity: 0.55 }}>
         Completed {team.year} · {team.location}
