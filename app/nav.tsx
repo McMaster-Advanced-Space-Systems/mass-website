@@ -14,7 +14,6 @@ const NAV_LINKS = [
   { label: "OUR TEAM", href: "/mass-team" },
   { label: "ABOUT US", href: "/about" },
   { label: "CONTACT US", href: "/contact" },
-  { label: "COMPETITIONS", href: "/competitions" },
 ];
 
 export default function Nav() {
@@ -32,13 +31,19 @@ export default function Nav() {
   return (
     <nav
       aria-label="Primary"
-      className="fixed inset-x-0 top-0 z-50 border-b backdrop-blur"
-      style={{
-        backgroundColor: "rgba(16, 16, 16, 0.8)",
-        borderColor: "rgba(255, 255, 255, 0.1)",
-        fontFamily: "var(--font-julius-sans-one)",
-      }}
+      className="fixed inset-x-0 top-0 z-50"
+      style={{ fontFamily: "var(--font-julius-sans-one)" }}
     >
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 top-0 -bottom-20 -z-10 backdrop-blur"
+        style={{
+          background:
+            "linear-gradient(to bottom, rgba(16, 16, 16, 0.9) 0%, rgba(16, 16, 16, 0.82) 60%, rgba(16, 16, 16, 0) 100%)",
+          maskImage: "linear-gradient(to bottom, black 55%, transparent 100%)",
+          WebkitMaskImage: "linear-gradient(to bottom, black 55%, transparent 100%)",
+        }}
+      />
       <div className="mx-auto flex max-w-7xl items-center justify-between py-6">
         <Link
           href="/"
@@ -52,7 +57,7 @@ export default function Nav() {
             width={591}
             height={658}
             priority
-            className="h-22 w-auto"
+            className="h-19 w-auto"
           />
           <Image
             src={name}
@@ -60,7 +65,7 @@ export default function Nav() {
             width={1106}
             height={338}
             priority
-            className="h-18 w-auto"
+            className="h-13 w-auto"
           />
         </Link>
 
