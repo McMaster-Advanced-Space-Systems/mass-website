@@ -44,6 +44,14 @@ const PILLARS = [
   },
 ];
 
+const STATS = [
+  { value: "2", label: "Active Projects" },
+  { value: "4", label: "Total Projects" },
+  { value: "6", label: "Technical Teams" },
+  { value: "80+", label: "Active Team Members" },
+  { value: "3+", label: "Years Building" },
+];
+
 export default function Home() {
   const palette = {
     black: "var(--mass-ink)",
@@ -74,23 +82,65 @@ export default function Home() {
       <Nav />
 
       <section
-        className="relative z-10 flex items-center justify-center px-6 min-h-screen"
+        className="relative z-10 flex items-center justify-center px-6 pt-25 min-h-screen"
       >
         <div className="w-full max-w-2xl text-center">
-          <h1 className="animate-fade-up mb-5 px-6 py-4" style={{ animationDelay: "0.05s" }}>
-            {/* Image carries the mark; the text stays for search engines and
-                screen readers, which an alt attribute alone serves weakly. */}
-            <span className="sr-only">McMaster Advanced Space Systems</span>
-            <Image
-              src="/wordmark.png"
-              alt=""
-              width={469}
-              height={273}
-              priority
-              aria-hidden
-              className="mx-auto h-auto w-full max-w-md"
-              style={{ filter: "drop-shadow(0 0 28px rgba(16, 80, 191, 0.55))" }}
-            />
+          <h1
+            className="animate-fade-up mb-5 px-6 py-4 text-center"
+            style={{ animationDelay: "0.05s" }}
+          >
+            <div className="mb-4 flex items-center justify-center gap-2" aria-hidden>
+              <span style={{ width: "2rem", height: "1px", backgroundColor: "var(--mass-highlight)" }} />
+              <span
+                style={{
+                  fontFamily: "var(--font-julius-sans-one), sans-serif",
+                  color: "var(--mass-highlight)",
+                  fontSize: "0.65rem",
+                  fontWeight: 600,
+                  letterSpacing: "0.25em",
+                }}
+              >
+                EST. 2024
+              </span>
+              <span style={{ width: "2rem", height: "1px", backgroundColor: "var(--mass-highlight)" }} />
+            </div>
+
+            <span
+              style={{
+                fontFamily: "var(--font-michroma), sans-serif",
+                fontWeight: 400,
+                fontSize: "clamp(2.4rem, 7.5vw, 4.5rem)",
+                lineHeight: 1.25,
+                color: palette.white,
+                display: "block",
+              }}
+            >
+              McMaster
+            </span>
+            <span
+              style={{
+                fontFamily: "var(--font-michroma), sans-serif",
+                fontWeight: 400,
+                fontSize: "clamp(2.4rem, 7.5vw, 4.5rem)",
+                lineHeight: 1.25,
+                color: palette.white,
+                display: "block",
+              }}
+            >
+              Advanced
+            </span>
+            <span
+              style={{
+                fontFamily: "var(--font-michroma), sans-serif",
+                fontWeight: 400,
+                fontSize: "clamp(2.4rem, 7.5vw, 4.5rem)",
+                lineHeight: 1.25,
+                color: palette.blue,
+                display: "block",
+              }}
+            >
+              Space Systems
+            </span>
           </h1>
           <p
             className="animate-fade-up mb-7 rounded-lg px-5 py-3 text-lg"
@@ -135,54 +185,91 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Translucent panel: the fixed starfield sits behind the whole page, so
-          everything past the hero gets a scrim to keep body copy readable. */}
       <main
-        className="relative z-10 w-full py-12"
+        className="relative z-10 w-full pb-12"
         style={{ backgroundColor: "rgba(16, 16, 16, 0.85)" }}
       >
+
+        <div className="mx-auto grid max-w-7xl grid-cols-2 sm:grid-cols-5">
+          {STATS.map((stat, index) => (
+            <div
+              key={stat.label}
+              className="flex flex-col items-center justify-center gap-1 px-4 py-8 text-center"
+              style={{
+                borderColor: "rgba(255, 255, 255, 0.1)",
+                borderLeftWidth: index === 0 ? 0 : "1px",
+              }}
+            >
+              <span
+                style={{
+                  fontFamily: "var(--font-archivo-narrow), sans-serif",
+                  fontWeight: 700,
+                  fontSize: "clamp(1.75rem, 4vw, 2.5rem)",
+                  color: palette.white,
+                  lineHeight: 1,
+                }}
+              >
+                {stat.value}
+              </span>
+              <span
+                style={{
+                  fontFamily: "var(--font-julius-sans-one), sans-serif",
+                  fontSize: "0.65rem",
+                  fontWeight: 600,
+                  letterSpacing: "0.15em",
+                  color: "rgba(255, 255, 255, 0.5)",
+                  textTransform: "uppercase",
+                }}
+              >
+                {stat.label}
+              </span>
+            </div>
+          ))}
+        </div>
+
+
+        <section className="mx-auto w-full max-w-4xl px-6 pb-20 pt-20 text-center">
+          <h2
+            style={{
+              fontFamily: "var(--font-michroma), sans-serif",
+              color: palette.white,
+              fontWeight: 700,
+              fontSize: "clamp(2.75rem, 6vw, 4.5rem)",
+              lineHeight: 1,
+              letterSpacing: "-0.02em",
+              marginBottom: "2.5rem",
+            }}
+          >
+            Who we are
+          </h2>
+          <div
+            style={{
+              fontFamily: "var(--font-alice), serif",
+              color: palette.white,
+              fontSize: "1.1rem",
+              lineHeight: "1.9",
+              opacity: 0.6,
+            }}
+          >
+            <p>
+              McMaster Advanced Space Systems is a student-led team advancing space
+              research while inspiring the next generation of engineers.
+            </p>
+            <p style={{ marginTop: "1.5rem" }}>
+              Since 2023, our members have competed in CAN-SBX and CAN-ARX,
+              collaborated across disciplines, and transformed ambitious ideas into
+              working hardware.
+            </p>
+          </div>
+        </section>
+
+
         <div className="mx-auto grid max-w-7xl grid-cols-1 items-stretch gap-6 px-6 sm:grid-cols-2 lg:grid-cols-4">
           {PILLARS.map((pillar, index) => (
             <PillarCard key={pillar.title} pillar={pillar} index={index} />
           ))}
         </div>
 
-        <section className="mx-auto w-full max-w-7xl px-6 pt-24 md:pt-32">
-          <h2
-            style={{
-              fontFamily: "var(--font-archivo-narrow), sans-serif",
-              color: palette.white,
-              fontWeight: 700,
-              fontSize: "clamp(2.5rem, 6vw, 4rem)",
-              lineHeight: "0.9",
-              letterSpacing: "-0.02em",
-              marginBottom: "2.25rem",
-            }}
-          >
-            Who We Are
-          </h2>
-          <div
-            style={{
-              fontFamily: "var(--font-alice), serif",
-              color: palette.white,
-              fontSize: "1.05rem",
-              lineHeight: "1.9",
-              opacity: 0.7,
-              maxWidth: "36rem",
-            }}
-          >
-            <p>
-              McMaster Advanced Space Systems (MASS) is a student-led team focused on
-              advancing space research and inspiring the next generation of engineers.
-              Founded in 2023, our team has successfully competed in competitions like
-              CAN-SBX and CAN-ARX, both hosted by SEDS Canada.
-            </p>
-            <p style={{ marginTop: "1.5rem" }}>
-              We look forward to building new projects, hosting outreach events, and
-              making McMaster proud!
-            </p>
-          </div>
-        </section>
 
         <div className="w-full pt-24 md:pt-32">
           <div className="mx-auto w-full max-w-7xl px-6">
