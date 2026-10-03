@@ -8,16 +8,35 @@ import Nav from "./nav";
 import Footer from "./footer";
 import background from "../public/background.jpg";
 
-const COMPETITIONS = [
+const DISPLAY = "var(--font-michroma), sans-serif";
+const MONO = "var(--font-space-mono), ui-monospace, monospace";
+const BODY =
+  '"Akzidenz-Grotesk", "Akzidenz-Grotesk Pro", var(--font-inter), "Helvetica Neue", Arial, sans-serif';
+
+const PROJECTS = [
   {
-    title: "CAN-SBX",
+    title: "Stellarscope",
+    status: "COMPLETE",
     description:
-      "SEDS Canada's stratospheric balloon experiment challenge. Teams design a payload that survives the ascent, collects data at altitude, and returns it intact.",
+      "Description.",
+    image: "/#",
+    href: "/#",
   },
   {
-    title: "CAN-ARX",
+    title: "StratoGene",
+    status: "COMPLETE",
     description:
-      "SEDS Canada's advanced rocketry experiment challenge, pairing an experimental payload with a launch vehicle and a full design-review process.",
+      "Description",
+    image: "/#",
+    href: "/#",
+  },
+  {
+    title: "SOLARIS",
+    status: "DEPLOYING",
+    description:
+      "Description",
+    image: "/background.jpg",
+    href: "/#",
   },
 ];
 
@@ -52,6 +71,7 @@ const STATS = [
   { value: "3+", label: "Years Building" },
 ];
 
+{/* Body of homepage */}
 export default function Home() {
   const palette = {
     black: "var(--mass-ink)",
@@ -81,6 +101,7 @@ export default function Home() {
       </div>
       <Nav />
 
+      {/* Title */}
       <section
         className="relative z-10 flex items-center justify-center px-6 pt-25 min-h-screen"
       >
@@ -93,7 +114,7 @@ export default function Home() {
               <span style={{ width: "2rem", height: "1px", backgroundColor: "var(--mass-highlight)" }} />
               <span
                 style={{
-                  fontFamily: "var(--font-julius-sans-one), sans-serif",
+                  fontFamily: MONO,
                   color: "var(--mass-highlight)",
                   fontSize: "0.65rem",
                   fontWeight: 600,
@@ -148,6 +169,8 @@ export default function Home() {
           >
             A student-run club building real projects in space, <br className="hidden sm:block" /> aerospace, and everything that supports them.
           </p>
+
+          {/* Buttons */}
           <div
             className="animate-fade-up flex flex-col items-center justify-center gap-4 sm:flex-row"
             style={{ animationDelay: "0.25s" }}
@@ -190,6 +213,7 @@ export default function Home() {
         style={{ backgroundColor: "rgba(16, 16, 16, 0.85)" }}
       >
 
+        {/* Stats bar */}
         <div className="mx-auto grid max-w-7xl grid-cols-2 sm:grid-cols-5">
           {STATS.map((stat, index) => (
             <div
@@ -202,7 +226,7 @@ export default function Home() {
             >
               <span
                 style={{
-                  fontFamily: "var(--font-archivo-narrow), sans-serif",
+                  fontFamily: MONO,
                   fontWeight: 700,
                   fontSize: "clamp(1.75rem, 4vw, 2.5rem)",
                   color: palette.white,
@@ -213,7 +237,7 @@ export default function Home() {
               </span>
               <span
                 style={{
-                  fontFamily: "var(--font-julius-sans-one), sans-serif",
+                  fontFamily: MONO,
                   fontSize: "0.65rem",
                   fontWeight: 600,
                   letterSpacing: "0.15em",
@@ -227,14 +251,13 @@ export default function Home() {
           ))}
         </div>
 
-
+        {/* Who we are description */}
         <section className="mx-auto w-full max-w-4xl px-6 pb-20 pt-20 text-center">
           <h2
             style={{
-              fontFamily: "var(--font-michroma), sans-serif",
+              fontFamily: "Michroma, sans-serif",
               color: palette.white,
-              fontWeight: 700,
-              fontSize: "clamp(2.75rem, 6vw, 4.5rem)",
+              fontSize: "clamp(1.75rem, 3.5vw, 2.5rem)",
               lineHeight: 1,
               letterSpacing: "-0.02em",
               marginBottom: "2.5rem",
@@ -244,7 +267,7 @@ export default function Home() {
           </h2>
           <div
             style={{
-              fontFamily: "var(--font-alice), serif",
+              fontFamily: BODY,
               color: palette.white,
               fontSize: "1.1rem",
               lineHeight: "1.9",
@@ -264,48 +287,34 @@ export default function Home() {
         </section>
 
 
+        {/* Pillar cards */}
         <div className="mx-auto grid max-w-7xl grid-cols-1 items-stretch gap-6 px-6 sm:grid-cols-2 lg:grid-cols-4">
           {PILLARS.map((pillar, index) => (
             <PillarCard key={pillar.title} pillar={pillar} index={index} />
           ))}
         </div>
 
-
+        {/* Our project cards */}
         <div className="w-full pt-24 md:pt-32">
           <div className="mx-auto w-full max-w-7xl px-6">
             <h2
               className="animate-fade-up text-left"
               style={{
-                fontFamily: "var(--font-archivo-narrow), sans-serif",
+                fontFamily: "Michroma, sans-serif",
                 color: palette.white,
-                fontWeight: 700,
-                fontSize: "clamp(2.5rem, 6vw, 4rem)",
+                fontSize: "clamp(1.75rem, 3.5vw, 2.5rem)",
                 lineHeight: "0.9",
                 letterSpacing: "-0.02em",
                 marginBottom: "2.25rem",
               }}
             >
-              Current Competitions
+              Our Projects
             </h2>
           </div>
 
-          <div className="mx-auto grid w-full max-w-7xl gap-8 px-6 pb-24 sm:grid-cols-2">
-            {COMPETITIONS.map((competition) => (
-              <Link
-                key={competition.title}
-                href="/competitions"
-                className="rounded-3xl border p-8 shadow-2xl transition-colors sm:p-10"
-                style={{
-                  backgroundColor: palette.white,
-                  borderColor: "#1050bf40",
-                  color: palette.black,
-                }}
-              >
-                <h3 className="mb-6 text-2xl font-semibold md:text-3xl">
-                  {competition.title}
-                </h3>
-                <p className="leading-7 text-slate-700">{competition.description}</p>
-              </Link>
+          <div className="mx-auto grid w-full max-w-7xl gap-8 px-6 pb-24 sm:grid-cols-2 lg:grid-cols-3">
+            {PROJECTS.map((project) => (
+              <ProjectCard key={project.title} project={project} />
             ))}
           </div>
         </div>
@@ -354,7 +363,71 @@ function PillarCard({
       >
         {pillar.title}
       </h3>
-      <p className="text-sm leading-6 text-slate-400">{pillar.body}</p>
+      <p
+        className="text-sm leading-6 text-slate-400"
+        style={{ fontFamily: BODY }}
+      >
+        {pillar.body}
+      </p>
     </div>
+  );
+}
+
+function ProjectCard({
+  project,
+}: {
+  project: (typeof PROJECTS)[number];
+}) {
+  const statusColors: Record<string, string> = {
+    COMPLETE: "rgba(20, 20, 20, 0.85)",
+    DEPLOYING: "rgba(20, 20, 20, 0.85)",
+    ACTIVE: "rgba(16, 80, 191, 0.85)",
+  };
+
+  return (
+    <Link
+      href={project.href}
+      className="group flex flex-col overflow-hidden rounded-2xl border transition-all duration-200 hover:-translate-y-1"
+      style={{
+        backgroundColor: "var(--mass-surface)",
+        borderColor: "rgba(255, 255, 255, 0.08)",
+      }}
+    >
+      <div className="relative h-56 w-full overflow-hidden">
+        <Image
+          src={project.image}
+          alt={project.title}
+          fill
+          sizes="(max-width: 768px) 100vw, 33vw"
+          className="object-cover transition-transform duration-300 group-hover:scale-105"
+        />
+        <span
+          className="absolute right-3 top-3 rounded-md px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-widest text-white backdrop-blur-sm"
+          style={{
+            backgroundColor: statusColors[project.status] ?? "rgba(20,20,20,0.85)",
+          }}
+        >
+          {project.status}
+        </span>
+      </div>
+
+      <div className="flex flex-1 flex-col gap-3 p-6">
+        <h3
+          className="text-xl font-semibold"
+          style={{ color: "var(--mass-paper)" }}
+        >
+          {project.title}
+        </h3>
+        <p className="flex-1 text-sm leading-6 text-slate-400">
+          {project.description}
+        </p>
+        <span
+          className="mt-2 text-xs font-semibold uppercase tracking-widest"
+          style={{ color: "var(--mass-highlight)" }}
+        >
+          View Specs →
+        </span>
+      </div>
+    </Link>
   );
 }
