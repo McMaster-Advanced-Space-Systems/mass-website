@@ -18,23 +18,23 @@ const PROJECTS = [
     title: "Stellarscope",
     status: "COMPLETE",
     description:
-      "Description.",
-    image: "/#",
+      "Building a network of ground-based radio telescopes that work together to image objects in deep space.",
+    image: "/background.jpg",
     href: "/#",
   },
   {
     title: "StratoGene",
     status: "COMPLETE",
     description:
-      "Description",
-    image: "/#",
+      "StratoGene Competition",
+    image: "/background.jpg",
     href: "/#",
   },
   {
     title: "SOLARIS",
     status: "DEPLOYING",
     description:
-      "Description",
+      "A high-altitude balloon payload that studies how the atmosphere affects laser signals used for satellite communication.",
     image: "/background.jpg",
     href: "/#",
   },
