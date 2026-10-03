@@ -47,6 +47,21 @@
   --mass-blue: #33386d;
   --mass-darkblue: #000649;
   --mass-darkblue-soft: #00064940; /* translucent card border */
+
+  /* MASS brand book colours (aligned to the deployed site palette) */
+  --brand-red: #bf472f;
+  --brand-blue: #1050bf;
+  --brand-yellow: #f7901f;
+  --brand-gray: #f5f5f5;
+  --brand-navy: #101010;
+
+  /* 2026 brand refresh — deployed site tokens (header-revision) */
+  --mass-ink: #101010; /* page background on dark surfaces */
+  --mass-paper: #f5f5f5; /* text on those surfaces */
+  --mass-primary: #1050bf;
+  --mass-secondary: #bf472f;
+  --mass-highlight: #f7901f;
+  --mass-surface: #1a1a1a; /* lifted card face */
 }
 
 @theme inline {
@@ -125,27 +140,29 @@ body {
 }
 }
 
-/* Contact page form inputs */
+/* Contact page form inputs — dark theme, matching the deployed site
+   (ink background, paper text, highlight focus). */
 .contact-input {
   display: block;
   width: 100%;
   background: transparent;
   border: none;
-  border-bottom: 1.5px solid rgba(1, 1, 9, 0.25);
+  border-bottom: 1.5px solid rgba(245, 245, 245, 0.25);
   padding: 0.5rem 0 0.7rem;
   outline: none;
-  font-family: var(--font-alice), Georgia, serif;
+  font-family: "Akzidenz-Grotesk", "Akzidenz-Grotesk Pro", var(--font-inter),
+    "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 1rem;
-  color: #010109;
+  color: var(--brand-gray);
   transition: border-color 0.2s ease;
 }
 
 .contact-input:focus {
-  border-color: #000649;
+  border-color: var(--brand-yellow);
 }
 
 .contact-input::placeholder {
-  color: rgba(1, 1, 9, 0.28);
+  color: rgba(245, 245, 245, 0.3);
 }
 
 textarea.contact-input {
