@@ -45,6 +45,13 @@
   --mass-white: #f2f2f0;
   --mass-darkblue: #000649;
 
+  /* MASS brand book colours, used by the contact page */
+  --brand-red: #bf472f;
+  --brand-blue: #1050bf;
+  --brand-yellow: #f7901f;
+  --brand-gray: #f5f5f5;
+  --brand-navy: #101010;
+
   /* 2026 brand refresh — homepage + nav only; the older vars above are still
      referenced by about/competitions/contact/our-team/footer. */
   --mass-ink: #101010; /* page background on dark surfaces */
@@ -124,30 +131,29 @@ h6 {
   }
 }
 
-/* Contact page form inputs — MASS branding standards 2025-2026.
-   Red is a decorative colour only, never a font colour, so an invalid field
-   is marked with a red rule while the message itself stays Dark Azure. */
+/* Contact page form inputs — dark theme, matching the deployed site
+   (ink background, paper text, highlight focus). */
 .contact-input {
   display: block;
   width: 100%;
   background: transparent;
   border: none;
-  border-bottom: 1.5px solid rgba(16, 16, 16, 0.25);
+  border-bottom: 1.5px solid rgba(245, 245, 245, 0.25);
   padding: 0.5rem 0 0.7rem;
   outline: none;
   font-family: "Akzidenz-Grotesk", "Akzidenz-Grotesk Pro", var(--font-inter),
     "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 1rem;
-  color: #101010;
+  color: var(--brand-gray);
   transition: border-color 0.2s ease;
 }
 
 .contact-input:focus {
-  border-color: #1050bf;
+  border-color: var(--brand-yellow);
 }
 
 .contact-input::placeholder {
-  color: rgba(16, 16, 16, 0.28);
+  color: rgba(245, 245, 245, 0.3);
 }
 
 textarea.contact-input {
