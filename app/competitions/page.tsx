@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Nav from "../nav";
 import Footer from "../footer";
+import CompetitionTimeline from "./timeline";
+import { COMPETITIONS } from "./data";
 
 export const metadata: Metadata = {
   title: "Competitions — McMaster Advanced Space Systems",
@@ -9,69 +11,66 @@ export const metadata: Metadata = {
 };
 
 export default function CompetitionsPage() {
+  const current = COMPETITIONS.filter((c) => c.status === "current");
+  const past = COMPETITIONS.filter((c) => c.status === "past");
+
   return (
-    <div style={{ minHeight: "100vh", backgroundColor: "var(--mass-black)" }}>
+    <div
+      className="flex min-h-screen flex-col"
+      style={{ backgroundColor: "var(--mass-ink)" }}
+    >
       <Nav />
 
-      <main className="mx-auto w-full max-w-3xl px-6 pt-24 pb-16 sm:pt-32 sm:pb-24">
-        <h1
-          className="animate-fade-up text-4xl font-semibold text-white sm:text-5xl"
-          style={{ animationDelay: "0.05s" }}
-        >
-          Competitions
-        </h1>
+      <header
+        className="px-8 pt-52 pb-6"
+        style={{ backgroundColor: "var(--mass-ink)" }}
+      >
+        <div className="mx-auto w-full max-w-7xl">
+          <h1
+            className="animate-fade-up mb-9 text-4xl font-semibold sm:text-5xl"
+            style={{ color: "var(--mass-paper)", animationDelay: "0.05s" }}
+          >
+            Projects
+          </h1>
+          <div
+            style={{
+              width: "4.5rem",
+              height: "3px",
+              backgroundColor: "var(--mass-primary)",
+            }}
+          />
+        </div>
+      </header>
+
+      <main className="flex-1 px-8 pt-6 pb-16 sm:pb-24">
+        <div className="mx-auto w-full max-w-7xl">
         <p
-          className="animate-fade-up mt-4 text-lg leading-7 text-slate-400"
+          className="animate-fade-up text-xl leading-9 text-slate-300 sm:text-2xl"
           style={{ animationDelay: "0.12s" }}
         >
-          Filler intro text. A short overview of the competitions MASS takes
-          part in goes here.
+          intro text
         </p>
 
-        <article
-          className="animate-fade-up mt-14"
-          style={{ animationDelay: "0.2s" }}
-        >
-          <h2 className="text-2xl font-semibold text-white sm:text-3xl">
-            CAN-SBX
+        <section className="mt-20">
+          <h2
+            className="animate-fade-up text-3xl font-semibold sm:text-4xl"
+            style={{ color: "var(--mass-paper)", animationDelay: "0.2s" }}
+          >
+            Ongoing
           </h2>
-          <div className="mt-5 space-y-5 text-base leading-8 text-slate-200">
-            <p>
-              Filler text. CAN-SBX (Canadian Stratospheric Balloon Experiment)
-              tasks student teams with designing, building, and operating a
-              science payload that survives and performs in near-space
-              conditions. This is placeholder copy describing the competition at
-              a high level.
-            </p>
-            <p>
-              Filler text. Replace this paragraph with our objectives, the
-              systems we are building, and how each sub-team contributes.
-              Placeholder content until the real write-up is ready.
-            </p>
-          </div>
-        </article>
+          <CompetitionTimeline items={current} />
+        </section>
 
-        <hr className="my-12 border-white/10" />
-
-        <article
-          className="animate-fade-up"
-          style={{ animationDelay: "0.28s" }}
-        >
-          <h2 className="text-2xl font-semibold text-white sm:text-3xl">
-            Star Comp
+        <section className="mt-24">
+          <h2
+            className="animate-fade-up text-3xl font-semibold sm:text-4xl"
+            style={{ color: "var(--mass-paper)", animationDelay: "0.2s" }}
+          >
+            Past
           </h2>
-          <div className="mt-5 space-y-5 text-base leading-8 text-slate-200">
-            <p>
-              Filler text. Star Comp is a placeholder entry for now. This
-              paragraph will introduce the competition, its goals, and why MASS
-              is taking part.
-            </p>
-            <p>
-              Filler text. Add specifics on timelines, deliverables, and the
-              team&apos;s approach here once they are confirmed.
-            </p>
-          </div>
-        </article>
+          <CompetitionTimeline items={past} />
+        </section>
+        </div>
       </main>
 
       <Footer />
