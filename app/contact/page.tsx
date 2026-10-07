@@ -5,28 +5,33 @@ import Link from "next/link";
 import Nav from "../nav";
 import Footer from "../footer";
 
-type InquiryType = "sponsorship" | "outreach" | "general" | "";
+type InquiryType = "sponsorship" | "outreach" | "general" | "join" | "";
 
 const INQUIRY_OPTIONS = [
   { value: "sponsorship", label: "Sponsorship" },
-  { value: "outreach", label: "Outreach" },
-  { value: "general", label: "General" },
+  { value: "outreach",    label: "Outreach"    },
+  { value: "general",     label: "General"     },
+  { value: "join",        label: "Join Us"     },
 ] as const;
 
+const BODY_FONT =
+  '"Akzidenz-Grotesk", "Akzidenz-Grotesk Pro", var(--font-inter), "Helvetica Neue", Arial, sans-serif';
+
 const FIELD_LABEL: React.CSSProperties = {
-  fontFamily: "var(--font-archivo-narrow), sans-serif",
+  fontFamily: "var(--font-space-mono), ui-monospace, monospace",
   fontSize: "0.65rem",
   letterSpacing: "0.2em",
-  color: "#010109",
-  fontWeight: 600,
+  color: "rgba(245,245,245,0.55)",
   display: "block",
   marginBottom: "0.55rem",
 };
 
 const FIELD_ERROR: React.CSSProperties = {
-  fontFamily: "var(--font-alice), serif",
+  fontFamily: BODY_FONT,
   fontSize: "0.8rem",
-  color: "#F63D68",
+  color: "var(--brand-gray)",
+  borderLeft: "2px solid var(--brand-red)",
+  paddingLeft: "0.5rem",
   marginTop: "0.4rem",
   display: "block",
 };
@@ -46,7 +51,6 @@ export default function ContactPage() {
     email?: string;
     message?: string;
   }>({});
-  const [mobileOpen, setMobileOpen] = useState(false);
 
   function validate() {
     const e: typeof errors = {};
@@ -116,31 +120,37 @@ export default function ContactPage() {
   return (
     <>
       <style>{`
-        .contact-btn-submit:hover:not(:disabled) { background-color: #3335e0; }
-        .contact-btn-submit:focus-visible { outline: 2px solid #000649; outline-offset: 3px; }
-        .contact-pill:focus-visible { outline: 2px solid #000649; outline-offset: 2px; }
-        .contact-input[aria-invalid="true"] { border-bottom-color: #F63D68; }
-        .contact-input[aria-invalid="true"]:focus { border-color: #F63D68; }
+        .contact-btn-submit:hover:not(:disabled) { background-color: color-mix(in srgb, var(--brand-yellow) 80%, white); }
+        .contact-btn-submit:focus-visible { outline: 2px solid var(--brand-yellow); outline-offset: 3px; }
+        .contact-pill:focus-visible { outline: 2px solid var(--brand-yellow); outline-offset: 2px; }
+        .contact-input[aria-invalid="true"] { border-bottom-color: var(--brand-red); }
+        .contact-input[aria-invalid="true"]:focus { border-color: var(--brand-red); }
         @media (prefers-reduced-motion: reduce) {
           .contact-btn-submit, .contact-pill { transition: none; }
         }
       `}</style>
 
-      <div style={{ minHeight: "100vh", backgroundColor: "#F2F2F0" }}>
+      <div style={{ minHeight: "100vh", backgroundColor: "var(--brand-navy)" }}>
         <Nav />
 
         {/* Page header */}
         <header
-          style={{ backgroundColor: "#010109", padding: "5.5rem 2rem 5rem" }}
+          style={{
+            backgroundColor: "var(--brand-navy)",
+            color: "var(--brand-gray)",
+            padding: "8rem 1.5rem 5.5rem",
+            position: "relative",
+            overflow: "hidden",
+          }}
         >
-          <div style={{ maxWidth: "80rem", margin: "0 auto" }}>
+          <div style={{ maxWidth: "80rem", margin: "0 auto", position: "relative" }}>
             <p
               style={{
-                fontFamily: "var(--font-julius-sans-one), sans-serif",
-                color: "#8083a4",
+                fontFamily: "var(--font-space-mono), ui-monospace, monospace",
                 fontSize: "0.65rem",
                 letterSpacing: "0.3em",
-                marginBottom: "1.75rem",
+                color: "rgba(245,245,245,0.45)",
+                marginBottom: "2rem",
               }}
             >
               MCMASTER ADVANCED SPACE SYSTEMS
@@ -148,25 +158,23 @@ export default function ContactPage() {
 
             <h1
               style={{
-                fontFamily: "var(--font-archivo-narrow), sans-serif",
-                color: "#F2F2F0",
-                fontWeight: 700,
-                fontSize: "clamp(4rem, 11vw, 9rem)",
-                lineHeight: "0.9",
-                letterSpacing: "-0.02em",
+                fontFamily: "var(--font-michroma), sans-serif",
+                fontSize: "clamp(2.25rem, 7vw, 4.75rem)",
+                lineHeight: 1.1,
+                letterSpacing: "-0.01em",
                 marginBottom: "2.25rem",
               }}
             >
-              Contact
+              Contact the
               <br />
-              the Team.
+              <span style={{ color: "var(--brand-yellow)" }}>Team.</span>
             </h1>
 
             <div
               style={{
                 width: "4.5rem",
                 height: "3px",
-                backgroundColor: "#8083a4",
+                backgroundColor: "var(--brand-yellow)",
               }}
             />
           </div>
@@ -180,23 +188,23 @@ export default function ContactPage() {
           {/* Form column */}
           <div
             className="md:border-r"
-            style={{ padding: "4rem 2rem", borderColor: "rgba(1,1,9,0.1)" }}
+            style={{ padding: "4rem 2rem", borderColor: "rgba(245,245,245,0.12)" }}
           >
             <div style={{ maxWidth: "36rem" }}>
               <p
                 style={{
-                  fontFamily: "var(--font-alice), serif",
-                  color: "#010109",
+                  fontFamily: BODY_FONT,
+                  color: "var(--brand-gray)",
                   fontSize: "1.05rem",
-                  lineHeight: "1.9",
-                  opacity: 0.7,
+                  lineHeight: 1.9,
+                  opacity: 0.78,
                   marginBottom: "3rem",
                 }}
               >
                 Whether you represent a company interested in sponsoring our
-                research, a school looking to arrange an outreach visit, or are
-                simply curious about what we&rsquo;re building, we&rsquo;d love
-                to hear from you.
+                research, a school looking to arrange an outreach visit, a
+                student hoping to join the team, or are simply curious about
+                what we&rsquo;re building: we&rsquo;d love to hear from you.
               </p>
 
               {/* Success state */}
@@ -206,16 +214,15 @@ export default function ContactPage() {
                     style={{
                       width: "3rem",
                       height: "3px",
-                      backgroundColor: "#000649",
+                      backgroundColor: "var(--brand-yellow)",
                       marginBottom: "2rem",
                     }}
                   />
                   <p
                     style={{
-                      fontFamily: "var(--font-archivo-narrow), sans-serif",
-                      fontSize: "2rem",
-                      fontWeight: 700,
-                      color: "#010109",
+                      fontFamily: "var(--font-michroma), sans-serif",
+                      fontSize: "1.6rem",
+                      color: "var(--brand-gray)",
                       marginBottom: "0.75rem",
                       letterSpacing: "-0.01em",
                     }}
@@ -224,10 +231,10 @@ export default function ContactPage() {
                   </p>
                   <p
                     style={{
-                      fontFamily: "var(--font-alice), serif",
-                      color: "#010109",
-                      opacity: 0.55,
-                      lineHeight: "1.75",
+                      fontFamily: BODY_FONT,
+                      color: "var(--brand-gray)",
+                      opacity: 0.8,
+                      lineHeight: 1.75,
                       marginBottom: "2.5rem",
                     }}
                   >
@@ -236,10 +243,11 @@ export default function ContactPage() {
                   <button
                     onClick={resetForm}
                     style={{
-                      fontFamily: "var(--font-archivo-narrow), sans-serif",
+                      fontFamily: "var(--font-space-mono), ui-monospace, monospace",
                       fontSize: "0.72rem",
                       letterSpacing: "0.14em",
-                      color: "#000649",
+                      color: "var(--brand-gray)",
+                      textDecorationColor: "var(--brand-yellow)",
                       background: "none",
                       border: "none",
                       cursor: "pointer",
@@ -336,16 +344,16 @@ export default function ContactPage() {
                             className="contact-pill"
                             style={{
                               fontFamily:
-                                "var(--font-archivo-narrow), sans-serif",
-                              fontSize: "0.7rem",
+                                "var(--font-space-mono), ui-monospace, monospace",
+                              fontSize: "0.65rem",
                               letterSpacing: "0.1em",
-                              fontWeight: 500,
+                              fontWeight: 700,
                               padding: "0.45rem 1.1rem",
-                              border: `1.5px solid ${active ? "#000649" : "rgba(1,1,9,0.22)"}`,
+                              border: `1.5px solid ${active ? "var(--brand-yellow)" : "rgba(245,245,245,0.25)"}`,
                               backgroundColor: active
-                                ? "#000649"
+                                ? "rgba(247,144,31,0.1)"
                                 : "transparent",
-                              color: active ? "#F2F2F0" : "#010109",
+                              color: active ? "var(--brand-yellow)" : "rgba(245,245,245,0.7)",
                               cursor: "pointer",
                               transition: "all 0.15s ease",
                             }}
@@ -397,16 +405,17 @@ export default function ContactPage() {
                       disabled={status === "sending"}
                       className="contact-btn-submit"
                       style={{
-                        fontFamily: "var(--font-archivo-narrow), sans-serif",
+                        fontFamily:
+                          "var(--font-space-mono), ui-monospace, monospace",
                         fontWeight: 700,
-                        fontSize: "0.78rem",
+                        fontSize: "0.7rem",
                         letterSpacing: "0.12em",
                         padding: "0.9rem 2.25rem",
                         backgroundColor:
                           status === "sending"
-                            ? "rgba(70,72,255,0.55)"
-                            : "#000649",
-                        color: "#F2F2F0",
+                            ? "rgba(247,144,31,0.55)"
+                            : "var(--brand-yellow)",
+                        color: "var(--brand-navy)",
                         border: "none",
                         cursor:
                           status === "sending" ? "not-allowed" : "pointer",
@@ -420,8 +429,10 @@ export default function ContactPage() {
                       <p
                         role="alert"
                         style={{
-                          fontFamily: "var(--font-alice), serif",
-                          color: "#F63D68",
+                          fontFamily: BODY_FONT,
+                          color: "var(--brand-gray)",
+                          borderLeft: "2px solid var(--brand-red)",
+                          paddingLeft: "0.5rem",
                           fontSize: "0.9rem",
                         }}
                       >
@@ -437,15 +448,18 @@ export default function ContactPage() {
           {/* Info panel */}
           <div
             className="md:sticky md:top-16 md:self-start"
-            style={{ backgroundColor: "#000649", padding: "4rem 2.5rem" }}
+            style={{
+              backgroundColor: "var(--mass-surface)",
+              border: "1px solid rgba(245,245,245,0.1)",
+              padding: "4rem 2.5rem",
+            }}
           >
             <p
               style={{
-                fontFamily: "var(--font-julius-sans-one), sans-serif",
-                color: "#F2F2F0",
+                fontFamily: "var(--font-space-mono), ui-monospace, monospace",
+                color: "rgba(245,245,245,0.45)",
                 fontSize: "0.6rem",
                 letterSpacing: "0.3em",
-                opacity: 0.5,
                 marginBottom: "2.5rem",
               }}
             >
@@ -454,11 +468,10 @@ export default function ContactPage() {
 
             <h2
               style={{
-                fontFamily: "var(--font-archivo-narrow), sans-serif",
-                color: "#F2F2F0",
-                fontWeight: 700,
-                fontSize: "1.85rem",
-                lineHeight: "1.15",
+                fontFamily: "var(--font-michroma), sans-serif",
+                color: "var(--brand-gray)",
+                fontSize: "1.5rem",
+                lineHeight: 1.2,
                 letterSpacing: "-0.01em",
                 marginBottom: "1.25rem",
               }}
@@ -468,23 +481,23 @@ export default function ContactPage() {
 
             <p
               style={{
-                fontFamily: "var(--font-alice), serif",
-                color: "#F2F2F0",
+                fontFamily: BODY_FONT,
+                color: "var(--brand-gray)",
                 fontSize: "0.95rem",
-                lineHeight: "1.85",
-                opacity: 0.82,
+                lineHeight: 1.85,
+                opacity: 0.8,
                 marginBottom: "3rem",
               }}
             >
               We&rsquo;re always open to conversations with sponsors, educators,
-              and curious minds. Whether it&rsquo;s a funding discussion, a
-              classroom visit, or just a question about our experiment: reach
-              out.
+              curious minds, and future members. Whether it&rsquo;s a funding
+              discussion, a classroom visit, a question about our experiment, or
+              a desire to join the team: reach out.
             </p>
 
             <div
               style={{
-                borderTop: "1px solid rgba(242,242,240,0.2)",
+                borderTop: "1px solid rgba(245,245,245,0.12)",
                 paddingTop: "2.25rem",
                 display: "flex",
                 flexDirection: "column",
@@ -494,11 +507,52 @@ export default function ContactPage() {
               <div>
                 <p
                   style={{
-                    fontFamily: "var(--font-archivo-narrow), sans-serif",
-                    color: "#F2F2F0",
+                    fontFamily: "var(--font-space-mono), ui-monospace, monospace",
+                    color: "rgba(245,245,245,0.45)",
                     fontSize: "0.6rem",
                     letterSpacing: "0.22em",
-                    opacity: 0.5,
+                    marginBottom: "0.35rem",
+                  }}
+                >
+                  JOIN US
+                </p>
+                <p
+                  style={{
+                    fontFamily: BODY_FONT,
+                    color: "var(--brand-gray)",
+                    fontSize: "0.92rem",
+                    lineHeight: 1.65,
+                    opacity: 0.8,
+                    marginBottom: "0.6rem",
+                  }}
+                >
+                  Want to get involved? Select &ldquo;Join Us&rdquo; in the form
+                  above, or see open roles across our subteams.
+                </p>
+                <Link
+                  href="/recruitment"
+                  style={{
+                    fontFamily: "var(--font-space-mono), ui-monospace, monospace",
+                    fontSize: "0.7rem",
+                    letterSpacing: "0.14em",
+                    fontWeight: 700,
+                    color: "var(--brand-yellow)",
+                    borderBottom: "1px solid var(--brand-yellow)",
+                    paddingBottom: "2px",
+                    textDecoration: "none",
+                  }}
+                >
+                  VIEW OPEN ROLES →
+                </Link>
+              </div>
+
+              <div>
+                <p
+                  style={{
+                    fontFamily: "var(--font-space-mono), ui-monospace, monospace",
+                    color: "rgba(245,245,245,0.45)",
+                    fontSize: "0.6rem",
+                    letterSpacing: "0.22em",
                     marginBottom: "0.35rem",
                   }}
                 >
@@ -507,11 +561,11 @@ export default function ContactPage() {
                 <a
                   href="mailto:mass@mcmaster.ca"
                   style={{
-                    fontFamily: "var(--font-alice), serif",
-                    color: "#F2F2F0",
+                    fontFamily: BODY_FONT,
+                    color: "var(--brand-gray)",
                     fontSize: "0.92rem",
                     textDecoration: "underline",
-                    textDecorationColor: "rgba(242,242,240,0.35)",
+                    textDecorationColor: "rgba(245,245,245,0.35)",
                     textUnderlineOffset: "3px",
                   }}
                 >
@@ -522,11 +576,10 @@ export default function ContactPage() {
               <div>
                 <p
                   style={{
-                    fontFamily: "var(--font-archivo-narrow), sans-serif",
-                    color: "#F2F2F0",
+                    fontFamily: "var(--font-space-mono), ui-monospace, monospace",
+                    color: "rgba(245,245,245,0.45)",
                     fontSize: "0.6rem",
                     letterSpacing: "0.22em",
-                    opacity: 0.5,
                     marginBottom: "0.35rem",
                   }}
                 >
@@ -534,10 +587,10 @@ export default function ContactPage() {
                 </p>
                 <p
                   style={{
-                    fontFamily: "var(--font-alice), serif",
-                    color: "#F2F2F0",
+                    fontFamily: BODY_FONT,
+                    color: "var(--brand-gray)",
                     fontSize: "0.92rem",
-                    lineHeight: "1.65",
+                    lineHeight: 1.65,
                   }}
                 >
                   McMaster University
@@ -549,11 +602,10 @@ export default function ContactPage() {
               <div>
                 <p
                   style={{
-                    fontFamily: "var(--font-archivo-narrow), sans-serif",
-                    color: "#F2F2F0",
+                    fontFamily: "var(--font-space-mono), ui-monospace, monospace",
+                    color: "rgba(245,245,245,0.45)",
                     fontSize: "0.6rem",
                     letterSpacing: "0.22em",
-                    opacity: 0.5,
                     marginBottom: "0.35rem",
                   }}
                 >
@@ -561,11 +613,11 @@ export default function ContactPage() {
                 </p>
                 <p
                   style={{
-                    fontFamily: "var(--font-alice), serif",
-                    color: "#F2F2F0",
+                    fontFamily: BODY_FONT,
+                    color: "var(--brand-gray)",
                     fontSize: "0.92rem",
-                    lineHeight: "1.65",
-                    opacity: 0.82,
+                    lineHeight: 1.65,
+                    opacity: 0.8,
                   }}
                 >
                   Available for school visits and community events. Select

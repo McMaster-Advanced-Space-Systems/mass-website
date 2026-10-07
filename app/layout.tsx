@@ -51,6 +51,18 @@ const jetbrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains-mono",
 });
 
+const michroma = Michroma({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-michroma",
+});
+
+const spaceMono = Space_Mono({
+  weight: ["400", "700"],
+  subsets: ["latin"],
+  variable: "--font-space-mono",
+});
+
 export const metadata: Metadata = {
   title: "McMaster Advanced Space Systems",
   description:
@@ -70,7 +82,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${hankenGrotesk.variable} ${spaceGrotesk.variable} ${alice.variable} ${archivoNarrow.variable} ${juliusSansOne.variable} antialiased`}>
+      <body className={`${hankenGrotesk.variable} ${spaceGrotesk.variable} ${alice.variable} ${archivoNarrow.variable} ${juliusSansOne.variable} ${michroma.variable} ${spaceMono.variable} antialiased`}>
         {children}
       </body>
     </html>
