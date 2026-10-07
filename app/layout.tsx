@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Michroma, Archivo_Narrow, Alice, Julius_Sans_One, Space_Grotesk, Hanken_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Michroma, Archivo_Narrow, Alice, Julius_Sans_One, Space_Grotesk, Hanken_Grotesk, Inter, JetBrains_Mono, Space_Mono } from "next/font/google";
 import "./globals.css";
 
 const archivoNarrow = Archivo_Narrow({
@@ -49,12 +49,6 @@ const jetbrainsMono = JetBrains_Mono({
   weight: ["400", "500"],
   subsets: ["latin"],
   variable: "--font-jetbrains-mono",
-});
-
-const michroma = Michroma({
-  weight: "400",
-  subsets: ["latin"],
-  variable: "--font-michroma",
 });
 
 const spaceMono = Space_Mono({
