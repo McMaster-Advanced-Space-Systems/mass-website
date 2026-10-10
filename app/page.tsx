@@ -8,7 +8,7 @@ import Nav from "./nav";
 import Footer from "./footer";
 import HeroBackground from "./hero-background";
 
-const COMPETITIONS = [
+const PROJECTS = [
   {
     title: "CAN-SBX",
     description:
@@ -34,8 +34,8 @@ const PILLARS = [
   },
   {
     icon: FaTrophy,
-    title: "Competition",
-    body: "Competing annually in CAN-SBX and CAN-ARX, both hosted by SEDS Canada",
+    title: "Projects",
+    body: "Building advanced payloads for CAN-SBX and CAN-ARX, hosted by SEDS Canada",
   },
   {
     icon: FaHandshake,
@@ -143,8 +143,8 @@ export default function Home() {
             <p>
               McMaster Advanced Space Systems (MASS) is a student-led team focused on
               advancing space research and inspiring the next generation of engineers.
-              Founded in 2023, our team has successfully competed in competitions like
-              CAN-SBX and CAN-ARX, both hosted by SEDS Canada.
+              Founded in 2023, our projects have taken part in challenges such as
+              CAN-SBX and CAN-ARX, hosted by SEDS Canada.
             </p>
             <p style={{ marginTop: "1.5rem" }}>
               We look forward to building new projects, hosting outreach events, and
@@ -167,15 +167,15 @@ export default function Home() {
                 marginBottom: "2.25rem",
               }}
             >
-              Current Competitions
+              Current Projects
             </h2>
           </div>
 
           <div className="mx-auto grid w-full max-w-7xl gap-8 px-6 pb-24 sm:grid-cols-2">
-            {COMPETITIONS.map((competition) => (
+            {PROJECTS.map((project) => (
               <Link
-                key={competition.title}
-                href="/competitions"
+                key={project.title}
+                href="/projects"
                 className="rounded-3xl border p-8 shadow-2xl transition-colors sm:p-10"
                 style={{
                   backgroundColor: palette.white,
@@ -184,9 +184,9 @@ export default function Home() {
                 }}
               >
                 <h3 className="mb-6 text-2xl font-semibold md:text-3xl">
-                  {competition.title}
+                  {project.title}
                 </h3>
-                <p className="leading-7 text-slate-700">{competition.description}</p>
+                <p className="leading-7 text-slate-700">{project.description}</p>
               </Link>
             ))}
           </div>

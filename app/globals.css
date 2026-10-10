@@ -9,8 +9,8 @@
   --mass-white: #f2f2f0;
   --mass-darkblue: #000649;
 
-  /* 2026 brand refresh — homepage + nav only; the older vars above are still
-     referenced by about/competitions/contact/our-team/footer. */
+    /* 2026 brand refresh — homepage + nav only; the older vars above are still
+      referenced by about/projects/contact/our-team/footer. */
   --mass-ink: #101010; /* page background on dark surfaces */
   --mass-paper: #f5f5f5; /* text on those surfaces */
   --mass-primary: #1050bf;

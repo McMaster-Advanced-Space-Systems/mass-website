@@ -31,8 +31,8 @@ export default function AboutPage() {
           <p>
             McMaster Advanced Space Systems (MASS) is a student-led team focused on
             advancing space research and inspiring the next generation of engineers.
-            Founded in 2023, our team has successfully competed in competitions like
-            CAN-SBX and CAN-ARX, both hosted by SEDS Canada.
+            Founded in 2023, our projects have taken part in challenges such as
+            CAN-SBX and CAN-ARX, hosted by SEDS Canada.
           </p>
           <p>
             We look forward to building new projects, hosting outreach events, and
