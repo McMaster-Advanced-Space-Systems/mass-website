@@ -8,11 +8,6 @@ import Nav from "./nav";
 import Footer from "./footer";
 import background from "../public/background.jpg";
 
-const DISPLAY = "var(--font-michroma), sans-serif";
-const MONO = "var(--font-space-mono), ui-monospace, monospace";
-const BODY =
-  '"Akzidenz-Grotesk", "Akzidenz-Grotesk Pro", var(--font-inter), "Helvetica Neue", Arial, sans-serif';
-
 const PROJECTS = [
   {
     title: "Stellarscope",
@@ -53,8 +48,8 @@ const PILLARS = [
   },
   {
     icon: FaTrophy,
-    title: "Competition",
-    body: "Competing annually in CAN-SBX and CAN-ARX, both hosted by SEDS Canada",
+    title: "Projects",
+    body: "Building advanced payloads for CAN-SBX and CAN-ARX, hosted by SEDS Canada",
   },
   {
     icon: FaHandshake,
@@ -275,8 +270,10 @@ export default function Home() {
             }}
           >
             <p>
-              McMaster Advanced Space Systems is a student-led team advancing space
-              research while inspiring the next generation of engineers.
+              McMaster Advanced Space Systems (MASS) is a student-led team focused on
+              advancing space research and inspiring the next generation of engineers.
+              Founded in 2023, our projects have taken part in challenges such as
+              CAN-SBX and CAN-ARX, hosted by SEDS Canada.
             </p>
             <p style={{ marginTop: "1.5rem" }}>
               Since 2023, our members have competed in CAN-SBX and CAN-ARX,
@@ -308,13 +305,27 @@ export default function Home() {
                 marginBottom: "2.25rem",
               }}
             >
-              Our Projects
+              Current Projects
             </h2>
           </div>
 
-          <div className="mx-auto grid w-full max-w-7xl gap-8 px-6 pb-24 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mx-auto grid w-full max-w-7xl gap-8 px-6 pb-24 sm:grid-cols-2">
             {PROJECTS.map((project) => (
-              <ProjectCard key={project.title} project={project} />
+              <Link
+                key={project.title}
+                href="/projects"
+                className="rounded-3xl border p-8 shadow-2xl transition-colors sm:p-10"
+                style={{
+                  backgroundColor: palette.white,
+                  borderColor: "#1050bf40",
+                  color: palette.black,
+                }}
+              >
+                <h3 className="mb-6 text-2xl font-semibold md:text-3xl">
+                  {project.title}
+                </h3>
+                <p className="leading-7 text-slate-700">{project.description}</p>
+              </Link>
             ))}
           </div>
         </div>

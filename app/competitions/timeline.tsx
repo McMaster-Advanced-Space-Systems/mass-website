@@ -1,19 +1,19 @@
 import Link from "next/link";
-import type { Competition } from "./data";
+import type { Project } from "./data";
 
-export default function CompetitionTimeline({
+export default function ProjectTimeline({
   items,
 }: {
-  items: Competition[];
+  items: Project[];
 }) {
   return (
     <ol
       className="mt-8 flex flex-col gap-14 pl-8"
       style={{ borderLeft: "3px solid rgba(245, 245, 245, 0.15)" }}
     >
-      {items.map((competition, index) => (
+      {items.map((project, index) => (
         <li
-          key={competition.slug}
+          key={project.slug}
           className="animate-fade-up relative"
           style={{ animationDelay: `${0.28 + index * 0.08}s` }}
         >
@@ -35,41 +35,41 @@ export default function CompetitionTimeline({
               color: "#8083a4",
             }}
           >
-            {competition.years}
+            {project.years}
           </p>
           <h3
             className="mt-2 text-2xl font-semibold sm:text-3xl"
             style={{ color: "var(--mass-paper)" }}
           >
-            {competition.name}
+            {project.name}
           </h3>
           <p className="mt-3 text-lg leading-8 text-slate-400">
-            {competition.blurb}
+            {project.blurb}
           </p>
 
           <div className="space-y-4 pt-5 text-lg leading-9 text-slate-300">
-            {competition.details.map((paragraph) => (
+            {project.details.map((paragraph) => (
               <p key={paragraph.slice(0, 32)}>{paragraph}</p>
             ))}
           </div>
 
           <dl className="mt-6 flex flex-wrap gap-x-10 gap-y-3">
-            <Meta label="YEARS" value={competition.years} />
+            <Meta label="YEARS" value={project.years} />
             <Meta
               label="STATUS"
-              value={competition.status === "current" ? "Active" : "Completed"}
+              value={project.status === "current" ? "Active" : "Completed"}
             />
-            {competition.result && (
+            {project.result && (
               <Meta
                 label="RESULT"
-                value={competition.result}
+                value={project.result}
                 valueColor="var(--mass-secondary)"
               />
             )}
           </dl>
 
           <Link
-            href={`/competitions/${competition.slug}`}
+            href={`/projects/${project.slug}`}
             className="mt-7 inline-flex min-h-11 items-center gap-2 rounded-xl px-5 py-2.5 text-base font-semibold text-white transition-colors duration-200 hover:brightness-110"
             style={{ backgroundColor: "var(--mass-primary)" }}
           >

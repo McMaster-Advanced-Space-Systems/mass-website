@@ -1,4 +1,4 @@
-export type Competition = {
+export type Project = {
   slug: string;
   name: string;
   years: string;
@@ -36,7 +36,7 @@ const FILLER_RESULTS = [
 ];
 
 // One list, split by `status` — so the two sections can never drift apart.
-export const COMPETITIONS: Competition[] = [
+export const PROJECTS: Project[] = [
   {
     slug: "can-sbx",
     name: "CAN-SBX",
@@ -61,7 +61,7 @@ export const COMPETITIONS: Competition[] = [
       "SEDS Canada's advanced rocketry experiment challenge, pairing an experimental payload with a launch vehicle and a full design-review process.",
     status: "current",
     details: [
-      "Filler text. Describe the payload and the launch vehicle pairing, plus the design-review cadence the competition requires.",
+      "Filler text. Describe the payload and the launch vehicle pairing, plus the design-review cadence the challenge requires.",
       "Filler text. Add objectives, deliverables, and the team's approach once confirmed.",
     ],
     currentPhase: 1,
@@ -73,7 +73,7 @@ export const COMPETITIONS: Competition[] = [
     slug: "comp-3",
     name: "Comp 3",
     years: "2025–2026",
-    blurb: "Filler text. Replace with a one-line summary of this competition.",
+    blurb: "Filler text. Replace with a one-line summary of this project.",
     status: "past",
     details: [
       "Filler text. Replace with the full write-up: what MASS built, how it performed, and what the team took away from it.",
@@ -87,7 +87,7 @@ export const COMPETITIONS: Competition[] = [
     slug: "comp-4",
     name: "Comp 4",
     years: "2024–2025",
-    blurb: "Filler text. Replace with a one-line summary of this competition.",
+    blurb: "Filler text. Replace with a one-line summary of this project.",
     status: "past",
     details: [
       "Filler text. Replace with the full write-up: what MASS built, how it performed, and what the team took away from it.",

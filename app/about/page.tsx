@@ -138,9 +138,10 @@ export default function AboutPage() {
 
         <Chapter title="We're aiming higher every year.">
           <p>
-            We want MASS to be where McMaster students do meaningful aerospace
-            engineering: hands-on work that turns what they learn in class into
-            real experience.
+            McMaster Advanced Space Systems (MASS) is a student-led team focused on
+            advancing space research and inspiring the next generation of engineers.
+            Founded in 2023, our projects have taken part in challenges such as
+            CAN-SBX and CAN-ARX, hosted by SEDS Canada.
           </p>
           <p>
             That means taking on harder problems each year, growing what our

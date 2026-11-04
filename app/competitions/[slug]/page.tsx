@@ -4,20 +4,20 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import Nav from "../../nav";
 import Footer from "../../footer";
-import { COMPETITIONS } from "../data";
+import { PROJECTS } from "../data";
 import PhaseTimeline from "./phases";
 
 type Props = { params: Promise<{ slug: string }> };
 
 export function generateStaticParams() {
-  return COMPETITIONS.map((c) => ({ slug: c.slug }));
+  return PROJECTS.map((project) => ({ slug: project.slug }));
 }
 
 export const dynamicParams = false;
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const project = COMPETITIONS.find((c) => c.slug === slug);
+  const project = PROJECTS.find((item) => item.slug === slug);
   return {
     title: `${project?.name} — McMaster Advanced Space Systems`,
     description: project?.blurb,
@@ -37,7 +37,7 @@ function SectionHeading({ children }: { children: React.ReactNode }) {
 
 export default async function ProjectPage({ params }: Props) {
   const { slug } = await params;
-  const project = COMPETITIONS.find((c) => c.slug === slug);
+  const project = PROJECTS.find((item) => item.slug === slug);
   if (!project) notFound();
   const ongoing = project.status === "current";
 
@@ -148,7 +148,7 @@ export default async function ProjectPage({ params }: Props) {
           </section>
 
           <Link
-            href="/competitions"
+            href="/projects"
             className="mt-24 inline-flex min-h-11 items-center gap-2 rounded-xl border border-white/15 px-5 py-2.5 text-base font-semibold text-white transition-colors duration-200 hover:bg-white/5"
           >
             <span aria-hidden>←</span> Other projects

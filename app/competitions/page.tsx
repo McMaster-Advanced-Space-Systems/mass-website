@@ -1,18 +1,18 @@
 import type { Metadata } from "next";
 import Nav from "../nav";
 import Footer from "../footer";
-import CompetitionTimeline from "./timeline";
-import { COMPETITIONS } from "./data";
+import ProjectTimeline from "./timeline";
+import { PROJECTS } from "./data";
 
 export const metadata: Metadata = {
-  title: "Competitions — McMaster Advanced Space Systems",
+  title: "Projects — McMaster Advanced Space Systems",
   description:
-    "The engineering competitions McMaster Advanced Space Systems (MASS) designs, builds, and tests for.",
+    "The engineering projects McMaster Advanced Space Systems (MASS) designs, builds, and tests.",
 };
 
-export default function CompetitionsPage() {
-  const current = COMPETITIONS.filter((c) => c.status === "current");
-  const past = COMPETITIONS.filter((c) => c.status === "past");
+export default function ProjectsPage() {
+  const current = PROJECTS.filter((project) => project.status === "current");
+  const past = PROJECTS.filter((project) => project.status === "past");
 
   return (
     <div
@@ -56,9 +56,9 @@ export default function CompetitionsPage() {
             className="animate-fade-up text-3xl font-semibold sm:text-4xl"
             style={{ color: "var(--mass-paper)", animationDelay: "0.2s" }}
           >
-            Ongoing
+            Current
           </h2>
-          <CompetitionTimeline items={current} />
+          <ProjectTimeline items={current} />
         </section>
 
         <section className="mt-24">
@@ -68,7 +68,7 @@ export default function CompetitionsPage() {
           >
             Past
           </h2>
-          <CompetitionTimeline items={past} />
+          <ProjectTimeline items={past} />
         </section>
         </div>
       </main>
