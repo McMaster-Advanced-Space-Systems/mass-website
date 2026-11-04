@@ -1,23 +1,60 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Archivo_Narrow, Alice, Julius_Sans_One } from "next/font/google";
+import { Geist, Geist_Mono, Michroma, Archivo_Narrow, Alice, Julius_Sans_One, Space_Grotesk, Hanken_Grotesk, Inter, JetBrains_Mono, Space_Mono } from "next/font/google";
 import "./globals.css";
-
-const alice = Alice({
-  variable: "--font-alice",
-  weight: "400",
-  subsets: ["latin"],
-});
-
-const juliusSansOne = Julius_Sans_One({
-  variable: "--font-julius-sans-one",
-  weight: "400",
-  subsets: ["latin"],
-});
 
 const archivoNarrow = Archivo_Narrow({
   weight: ["400", "500", "600", "700"],
   subsets: ["latin"],
   variable: "--font-archivo-narrow",
+});
+
+
+const michroma = Michroma({
+  subsets: ["latin"],
+  weight: "400", // Michroma only ships in regular weight
+  variable: "--font-michroma",
+});
+
+const alice = Alice({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-alice",
+});
+
+const juliusSansOne = Julius_Sans_One({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-julius-sans-one",
+});
+
+const spaceGrotesk = Space_Grotesk({
+  weight: ["400", "500", "600", "700"],
+  subsets: ["latin"],
+  variable: "--font-space-grotesk",
+});
+
+const hankenGrotesk = Hanken_Grotesk({
+  weight: ["400", "500", "600"],
+  subsets: ["latin"],
+  variable: "--font-hanken-grotesk",
+});
+
+const inter = Inter({
+  weight: ["400", "500", "600", "700"],
+  subsets: ["latin"],
+  variable: "--font-inter",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  weight: ["400", "500"],
+  subsets: ["latin"],
+  variable: "--font-jetbrains-mono",
+});
+
+const spaceMono = Space_Mono({
+  weight: ["400", "700"],
+  subsets: ["latin"],
+  variable: "--font-space-mono",
 });
 
 export const metadata: Metadata = {
@@ -39,7 +76,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${alice.variable} ${archivoNarrow.variable} ${juliusSansOne.variable} antialiased`}>
+      <body className={`${hankenGrotesk.variable} ${spaceGrotesk.variable} ${alice.variable} ${archivoNarrow.variable} ${juliusSansOne.variable} ${michroma.variable} ${spaceMono.variable} antialiased`}>
         {children}
       </body>
     </html>

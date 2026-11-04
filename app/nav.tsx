@@ -6,10 +6,14 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { PROJECTS } from "./projects/data";
 
+import logo from "../public/logo.png";
+import name from "../public/name.png";
+
 const NAV_LINKS = [
   { label: "CONTACT US", href: "/contact" },
   { label: "OUR TEAM", href: "/our-team" },
   { label: "ABOUT US", href: "/about" },
+  { label: "CONTACT US", href: "/contact" },
 ];
 
 const PROJECT_GROUPS = [
@@ -25,39 +29,50 @@ export default function Nav() {
   const isProjectsActive = pathname.startsWith("/projects");
 
   const linkClass = (href: string) =>
-    `rounded-lg px-3 py-2 text-xs font-semibold transition-colors lg:text-sm ${
-      isActive(href)
-        ? "bg-[#f7901f]/10 text-[var(--mass-highlight)]"
-        : "text-slate-200 hover:bg-[#f7901f]/10 hover:text-[var(--mass-highlight)]"
+    `rounded-lg px-3 py-2 text-xs font-semibold transition-colors lg:text-sm ${isActive(href)
+      ? "bg-[#f7901f]/10 text-[var(--mass-highlight)]"
+      : "text-slate-200 hover:bg-[#f7901f]/10 hover:text-[var(--mass-highlight)]"
     }`;
 
   return (
     <nav
       aria-label="Primary"
-      className="fixed inset-x-0 top-0 z-50 border-b backdrop-blur"
-      style={{
-        backgroundColor: "rgba(16, 16, 16, 0.8)",
-        borderColor: "rgba(255, 255, 255, 0.1)",
-        fontFamily: "var(--font-julius-sans-one)",
-      }}
+      className="fixed inset-x-0 top-0 z-50"
+      style={{ fontFamily: "var(--font-julius-sans-one)" }}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between py-8">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 top-0 -bottom-20 -z-10 backdrop-blur"
+        style={{
+          background:
+            "linear-gradient(to bottom, rgba(16, 16, 16, 0.9) 0%, rgba(16, 16, 16, 0.82) 60%, rgba(16, 16, 16, 0) 100%)",
+          maskImage: "linear-gradient(to bottom, black 55%, transparent 100%)",
+          WebkitMaskImage: "linear-gradient(to bottom, black 55%, transparent 100%)",
+        }}
+      />
+      <div className="mx-auto flex max-w-7xl items-center justify-between py-6">
         <Link
           href="/"
           onClick={() => setOpen(false)}
-          className="flex shrink-0 items-center gap-2.5"
+          aria-label="MASS — McMaster Advanced Space Systems, home"
+          className="flex shrink-0 items-center gap-3"
         >
           <Image
-            src="/emblem.png"
-            alt="MASS — home"
-            width={182}
-            height={198}
+            src={logo}
+            alt=""
+            width={591}
+            height={658}
             priority
-            className="h-10 w-auto"
+            className="h-19 w-auto"
           />
-          <span className="text-lg font-bold tracking-wide text-[var(--mass-paper)]">
-            MASS
-          </span>
+          <Image
+            src={name}
+            alt=""
+            width={1106}
+            height={338}
+            priority
+            className="h-13 w-auto"
+          />
         </Link>
 
         {/* Desktop links */}
@@ -206,11 +221,10 @@ export default function Nav() {
               href={href}
               onClick={() => setOpen(false)}
               aria-current={isActive(href) ? "page" : undefined}
-              className={`rounded-lg px-3 py-3 text-sm font-semibold transition-colors ${
-                isActive(href)
+              className={`rounded-lg px-3 py-3 text-sm font-semibold transition-colors ${isActive(href)
                   ? "bg-[#f7901f]/10 text-[var(--mass-highlight)]"
                   : "text-slate-200 hover:bg-[#f7901f]/10 hover:text-[var(--mass-highlight)]"
-              }`}
+                }`}
             >
               {label}
             </Link>
