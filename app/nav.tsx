@@ -10,8 +10,7 @@ import logo from "../public/logo.png";
 import name from "../public/name.png";
 
 const NAV_LINKS = [
-  { label: "CONTACT US", href: "/contact" },
-  { label: "OUR TEAM", href: "/our-team" },
+  { label: "OUR TEAM", href: "/mass-team" },
   { label: "ABOUT US", href: "/about" },
   { label: "CONTACT US", href: "/contact" },
 ];

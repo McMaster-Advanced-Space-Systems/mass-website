@@ -8,6 +8,10 @@ import Nav from "./nav";
 import Footer from "./footer";
 import background from "../public/background.jpg";
 
+const MONO = "var(--font-space-mono), ui-monospace, monospace";
+const BODY =
+  '"Akzidenz-Grotesk", "Akzidenz-Grotesk Pro", var(--font-inter), "Helvetica Neue", Arial, sans-serif';
+
 const PROJECTS = [
   {
     title: "Stellarscope",
