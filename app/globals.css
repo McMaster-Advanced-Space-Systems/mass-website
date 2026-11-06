@@ -45,6 +45,15 @@
   --mass-white: #f2f2f0;
   --mass-darkblue: #000649;
 
+  /* MASS brand book colours, used by the contact page. Merges have dropped
+     these twice; without them the contact page renders white with
+     near-invisible text. */
+  --brand-red: #bf472f;
+  --brand-blue: #1050bf;
+  --brand-yellow: #f7901f;
+  --brand-gray: #f5f5f5;
+  --brand-navy: #101010;
+
     /* 2026 brand refresh — homepage + nav only; the older vars above are still
       referenced by about/projects/contact/our-team/footer. */
   --mass-ink: #101010; /* page background on dark surfaces */
@@ -53,9 +62,14 @@
   --mass-secondary: #bf472f;
   --mass-highlight: #f7901f;
   --mass-surface: #1a1a1a; /* lifted card face */
+
+  /* Widest a page's content runs. Every page container uses it (max-w-page
+     in classes, var(--page-max) in inline styles) so pages line up. */
+  --page-max: 96rem;
 }
 
 @theme inline {
+  --container-page: var(--page-max);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: "Akzidenz-Grotesk", "Akzidenz-Grotesk Pro", var(--font-inter), "Helvetica Neue", Arial, sans-serif;
@@ -71,6 +85,18 @@
 html {
   scroll-behavior: smooth;
   overscroll-behavior: none;
+}
+
+/* Wide screens: grow the root size so type, spacing and cards (all rem)
+   scale up together instead of leaving a small column in a wide window. */
+@media (min-width: 1600px) {
+  html { font-size: 106.25%; }
+}
+@media (min-width: 1920px) {
+  html { font-size: 112.5%; }
+}
+@media (min-width: 2400px) {
+  html { font-size: 125%; }
 }
 
 body {

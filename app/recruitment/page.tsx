@@ -163,7 +163,7 @@ export default function Recruitment() {
 
       {/* top intro */}
       <section style={{
-          maxWidth: "1280px", margin: "0 auto", padding: "clamp(64px,10vw,120px) 32px clamp(48px,6vw,80px)", display: "grid",
+          maxWidth: "var(--page-max)", margin: "0 auto", padding: "clamp(64px,10vw,120px) 32px clamp(48px,6vw,80px)", display: "grid",
           gridTemplateColumns: "1fr 1fr", gap: "64px", alignItems: "end",
         }}
         className="hero-grid"
@@ -200,12 +200,12 @@ export default function Recruitment() {
       </section>
 
       {/* line */}
-      <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 32px" }}>
+      <div style={{ maxWidth: "var(--page-max)", margin: "0 auto", padding: "0 32px" }}>
         <div style={{ height: "1px", backgroundColor: "rgba(164,165,240,0.15)" }} />
       </div>
 
       {/* subteam cards */}
-      <section style={{ maxWidth: "1280px", margin: "0 auto", padding: "clamp(48px,6vw,80px) 32px clamp(64px,10vw,120px)" }}>
+      <section style={{ maxWidth: "var(--page-max)", margin: "0 auto", padding: "clamp(48px,6vw,80px) 32px clamp(64px,10vw,120px)" }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: "40px", flexWrap: "wrap", gap: "12px" }}>
           <h2 style={{fontFamily: "var(--font-display)", fontSize: "clamp(20px,2.5vw,28px)", fontWeight: 600, color: "#f0f0f2"}}>
             Our Teams:
@@ -223,9 +223,9 @@ export default function Recruitment() {
  {/* apply section */}
 <section style={{borderTop: "1px solid rgba(164,165,240,0.15)", borderBottom: "1px solid rgba(164,165,240,0.15)",
           backgroundColor: "rgba(30,32,32,0.5)"}}>
-        <div style={{maxWidth: "1280px", margin: "0 auto", padding: "clamp(48px,6vw,80px) 32px", display: "flex", alignItems: "center",
+        <div style={{maxWidth: "var(--page-max)", margin: "0 auto", padding: "clamp(48px,6vw,80px) 32px", display: "flex", alignItems: "center",
             justifyContent: "space-between", flexWrap: "wrap"}}>
-          <div style={{ display: "flex", flexDirection: "column", gap: "8px", maxWidth: "560px" }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: "8px", maxWidth: "35rem" }}>
             
             <p style={{fontFamily: "var(--font-display)", fontSize: "clamp(20px,2.5vw,30px)", fontWeight: 600,
                 color: "#f0f0f2", margin: 0}}>

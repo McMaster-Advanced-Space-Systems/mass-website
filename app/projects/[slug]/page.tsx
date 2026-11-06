@@ -135,10 +135,10 @@ export default async function ProjectPage({ params }: Props) {
       <Nav />
 
       <main className="flex-1 px-4 pt-28 pb-16 sm:px-8 sm:pt-32">
-        <div className="mx-auto w-full max-w-7xl">
+        <div className="mx-auto w-full max-w-page">
           {/* ───── Hero banner ───── */}
           <div className={`animate-fade-up relative h-[19rem] overflow-hidden sm:h-[24rem] ${CARD}`}>
-            <Photo media={project.hero} sizes="(max-width: 1280px) 100vw, 1280px" priority />
+            <Photo media={project.hero} sizes="(max-width: 1920px) 100vw, 1920px" priority />
             <div
               aria-hidden
               className="absolute inset-0"

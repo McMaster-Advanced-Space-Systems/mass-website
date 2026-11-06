@@ -6,38 +6,12 @@ import { useState } from "react";
 import { FaHandshake, FaTrophy, FaUsers, FaWrench } from "react-icons/fa";
 import Nav from "./nav";
 import Footer from "./footer";
+import { PROJECTS, type Project } from "./projects/data";
 import background from "../public/background.jpg";
 
 const MONO = "var(--font-space-mono), ui-monospace, monospace";
 const BODY =
   '"Akzidenz-Grotesk", "Akzidenz-Grotesk Pro", var(--font-inter), "Helvetica Neue", Arial, sans-serif';
-
-const PROJECTS = [
-  {
-    title: "Stellarscope",
-    status: "COMPLETE",
-    description:
-      "A collapsible radio telescope that measured radio emissions from the Sun and from hydrogen gas in our galaxy.",
-    image: "/background.jpg",
-    href: "/projects/stellarscope",
-  },
-  {
-    title: "StratoGene",
-    status: "COMPLETE",
-    description:
-      "The first biological payload in CAN-SBX history: E. coli and yeast flown more than 30 km into the stratosphere.",
-    image: "/background.jpg",
-    href: "/projects/stratogene",
-  },
-  {
-    title: "SOLARIS",
-    status: "DEPLOYING",
-    description:
-      "A high-altitude balloon payload that studies how the atmosphere affects laser signals used for satellite communication.",
-    image: "/background.jpg",
-    href: "/projects/solaris",
-  },
-];
 
 const PILLARS = [
   {
@@ -104,104 +78,85 @@ export default function Home() {
       <section
         className="relative z-10 flex items-center justify-center px-6 pt-25 min-h-screen"
       >
-        <div className="w-full max-w-2xl text-center">
-          <h1
-            className="animate-fade-up mb-5 px-6 py-4 text-center"
-            style={{ animationDelay: "0.05s" }}
+        <div className="w-full max-w-6xl text-center">
+          <div
+            className="animate-fade-up mb-6 flex items-center justify-center gap-3"
+            style={{ animationDelay: "0.02s" }}
+            aria-hidden
           >
-            <div className="mb-4 flex items-center justify-center gap-2" aria-hidden>
-              <span style={{ width: "2rem", height: "1px", backgroundColor: "var(--mass-highlight)" }} />
-              <span
-                style={{
-                  fontFamily: MONO,
-                  color: "var(--mass-highlight)",
-                  fontSize: "0.65rem",
-                  fontWeight: 600,
-                  letterSpacing: "0.25em",
-                }}
-              >
-                EST. 2024
-              </span>
-              <span style={{ width: "2rem", height: "1px", backgroundColor: "var(--mass-highlight)" }} />
-            </div>
+            <span style={{ width: "2.5rem", height: "1px", backgroundColor: "rgba(245, 245, 245, 0.45)" }} />
+            <span
+              style={{
+                fontFamily: MONO,
+                color: "rgba(245, 245, 245, 0.7)",
+                fontSize: "0.7rem",
+                fontWeight: 700,
+                letterSpacing: "0.3em",
+              }}
+            >
+              EST. 2024
+            </span>
+            <span style={{ width: "2.5rem", height: "1px", backgroundColor: "rgba(245, 245, 245, 0.45)" }} />
+          </div>
 
-            <span
-              style={{
-                fontFamily: "var(--font-michroma), sans-serif",
-                fontWeight: 400,
-                fontSize: "clamp(2.4rem, 7.5vw, 4.5rem)",
-                lineHeight: 1.25,
-                color: palette.white,
-                display: "block",
-              }}
-            >
-              McMaster
-            </span>
-            <span
-              style={{
-                fontFamily: "var(--font-michroma), sans-serif",
-                fontWeight: 400,
-                fontSize: "clamp(2.4rem, 7.5vw, 4.5rem)",
-                lineHeight: 1.25,
-                color: palette.white,
-                display: "block",
-              }}
-            >
-              Advanced
-            </span>
-            <span
-              style={{
-                fontFamily: "var(--font-michroma), sans-serif",
-                fontWeight: 400,
-                fontSize: "clamp(2.4rem, 7.5vw, 4.5rem)",
-                lineHeight: 1.25,
-                color: palette.blue,
-                display: "block",
-              }}
-            >
-              Space Systems
-            </span>
-          </h1>
-          <p
-            className="animate-fade-up mb-7 rounded-lg px-5 py-3 text-lg"
-            style={{ color: palette.white, animationDelay: "0.15s" }}
+          <h1
+            className="animate-fade-up px-2 text-center"
+            style={{
+              animationDelay: "0.05s",
+              fontFamily: "var(--font-michroma), sans-serif",
+              fontWeight: 400,
+              fontSize: "clamp(1.9rem, 6vw, 4.25rem)",
+              lineHeight: 1.2,
+              letterSpacing: "-0.01em",
+              color: palette.white,
+              textWrap: "balance",
+            }}
           >
-            A student-run club building real projects in space, <br className="hidden sm:block" /> aerospace, and everything that supports them.
+            <span className="sm:block">McMaster Advanced</span>{" "}
+            <span className="sm:block">Space Systems</span>
+          </h1>
+
+          <div
+            aria-hidden
+            className="animate-fade-up mx-auto mt-8 h-[3px] w-16"
+            style={{ backgroundColor: "var(--mass-secondary)", animationDelay: "0.1s" }}
+          />
+
+          <p
+            className="animate-fade-up mx-auto mt-8 max-w-xl px-2 text-lg leading-8 sm:text-xl sm:leading-9"
+            style={{ color: "rgba(245, 245, 245, 0.85)", animationDelay: "0.15s" }}
+          >
+            A student-run club building real projects in space, aerospace, and everything that supports them.
           </p>
 
-          {/* Buttons */}
+          {/* Buttons: same treatment as the contact form's submit button */}
           <div
-            className="animate-fade-up flex flex-col items-center justify-center gap-4 sm:flex-row"
+            className="animate-fade-up mt-10 flex flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center"
             style={{ animationDelay: "0.25s" }}
           >
             <Link
               href="/contact"
-              className="inline-block w-50 rounded-lg border-2 px-6 py-3 text-center font-semibold shadow-black/50 transition-all duration-200 bg-[var(--bg)] border-[var(--border)] hover:border-[var(--borderhover)] hover:shadow-l hover:-translate-y-0.5 active:translate-y-0"
-              style={
-                {
-                  color: palette.white,
-                  "--bg": palette.blue,
-                  "--border": palette.blue,
-                  "--borderhover": "white",
-                } as React.CSSProperties
-              }
+              className="inline-flex min-h-12 items-center justify-center gap-2 px-9 py-3.5 text-[0.75rem] font-bold tracking-[0.12em] uppercase transition-colors duration-200 hover:bg-white/80 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--mass-paper)]"
+              style={{
+                fontFamily: MONO,
+                backgroundColor: "var(--mass-paper)",
+                color: "var(--mass-ink)",
+              }}
             >
-              Join Our Team
+              Join Our Team <span aria-hidden>→</span>
             </Link>
 
             <Link
               href="/projects"
-              className="inline-block w-50 rounded-lg border-2 px-6 py-3 text-center font-semibold shadow-black/50 transition-all duration-200 bg-[var(--bg)] border-[var(--border)] hover:border-[var(--borderhover)] hover:shadow-l hover:-translate-y-0.5 active:translate-y-0"
-              style={
-                {
-                  color: palette.white,
-                  "--bg": palette.blue,
-                  "--border": palette.blue,
-                  "--borderhover": "white",
-                } as React.CSSProperties
-              }
+              className="inline-flex min-h-12 items-center justify-center gap-2 border px-9 py-3.5 text-[0.75rem] font-bold tracking-[0.12em] uppercase transition-colors duration-200 hover:border-[var(--mass-paper)] hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--mass-paper)]"
+              style={{
+                fontFamily: MONO,
+                color: "var(--mass-paper)",
+                borderColor: "rgba(245, 245, 245, 0.4)",
+                backgroundColor: "rgba(16, 16, 16, 0.35)",
+              }}
             >
-              Explore Projects
+              Explore Projects <span aria-hidden>→</span>
             </Link>
           </div>
         </div>
@@ -213,7 +168,7 @@ export default function Home() {
       >
 
         {/* Stats bar */}
-        <div className="mx-auto grid max-w-7xl grid-cols-2 sm:grid-cols-5">
+        <div className="mx-auto grid max-w-page grid-cols-2 sm:grid-cols-5">
           {STATS.map((stat, index) => (
             <div
               key={stat.label}
@@ -289,7 +244,7 @@ export default function Home() {
 
 
         {/* Pillar cards */}
-        <div className="mx-auto grid max-w-7xl grid-cols-1 items-stretch gap-6 px-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mx-auto grid max-w-page grid-cols-1 items-stretch gap-6 px-6 sm:grid-cols-2 lg:grid-cols-4">
           {PILLARS.map((pillar, index) => (
             <PillarCard key={pillar.title} pillar={pillar} index={index} />
           ))}
@@ -297,7 +252,7 @@ export default function Home() {
 
         {/* Our project cards */}
         <div className="w-full pt-24 md:pt-32">
-          <div className="mx-auto w-full max-w-7xl px-6">
+          <div className="mx-auto mb-9 flex w-full max-w-page flex-wrap items-end justify-between gap-4 px-6">
             <h2
               className="animate-fade-up text-left"
               style={{
@@ -306,30 +261,22 @@ export default function Home() {
                 fontSize: "clamp(1.75rem, 3.5vw, 2.5rem)",
                 lineHeight: "0.9",
                 letterSpacing: "-0.02em",
-                marginBottom: "2.25rem",
               }}
             >
               Our Projects
             </h2>
+            <Link
+              href="/projects"
+              className="text-sm text-slate-400 transition-colors hover:text-white"
+              style={{ fontFamily: MONO }}
+            >
+              All projects <span aria-hidden>→</span>
+            </Link>
           </div>
 
-          <div className="mx-auto grid w-full max-w-7xl gap-8 px-6 pb-24 sm:grid-cols-2">
+          <div className="mx-auto grid w-full max-w-page gap-6 px-6 pb-24 sm:grid-cols-2 lg:grid-cols-3">
             {PROJECTS.map((project) => (
-              <Link
-                key={project.title}
-                href={project.href}
-                className="rounded-3xl border p-8 shadow-2xl transition-colors sm:p-10"
-                style={{
-                  backgroundColor: palette.white,
-                  borderColor: "#1050bf40",
-                  color: palette.black,
-                }}
-              >
-                <h3 className="mb-6 text-2xl font-semibold md:text-3xl">
-                  {project.title}
-                </h3>
-                <p className="leading-7 text-slate-700">{project.description}</p>
-              </Link>
+              <ProjectCard key={project.slug} project={project} />
             ))}
           </div>
         </div>
@@ -388,59 +335,67 @@ function PillarCard({
   );
 }
 
-function ProjectCard({
-  project,
-}: {
-  project: (typeof PROJECTS)[number];
-}) {
-  const statusColors: Record<string, string> = {
-    COMPLETE: "rgba(20, 20, 20, 0.85)",
-    DEPLOYING: "rgba(20, 20, 20, 0.85)",
-    ACTIVE: "rgba(16, 80, 191, 0.85)",
-  };
+function ProjectCard({ project }: { project: Project }) {
+  const photo = project.card ?? project.hero;
+  const active = project.status === "current";
 
   return (
     <Link
-      href={project.href}
-      className="group flex flex-col overflow-hidden rounded-2xl border transition-all duration-200 hover:-translate-y-1"
-      style={{
-        backgroundColor: "var(--mass-surface)",
-        borderColor: "rgba(255, 255, 255, 0.08)",
-      }}
+      href={`/projects/${project.slug}`}
+      className="group flex flex-col overflow-hidden rounded-2xl border border-white/10 transition-[transform,border-color,box-shadow] duration-200 hover:-translate-y-1 hover:border-white/25 hover:shadow-2xl hover:shadow-black/60"
+      style={{ backgroundColor: "var(--mass-surface)" }}
     >
-      <div className="relative h-56 w-full overflow-hidden">
+      <div className="relative aspect-[16/10] w-full overflow-hidden bg-black">
         <Image
-          src={project.image}
-          alt={project.title}
+          src={photo.image ?? "/earth.jpg"}
+          alt={photo.alt}
           fill
-          sizes="(max-width: 768px) 100vw, 33vw"
-          className="object-cover transition-transform duration-300 group-hover:scale-105"
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          className="object-cover transition-transform duration-500 group-hover:scale-105"
+          style={photo.position ? { objectPosition: photo.position } : undefined}
         />
         <span
-          className="absolute right-3 top-3 rounded-md px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-widest text-white backdrop-blur-sm"
+          className="absolute top-3 left-3 inline-flex items-center gap-2 rounded-full border px-3 py-1 text-[0.65rem] tracking-[0.14em] uppercase backdrop-blur-sm"
           style={{
-            backgroundColor: statusColors[project.status] ?? "rgba(20,20,20,0.85)",
+            fontFamily: MONO,
+            color: active ? "var(--mass-highlight)" : "var(--mass-paper)",
+            borderColor: active ? "rgba(247,144,31,0.5)" : "rgba(245,245,245,0.3)",
+            backgroundColor: "rgba(10,10,10,0.65)",
           }}
         >
-          {project.status}
+          <span
+            aria-hidden
+            className="h-1.5 w-1.5 rounded-full"
+            style={{ backgroundColor: active ? "var(--mass-highlight)" : "var(--mass-primary)" }}
+          />
+          {active ? "Active" : "Completed"} · {project.years}
         </span>
       </div>
 
-      <div className="flex flex-1 flex-col gap-3 p-6">
+      <div className="flex flex-1 flex-col p-6">
         <h3
-          className="text-xl font-semibold"
-          style={{ color: "var(--mass-paper)" }}
+          className="text-2xl"
+          style={{ fontFamily: "var(--font-michroma), sans-serif", color: "var(--mass-paper)" }}
         >
-          {project.title}
+          {project.name}
         </h3>
-        <p className="flex-1 text-sm leading-6 text-slate-400">
-          {project.description}
+        <p
+          className="mt-2 text-[0.7rem] tracking-[0.14em] uppercase"
+          style={{ fontFamily: MONO, color: "var(--mass-highlight)" }}
+        >
+          {project.tagline}
+        </p>
+        <p className="mt-4 flex-1 leading-7 text-slate-300" style={{ fontFamily: BODY }}>
+          {project.blurb}
         </p>
         <span
-          className="mt-2 text-xs font-semibold uppercase tracking-widest"
-          style={{ color: "var(--mass-highlight)" }}
+          className="mt-6 inline-flex items-center gap-2 text-sm font-semibold"
+          style={{ color: "var(--mass-paper)" }}
         >
-          View Specs →
+          View project
+          <span aria-hidden className="transition-transform duration-200 group-hover:translate-x-1">
+            →
+          </span>
         </span>
       </div>
     </Link>

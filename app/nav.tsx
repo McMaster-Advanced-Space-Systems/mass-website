@@ -29,8 +29,8 @@ export default function Nav() {
 
   const linkClass = (href: string) =>
     `rounded-lg px-3 py-2 text-xs font-semibold transition-colors lg:text-sm ${isActive(href)
-      ? "bg-[#f7901f]/10 text-[var(--mass-highlight)]"
-      : "text-slate-200 hover:bg-[#f7901f]/10 hover:text-[var(--mass-highlight)]"
+      ? "text-[var(--mass-highlight)]"
+      : "text-slate-200 hover:text-[var(--mass-highlight)]"
     }`;
 
   return (
@@ -49,7 +49,7 @@ export default function Nav() {
           WebkitMaskImage: "linear-gradient(to bottom, black 55%, transparent 100%)",
         }}
       />
-      <div className="mx-auto flex max-w-7xl items-center justify-between py-6">
+      <div className="mx-auto flex max-w-page items-center justify-between py-6">
         <Link
           href="/"
           onClick={() => setOpen(false)}
@@ -89,8 +89,8 @@ export default function Nav() {
               aria-current={isProjectsActive ? "page" : undefined}
               className={`rounded-lg px-3 py-2 text-xs font-semibold transition-colors lg:text-sm ${
                 isProjectsActive
-                  ? "bg-[#f7901f]/10 text-[var(--mass-highlight)]"
-                  : "text-slate-200 hover:bg-[#f7901f]/10 hover:text-[var(--mass-highlight)]"
+                  ? "text-[var(--mass-highlight)]"
+                  : "text-slate-200 hover:text-[var(--mass-highlight)]"
               }`}
             >
               PROJECTS
@@ -112,7 +112,7 @@ export default function Nav() {
                         <Link
                           key={project.slug}
                           href={`/projects/${project.slug}`}
-                          className="block rounded-md px-3 py-2 text-xs font-semibold text-slate-200 transition-colors hover:bg-[#f7901f]/10 hover:text-[var(--mass-highlight)] lg:text-sm"
+                          className="block rounded-md px-3 py-2 text-xs font-semibold text-slate-200 transition-colors hover:text-[var(--mass-highlight)] lg:text-sm"
                         >
                           {project.name}
                         </Link>
@@ -169,8 +169,8 @@ export default function Nav() {
             aria-current={isActive("/") ? "page" : undefined}
             className={`rounded-lg px-3 py-3 text-sm font-semibold transition-colors ${
               isActive("/")
-                ? "bg-[#f7901f]/10 text-[var(--mass-highlight)]"
-                : "text-slate-200 hover:bg-[#f7901f]/10 hover:text-[var(--mass-highlight)]"
+                ? "text-[var(--mass-highlight)]"
+                : "text-slate-200 hover:text-[var(--mass-highlight)]"
             }`}
           >
             HOME
@@ -181,8 +181,8 @@ export default function Nav() {
             aria-current={isProjectsActive ? "page" : undefined}
             className={`rounded-lg px-3 py-3 text-sm font-semibold transition-colors ${
               isProjectsActive
-                ? "bg-[#f7901f]/10 text-[var(--mass-highlight)]"
-                : "text-slate-200 hover:bg-[#f7901f]/10 hover:text-[var(--mass-highlight)]"
+                ? "text-[var(--mass-highlight)]"
+                : "text-slate-200 hover:text-[var(--mass-highlight)]"
             }`}
           >
             PROJECTS
@@ -205,7 +205,7 @@ export default function Nav() {
                       href={`/projects/${project.slug}`}
                       onClick={() => setOpen(false)}
                       aria-current={pathname === `/projects/${project.slug}` ? "page" : undefined}
-                      className="block rounded-lg px-3 py-2 text-sm font-semibold text-slate-200 transition-colors hover:bg-[#f7901f]/10 hover:text-[var(--mass-highlight)]"
+                      className="block rounded-lg px-3 py-2 text-sm font-semibold text-slate-200 transition-colors hover:text-[var(--mass-highlight)]"
                     >
                       {project.name}
                     </Link>
@@ -221,8 +221,8 @@ export default function Nav() {
               onClick={() => setOpen(false)}
               aria-current={isActive(href) ? "page" : undefined}
               className={`rounded-lg px-3 py-3 text-sm font-semibold transition-colors ${isActive(href)
-                  ? "bg-[#f7901f]/10 text-[var(--mass-highlight)]"
-                  : "text-slate-200 hover:bg-[#f7901f]/10 hover:text-[var(--mass-highlight)]"
+                  ? "text-[var(--mass-highlight)]"
+                  : "text-slate-200 hover:text-[var(--mass-highlight)]"
                 }`}
             >
               {label}
