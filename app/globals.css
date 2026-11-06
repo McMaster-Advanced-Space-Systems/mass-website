@@ -65,7 +65,7 @@
 
   /* Widest a page's content runs. Every page container uses it (max-w-page
      in classes, var(--page-max) in inline styles) so pages line up. */
-  --page-max: 96rem;
+  --page-max: 84rem;
 }
 
 @theme inline {
@@ -87,16 +87,14 @@ html {
   overscroll-behavior: none;
 }
 
-/* Wide screens: grow the root size so type, spacing and cards (all rem)
-   scale up together instead of leaving a small column in a wide window. */
-@media (min-width: 1600px) {
+/* Very large screens: grow the root size so type, spacing and cards (all
+   rem) scale up together instead of leaving a small column in a wide
+   window. Ordinary desktop and laptop screens keep the base size. */
+@media (min-width: 1920px) {
   html { font-size: 106.25%; }
 }
-@media (min-width: 1920px) {
-  html { font-size: 112.5%; }
-}
 @media (min-width: 2400px) {
-  html { font-size: 125%; }
+  html { font-size: 118.75%; }
 }
 
 body {
