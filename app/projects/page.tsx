@@ -25,7 +25,7 @@ export default function ProjectsPage() {
         className="px-8 pt-52 pb-6"
         style={{ backgroundColor: "var(--mass-ink)" }}
       >
-        <div className="mx-auto w-full max-w-7xl">
+        <div className="mx-auto w-full max-w-page">
           <h1
             className="animate-fade-up mb-9 text-4xl font-semibold sm:text-5xl"
             style={{ color: "var(--mass-paper)", animationDelay: "0.05s" }}
@@ -43,7 +43,7 @@ export default function ProjectsPage() {
       </header>
 
       <main className="flex-1 px-8 pt-6 pb-16 sm:pb-24">
-        <div className="mx-auto w-full max-w-7xl">
+        <div className="mx-auto w-full max-w-page">
         <p
           className="animate-fade-up text-xl leading-9 text-slate-300 sm:text-2xl"
           style={{ animationDelay: "0.12s" }}

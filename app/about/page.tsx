@@ -133,7 +133,7 @@ export default function AboutPage() {
           src={communityEvent}
           alt="A group of MASS members standing together outdoors at a community event"
           caption="MASS members at a community event"
-          className="mx-auto mt-16 max-w-[637px]"
+          className="mx-auto mt-16 max-w-[40rem]"
         />
 
         <Chapter title="We're aiming higher every year.">

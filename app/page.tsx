@@ -213,7 +213,7 @@ export default function Home() {
       >
 
         {/* Stats bar */}
-        <div className="mx-auto grid max-w-7xl grid-cols-2 sm:grid-cols-5">
+        <div className="mx-auto grid max-w-page grid-cols-2 sm:grid-cols-5">
           {STATS.map((stat, index) => (
             <div
               key={stat.label}
@@ -289,7 +289,7 @@ export default function Home() {
 
 
         {/* Pillar cards */}
-        <div className="mx-auto grid max-w-7xl grid-cols-1 items-stretch gap-6 px-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mx-auto grid max-w-page grid-cols-1 items-stretch gap-6 px-6 sm:grid-cols-2 lg:grid-cols-4">
           {PILLARS.map((pillar, index) => (
             <PillarCard key={pillar.title} pillar={pillar} index={index} />
           ))}
@@ -297,7 +297,7 @@ export default function Home() {
 
         {/* Our project cards */}
         <div className="w-full pt-24 md:pt-32">
-          <div className="mx-auto w-full max-w-7xl px-6">
+          <div className="mx-auto w-full max-w-page px-6">
             <h2
               className="animate-fade-up text-left"
               style={{
@@ -313,7 +313,7 @@ export default function Home() {
             </h2>
           </div>
 
-          <div className="mx-auto grid w-full max-w-7xl gap-8 px-6 pb-24 sm:grid-cols-2">
+          <div className="mx-auto grid w-full max-w-page gap-8 px-6 pb-24 sm:grid-cols-2 lg:grid-cols-3">
             {PROJECTS.map((project) => (
               <Link
                 key={project.title}

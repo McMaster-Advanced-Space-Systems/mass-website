@@ -56,7 +56,7 @@ export default function Footer() {
         color: "var(--mass-white)",
       }}
     >
-      <div className="mx-auto w-full max-w-7xl px-6 py-5 sm:px-10">
+      <div className="mx-auto w-full max-w-page px-6 py-5 sm:px-10">
         <div className="grid items-center gap-4 md:grid-cols-3">
           {/* Brand */}
           <div className="flex items-center gap-4">

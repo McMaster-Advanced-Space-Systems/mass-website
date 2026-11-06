@@ -143,7 +143,7 @@ export default function ContactPage() {
             overflow: "hidden",
           }}
         >
-          <div style={{ maxWidth: "80rem", margin: "0 auto", position: "relative" }}>
+          <div style={{ maxWidth: "var(--page-max)", margin: "0 auto", position: "relative" }}>
             <p
               style={{
                 fontFamily: "var(--font-space-mono), ui-monospace, monospace",
@@ -183,7 +183,7 @@ export default function ContactPage() {
         {/* Body */}
         <div
           className="grid grid-cols-1 md:grid-cols-[3fr_2fr]"
-          style={{ maxWidth: "80rem", margin: "0 auto" }}
+          style={{ maxWidth: "var(--page-max)", margin: "0 auto" }}
         >
           {/* Form column */}
           <div

@@ -76,7 +76,7 @@ export default function MassTeamPage() {
 
       {/* Top padding clears the fixed nav (~136px tall). */}
       <header className="relative px-6 pb-12 pt-44 md:px-10 xl:px-16">
-        <div className="mx-auto max-w-[96rem]">
+        <div className="mx-auto max-w-page">
           <p
             style={{
               fontFamily: MONO,
@@ -112,7 +112,7 @@ export default function MassTeamPage() {
       </header>
 
       <main className="relative px-6 pb-24 md:px-10 xl:px-16">
-        <div className="mx-auto max-w-[96rem]">
+        <div className="mx-auto max-w-page">
           <TeamTabs />
         </div>
       </main>

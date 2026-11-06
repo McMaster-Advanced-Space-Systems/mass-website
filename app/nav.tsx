@@ -49,7 +49,7 @@ export default function Nav() {
           WebkitMaskImage: "linear-gradient(to bottom, black 55%, transparent 100%)",
         }}
       />
-      <div className="mx-auto flex max-w-7xl items-center justify-between py-6">
+      <div className="mx-auto flex max-w-page items-center justify-between py-6">
         <Link
           href="/"
           onClick={() => setOpen(false)}
