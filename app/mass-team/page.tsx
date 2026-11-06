@@ -9,8 +9,7 @@ import teamPhoto from "../../public/projects/stellarscope/multi-team-photo.png";
 
 /* MASS Preliminary Branding Standards 2025-2026: Michroma for titles, Space
    Mono for highlights, Akzidenz-Grotesk for body text. Akzidenz-Grotesk has
-   no Google Fonts release, so Inter stands in behind it (same approach as
-   the Current Projects page). */
+   no Google Fonts release, so Inter stands in behind it. */
 const michroma = Michroma({
   weight: "400",
   subsets: ["latin"],

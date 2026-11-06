@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Michroma, Archivo_Narrow, Alice, Julius_Sans_One, Space_Grotesk, Hanken_Grotesk, Inter, JetBrains_Mono, Space_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Michroma, Archivo_Narrow, Julius_Sans_One, Space_Grotesk, Hanken_Grotesk, Inter, JetBrains_Mono, Space_Mono } from "next/font/google";
 import "./globals.css";
 
 const archivoNarrow = Archivo_Narrow({
@@ -13,12 +13,6 @@ const michroma = Michroma({
   subsets: ["latin"],
   weight: "400", // Michroma only ships in regular weight
   variable: "--font-michroma",
-});
-
-const alice = Alice({
-  weight: "400",
-  subsets: ["latin"],
-  variable: "--font-alice",
 });
 
 const juliusSansOne = Julius_Sans_One({
@@ -76,7 +70,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${hankenGrotesk.variable} ${spaceGrotesk.variable} ${alice.variable} ${archivoNarrow.variable} ${juliusSansOne.variable} ${michroma.variable} ${spaceMono.variable} antialiased`}>
+      <body className={`${hankenGrotesk.variable} ${spaceGrotesk.variable} ${archivoNarrow.variable} ${juliusSansOne.variable} ${michroma.variable} ${spaceMono.variable} ${inter.variable} antialiased`}>
         {children}
       </body>
     </html>

@@ -2,16 +2,11 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Inter } from "next/font/google";
 import { FaCamera } from "react-icons/fa";
 import Nav from "../../nav";
 import Footer from "../../footer";
 import { PROJECTS, type Media } from "../data";
 import PhaseList from "./phases";
-
-/* The root layout never puts --font-inter on <body>, and an undefined var()
-   voids the whole font-family declaration, so load Inter here. */
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
 
 const DISPLAY = "var(--font-michroma), sans-serif";
 const MONO = "var(--font-space-mono), ui-monospace, monospace";
@@ -130,7 +125,7 @@ export default async function ProjectPage({ params }: Props) {
 
   return (
     <div
-      className={`${inter.variable} flex min-h-screen flex-col`}
+      className="flex min-h-screen flex-col"
       style={{
         backgroundColor: "var(--mass-ink)",
         backgroundImage: "radial-gradient(ellipse 80% 40rem at 50% 0, rgba(16, 80, 191, 0.12), transparent)",

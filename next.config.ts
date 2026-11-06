@@ -8,6 +8,7 @@ const nextConfig: NextConfig = {
         destination: "/projects",
         permanent: true,
       },
+      { source: "/current-projects", destination: "/projects", permanent: true },
       // Project pages that were replaced by the current three projects.
       { source: "/projects/can-sbx", destination: "/projects/solaris", permanent: true },
       { source: "/projects/can-arx", destination: "/projects/stellarscope", permanent: true },
