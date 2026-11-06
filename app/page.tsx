@@ -78,104 +78,88 @@ export default function Home() {
       <section
         className="relative z-10 flex items-center justify-center px-6 pt-25 min-h-screen"
       >
-        <div className="w-full max-w-2xl text-center">
-          <h1
-            className="animate-fade-up mb-5 px-6 py-4 text-center"
-            style={{ animationDelay: "0.05s" }}
+        <div className="w-full max-w-6xl text-center">
+          <div
+            className="animate-fade-up mb-6 flex items-center justify-center gap-3"
+            style={{ animationDelay: "0.02s" }}
+            aria-hidden
           >
-            <div className="mb-4 flex items-center justify-center gap-2" aria-hidden>
-              <span style={{ width: "2rem", height: "1px", backgroundColor: "var(--mass-highlight)" }} />
-              <span
-                style={{
-                  fontFamily: MONO,
-                  color: "var(--mass-highlight)",
-                  fontSize: "0.65rem",
-                  fontWeight: 600,
-                  letterSpacing: "0.25em",
-                }}
-              >
-                EST. 2024
-              </span>
-              <span style={{ width: "2rem", height: "1px", backgroundColor: "var(--mass-highlight)" }} />
-            </div>
+            <span style={{ width: "2.5rem", height: "1px", backgroundColor: "var(--mass-highlight)" }} />
+            <span
+              style={{
+                fontFamily: MONO,
+                color: "var(--mass-highlight)",
+                fontSize: "0.7rem",
+                fontWeight: 700,
+                letterSpacing: "0.3em",
+              }}
+            >
+              EST. 2024
+            </span>
+            <span style={{ width: "2.5rem", height: "1px", backgroundColor: "var(--mass-highlight)" }} />
+          </div>
 
-            <span
-              style={{
-                fontFamily: "var(--font-michroma), sans-serif",
-                fontWeight: 400,
-                fontSize: "clamp(2.4rem, 7.5vw, 4.5rem)",
-                lineHeight: 1.25,
-                color: palette.white,
-                display: "block",
-              }}
-            >
-              McMaster
-            </span>
-            <span
-              style={{
-                fontFamily: "var(--font-michroma), sans-serif",
-                fontWeight: 400,
-                fontSize: "clamp(2.4rem, 7.5vw, 4.5rem)",
-                lineHeight: 1.25,
-                color: palette.white,
-                display: "block",
-              }}
-            >
-              Advanced
-            </span>
-            <span
-              style={{
-                fontFamily: "var(--font-michroma), sans-serif",
-                fontWeight: 400,
-                fontSize: "clamp(2.4rem, 7.5vw, 4.5rem)",
-                lineHeight: 1.25,
-                color: palette.blue,
-                display: "block",
-              }}
-            >
+          <h1
+            className="animate-fade-up px-2 text-center"
+            style={{
+              animationDelay: "0.05s",
+              fontFamily: "var(--font-michroma), sans-serif",
+              fontWeight: 400,
+              fontSize: "clamp(1.9rem, 6vw, 4.25rem)",
+              lineHeight: 1.2,
+              letterSpacing: "-0.01em",
+              textWrap: "balance",
+            }}
+          >
+            <span className="sm:block" style={{ color: palette.white }}>
+              McMaster Advanced
+            </span>{" "}
+            <span className="sm:block" style={{ color: palette.highlight }}>
               Space Systems
             </span>
           </h1>
+
+          <div
+            aria-hidden
+            className="animate-fade-up mx-auto mt-8 h-[3px] w-16"
+            style={{ backgroundColor: "var(--mass-secondary)", animationDelay: "0.1s" }}
+          />
+
           <p
-            className="animate-fade-up mb-7 rounded-lg px-5 py-3 text-lg"
-            style={{ color: palette.white, animationDelay: "0.15s" }}
+            className="animate-fade-up mx-auto mt-8 max-w-xl px-2 text-lg leading-8 sm:text-xl sm:leading-9"
+            style={{ color: "rgba(245, 245, 245, 0.85)", animationDelay: "0.15s" }}
           >
-            A student-run club building real projects in space, <br className="hidden sm:block" /> aerospace, and everything that supports them.
+            A student-run club building real projects in space, aerospace, and everything that supports them.
           </p>
 
-          {/* Buttons */}
+          {/* Buttons: same treatment as the contact form's submit button */}
           <div
-            className="animate-fade-up flex flex-col items-center justify-center gap-4 sm:flex-row"
+            className="animate-fade-up mt-10 flex flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center"
             style={{ animationDelay: "0.25s" }}
           >
             <Link
               href="/contact"
-              className="inline-block w-50 rounded-lg border-2 px-6 py-3 text-center font-semibold shadow-black/50 transition-all duration-200 bg-[var(--bg)] border-[var(--border)] hover:border-[var(--borderhover)] hover:shadow-l hover:-translate-y-0.5 active:translate-y-0"
-              style={
-                {
-                  color: palette.white,
-                  "--bg": palette.blue,
-                  "--border": palette.blue,
-                  "--borderhover": "white",
-                } as React.CSSProperties
-              }
+              className="inline-flex min-h-12 items-center justify-center gap-2 px-9 py-3.5 text-[0.75rem] font-bold tracking-[0.12em] uppercase transition-colors duration-200 hover:bg-[color-mix(in_srgb,var(--mass-highlight)_80%,white)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--mass-highlight)]"
+              style={{
+                fontFamily: MONO,
+                backgroundColor: "var(--mass-highlight)",
+                color: "var(--mass-ink)",
+              }}
             >
-              Join Our Team
+              Join Our Team <span aria-hidden>→</span>
             </Link>
 
             <Link
               href="/projects"
-              className="inline-block w-50 rounded-lg border-2 px-6 py-3 text-center font-semibold shadow-black/50 transition-all duration-200 bg-[var(--bg)] border-[var(--border)] hover:border-[var(--borderhover)] hover:shadow-l hover:-translate-y-0.5 active:translate-y-0"
-              style={
-                {
-                  color: palette.white,
-                  "--bg": palette.blue,
-                  "--border": palette.blue,
-                  "--borderhover": "white",
-                } as React.CSSProperties
-              }
+              className="inline-flex min-h-12 items-center justify-center gap-2 border px-9 py-3.5 text-[0.75rem] font-bold tracking-[0.12em] uppercase transition-colors duration-200 hover:border-[var(--mass-highlight)] hover:text-[var(--mass-highlight)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--mass-highlight)]"
+              style={{
+                fontFamily: MONO,
+                color: "var(--mass-paper)",
+                borderColor: "rgba(245, 245, 245, 0.4)",
+                backgroundColor: "rgba(16, 16, 16, 0.35)",
+              }}
             >
-              Explore Projects
+              Explore Projects <span aria-hidden>→</span>
             </Link>
           </div>
         </div>
