@@ -84,11 +84,11 @@ export default function Home() {
             style={{ animationDelay: "0.02s" }}
             aria-hidden
           >
-            <span style={{ width: "2.5rem", height: "1px", backgroundColor: "var(--mass-highlight)" }} />
+            <span style={{ width: "2.5rem", height: "1px", backgroundColor: "rgba(245, 245, 245, 0.45)" }} />
             <span
               style={{
                 fontFamily: MONO,
-                color: "var(--mass-highlight)",
+                color: "rgba(245, 245, 245, 0.7)",
                 fontSize: "0.7rem",
                 fontWeight: 700,
                 letterSpacing: "0.3em",
@@ -96,7 +96,7 @@ export default function Home() {
             >
               EST. 2024
             </span>
-            <span style={{ width: "2.5rem", height: "1px", backgroundColor: "var(--mass-highlight)" }} />
+            <span style={{ width: "2.5rem", height: "1px", backgroundColor: "rgba(245, 245, 245, 0.45)" }} />
           </div>
 
           <h1
@@ -108,15 +108,12 @@ export default function Home() {
               fontSize: "clamp(1.9rem, 6vw, 4.25rem)",
               lineHeight: 1.2,
               letterSpacing: "-0.01em",
+              color: palette.white,
               textWrap: "balance",
             }}
           >
-            <span className="sm:block" style={{ color: palette.white }}>
-              McMaster Advanced
-            </span>{" "}
-            <span className="sm:block" style={{ color: palette.highlight }}>
-              Space Systems
-            </span>
+            <span className="sm:block">McMaster Advanced</span>{" "}
+            <span className="sm:block">Space Systems</span>
           </h1>
 
           <div
@@ -139,10 +136,10 @@ export default function Home() {
           >
             <Link
               href="/contact"
-              className="inline-flex min-h-12 items-center justify-center gap-2 px-9 py-3.5 text-[0.75rem] font-bold tracking-[0.12em] uppercase transition-colors duration-200 hover:bg-[color-mix(in_srgb,var(--mass-highlight)_80%,white)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--mass-highlight)]"
+              className="inline-flex min-h-12 items-center justify-center gap-2 px-9 py-3.5 text-[0.75rem] font-bold tracking-[0.12em] uppercase transition-colors duration-200 hover:bg-white/80 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--mass-paper)]"
               style={{
                 fontFamily: MONO,
-                backgroundColor: "var(--mass-highlight)",
+                backgroundColor: "var(--mass-paper)",
                 color: "var(--mass-ink)",
               }}
             >
@@ -151,7 +148,7 @@ export default function Home() {
 
             <Link
               href="/projects"
-              className="inline-flex min-h-12 items-center justify-center gap-2 border px-9 py-3.5 text-[0.75rem] font-bold tracking-[0.12em] uppercase transition-colors duration-200 hover:border-[var(--mass-highlight)] hover:text-[var(--mass-highlight)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--mass-highlight)]"
+              className="inline-flex min-h-12 items-center justify-center gap-2 border px-9 py-3.5 text-[0.75rem] font-bold tracking-[0.12em] uppercase transition-colors duration-200 hover:border-[var(--mass-paper)] hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--mass-paper)]"
               style={{
                 fontFamily: MONO,
                 color: "var(--mass-paper)",
