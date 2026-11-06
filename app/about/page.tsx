@@ -13,7 +13,7 @@ import groupPhoto from "../../public/projects/stellarscope/multi-team-photo.png"
 
 /* MASS Preliminary Branding Standards 2025-2026: Michroma for titles, Space
    Mono for highlights, Akzidenz-Grotesk for body text (Inter stands in, as on
-   the Our Team and Current Projects pages). */
+   the Our Team page). */
 const michroma = Michroma({ weight: "400", subsets: ["latin"], variable: "--font-michroma", display: "swap" });
 const spaceMono = Space_Mono({ weight: ["400", "700"], subsets: ["latin"], variable: "--font-space-mono", display: "swap" });
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });

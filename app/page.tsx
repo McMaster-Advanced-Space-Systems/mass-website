@@ -17,17 +17,17 @@ const PROJECTS = [
     title: "Stellarscope",
     status: "COMPLETE",
     description:
-      "Building a network of ground-based radio telescopes that work together to image objects in deep space.",
+      "A collapsible radio telescope that measured radio emissions from the Sun and from hydrogen gas in our galaxy.",
     image: "/background.jpg",
-    href: "/#",
+    href: "/projects/stellarscope",
   },
   {
     title: "StratoGene",
     status: "COMPLETE",
     description:
-      "StratoGene Competition",
+      "The first biological payload in CAN-SBX history: E. coli and yeast flown more than 30 km into the stratosphere.",
     image: "/background.jpg",
-    href: "/#",
+    href: "/projects/stratogene",
   },
   {
     title: "SOLARIS",
@@ -35,7 +35,7 @@ const PROJECTS = [
     description:
       "A high-altitude balloon payload that studies how the atmosphere affects laser signals used for satellite communication.",
     image: "/background.jpg",
-    href: "/#",
+    href: "/projects/solaris",
   },
 ];
 
@@ -63,8 +63,8 @@ const PILLARS = [
 ];
 
 const STATS = [
-  { value: "2", label: "Active Projects" },
-  { value: "4", label: "Total Projects" },
+  { value: "1", label: "Active Projects" },
+  { value: "3", label: "Total Projects" },
   { value: "6", label: "Technical Teams" },
   { value: "80+", label: "Active Team Members" },
   { value: "3+", label: "Years Building" },
@@ -190,7 +190,7 @@ export default function Home() {
             </Link>
 
             <Link
-              href="/current-projects"
+              href="/projects"
               className="inline-block w-50 rounded-lg border-2 px-6 py-3 text-center font-semibold shadow-black/50 transition-all duration-200 bg-[var(--bg)] border-[var(--border)] hover:border-[var(--borderhover)] hover:shadow-l hover:-translate-y-0.5 active:translate-y-0"
               style={
                 {
@@ -309,7 +309,7 @@ export default function Home() {
                 marginBottom: "2.25rem",
               }}
             >
-              Current Projects
+              Our Projects
             </h2>
           </div>
 
@@ -317,7 +317,7 @@ export default function Home() {
             {PROJECTS.map((project) => (
               <Link
                 key={project.title}
-                href="/projects"
+                href={project.href}
                 className="rounded-3xl border p-8 shadow-2xl transition-colors sm:p-10"
                 style={{
                   backgroundColor: palette.white,
