@@ -1,43 +1,9 @@
 import type { Metadata } from "next";
-import Image from "next/image";
-import { Inter, Michroma, Space_Mono } from "next/font/google";
-import Nav from "../nav";
-import Footer from "../footer";
+import PageShell from "../components/PageShell";
+import { Banner, ButtonLink, CtaBand, DISPLAY, Eyebrow } from "../components/ui";
 import TeamTabs from "./team-tabs";
 
 import teamPhoto from "../../public/projects/stellarscope/multi-team-photo.png";
-
-/* MASS Preliminary Branding Standards 2025-2026: Michroma for titles, Space
-   Mono for highlights, Akzidenz-Grotesk for body text. Akzidenz-Grotesk has
-   no Google Fonts release, so Inter stands in behind it. */
-const michroma = Michroma({
-  weight: "400",
-  subsets: ["latin"],
-  variable: "--font-michroma",
-  display: "swap",
-});
-
-const spaceMono = Space_Mono({
-  weight: ["400", "700"],
-  subsets: ["latin"],
-  variable: "--font-space-mono",
-  display: "swap",
-});
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-});
-
-const YELLOW = "#f7901f";
-const INK = "#101010";
-const PAPER = "#f5f5f5";
-
-const DISPLAY = "var(--font-michroma), sans-serif";
-const MONO = "var(--font-space-mono), ui-monospace, monospace";
-const BODY =
-  '"Akzidenz-Grotesk", "Akzidenz-Grotesk Pro", var(--font-inter), "Helvetica Neue", Arial, sans-serif';
 
 export const metadata: Metadata = {
   title: "Our Team — McMaster Advanced Space Systems",
@@ -47,77 +13,50 @@ export const metadata: Metadata = {
 
 export default function MassTeamPage() {
   return (
-    <div
-      className={`relative ${michroma.variable} ${spaceMono.variable} ${inter.variable}`}
-      style={{ minHeight: "100vh", backgroundColor: INK, color: PAPER }}
-    >
-      <Nav />
+    <PageShell>
+      <Banner
+        src={teamPhoto}
+        alt="A group of MASS members posing together on a forest trail"
+        position="center 30%"
+        caption="MASS members"
+        credit="McMaster University"
+      />
 
-      {/* Photo behind the header and tabs, darkened for legibility and faded
-          into the page background before the cards start. */}
-      <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-[44rem] overflow-hidden md:h-[50rem]">
-        <Image
-          src={teamPhoto}
-          alt=""
-          fill
-          priority
-          placeholder="blur"
-          sizes="100vw"
-          className="object-cover object-[center_30%]"
-        />
-        <div
-          className="absolute inset-0"
+      <div className="animate-fade-up py-14 sm:py-16" style={{ animationDelay: "0.08s" }}>
+        <h1
           style={{
-            background: `linear-gradient(90deg, rgba(16,16,16,0.9) 0%, rgba(16,16,16,0.6) 45%, rgba(16,16,16,0.3) 100%),
-              linear-gradient(180deg, rgba(16,16,16,0.2) 0%, rgba(16,16,16,0.45) 55%, ${INK} 100%)`,
+            fontFamily: DISPLAY,
+            color: "var(--mass-paper)",
+            fontSize: "clamp(1.5rem, 7.5vw, 3.75rem)",
+            lineHeight: 1.1,
+            letterSpacing: "-0.01em",
           }}
-        />
+        >
+          Our team.
+        </h1>
+        <div className="mt-4">
+          <Eyebrow>McMaster Advanced Space Systems</Eyebrow>
+        </div>
+        <div className="mt-6 h-[3px] w-14" style={{ backgroundColor: "var(--mass-secondary)" }} />
+        <p className="mt-8 max-w-3xl text-lg leading-8 text-slate-200 sm:text-xl sm:leading-9">
+          The people behind McMaster&rsquo;s student-led space systems team: the management
+          team that runs the club, our project teams, and the teams behind our past projects.
+        </p>
       </div>
 
-      {/* Top padding clears the fixed nav (~136px tall). */}
-      <header className="relative px-6 pb-12 pt-44 md:px-10 xl:px-16">
-        <div className="mx-auto max-w-page">
-          <p
-            style={{
-              fontFamily: MONO,
-              fontSize: "0.65rem",
-              letterSpacing: "0.3em",
-              color: "rgba(245,245,245,0.45)",
-              marginBottom: "2rem",
-            }}
-          >
-            MCMASTER ADVANCED SPACE SYSTEMS
-          </p>
+      <TeamTabs />
 
-          <h1
-            style={{
-              fontFamily: DISPLAY,
-              fontSize: "clamp(2.25rem, 7vw, 4.75rem)",
-              lineHeight: 1.1,
-              letterSpacing: "-0.01em",
-              marginBottom: "2.25rem",
-            }}
-          >
-            Our <span style={{ color: YELLOW }}>team.</span>
-          </h1>
-
-          <div style={{ width: "4.5rem", height: "3px", backgroundColor: YELLOW, marginBottom: "2.25rem" }} />
-
-          <p style={{ fontFamily: BODY, fontSize: "1.05rem", lineHeight: 1.8, opacity: 0.78, maxWidth: "60ch" }}>
-            The people behind McMaster&rsquo;s student-led space systems team: the
-            management team that runs the club, our project teams, and the teams
-            behind our past projects.
-          </p>
-        </div>
-      </header>
-
-      <main className="relative px-6 pb-24 md:px-10 xl:px-16">
-        <div className="mx-auto max-w-page">
-          <TeamTabs />
-        </div>
-      </main>
-
-      <Footer />
-    </div>
+      <div className="mt-24">
+        <CtaBand
+          title="Want to be on this page?"
+          body="We're always looking for motivated students across mechanical, electrical, science, software and outreach."
+        >
+          <ButtonLink href="/recruitment">Join MASS</ButtonLink>
+          <ButtonLink href="/contact" variant="secondary">
+            Get in touch
+          </ButtonLink>
+        </CtaBand>
+      </div>
+    </PageShell>
   );
 }
