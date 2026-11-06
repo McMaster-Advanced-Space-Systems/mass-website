@@ -43,15 +43,19 @@ export default function ProjectTimeline({
           >
             {project.name}
           </h3>
-          <p className="mt-3 text-lg leading-8 text-slate-400">
-            {project.blurb}
+          <p
+            className="mt-1 text-sm tracking-[0.12em] uppercase"
+            style={{
+              fontFamily: "var(--font-space-mono), ui-monospace, monospace",
+              color: "var(--mass-highlight)",
+            }}
+          >
+            {project.tagline}
           </p>
 
-          <div className="space-y-4 pt-5 text-lg leading-9 text-slate-300">
-            {project.details.map((paragraph) => (
-              <p key={paragraph.slice(0, 32)}>{paragraph}</p>
-            ))}
-          </div>
+          <p className="max-w-3xl pt-5 text-lg leading-9 text-slate-300">
+            {project.blurb}
+          </p>
 
           <dl className="mt-6 flex flex-wrap gap-x-10 gap-y-3">
             <Meta label="YEARS" value={project.years} />
@@ -59,13 +63,6 @@ export default function ProjectTimeline({
               label="STATUS"
               value={project.status === "current" ? "Active" : "Completed"}
             />
-            {project.result && (
-              <Meta
-                label="RESULT"
-                value={project.result}
-                valueColor="var(--mass-secondary)"
-              />
-            )}
           </dl>
 
           <Link

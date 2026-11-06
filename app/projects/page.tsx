@@ -48,7 +48,9 @@ export default function ProjectsPage() {
           className="animate-fade-up text-xl leading-9 text-slate-300 sm:text-2xl"
           style={{ animationDelay: "0.12s" }}
         >
-          intro text
+          MASS designs, builds and flies its own hardware, mostly for
+          expeditions run by SEDS Canada. Here is what we are working on now
+          and what we have built so far.
         </p>
 
         <section className="mt-20">
