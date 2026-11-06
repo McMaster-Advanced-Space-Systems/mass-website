@@ -5,7 +5,11 @@ export type TeamMember = {
   name: string;
   role: string;
   program: string;
+  /* Headshot under /public/team. Members without one show their initials. */
+  photo?: string;
 };
+
+const headshot = (file: string) => `/team/${file}.png`;
 
 /* A group with no members yet shows under "To be announced" until names are added. */
 export type MemberGroup = {
@@ -19,6 +23,10 @@ export type Team = {
   tab: string;
   /* Shown in brackets beside the tab name, e.g. "Present" or "2023–2024". */
   years?: string;
+  /* Slug in app/projects/data.ts. Adds the project's photo, status and a
+     link to its page above the roster. */
+  projectSlug?: string;
+  /* Falls back to the project's one-line summary. */
   description?: string;
   groups: MemberGroup[];
 };
@@ -42,18 +50,18 @@ export const TEAMS: Team[] = [
       {
         name: "Executives",
         members: [
-          { name: "Mateo Builes", role: "President", program: "Engineering Physics, Level IV" },
-          { name: "Delina Mekonnen", role: "VP Finance", program: "Computer Engineering & Management, Level IV" },
-          { name: "Sanya Khurana", role: "Co-VP Outreach", program: "Engineering Physics & Management, Level IV" },
-          { name: "Marco Puchetti", role: "Co-VP Outreach", program: "Mechanical Engineering, Level III" },
+          { name: "Mateo Builes", role: "President", program: "Engineering Physics, Level IV", photo: headshot("MateoBuiles") },
+          { name: "Delina Mekonnen", role: "VP Finance", program: "Computer Engineering & Management, Level IV", photo: headshot("DelinaMekonnen") },
+          { name: "Sanya Khurana", role: "Co-VP Outreach", program: "Engineering Physics & Management, Level IV", photo: headshot("SanyaKhurana") },
+          { name: "Marco Puchetti", role: "Co-VP Outreach", program: "Mechanical Engineering, Level III", photo: headshot("MarcoPuchetti") },
         ],
       },
       {
         name: "Technical Advisors",
         members: [
-          { name: "Shayavan Shridar", role: "Technical Advisor", program: "Engineering Physics, Level V" },
-          { name: "Arub Syed", role: "Technical Advisor", program: "Mechanical Engineering & Management, Level IV" },
-          { name: "Gabriel Lonuzzo", role: "Technical Advisor", program: "Masters, Biomedical Engineering" },
+          { name: "Shayavan Shridar", role: "Technical Advisor", program: "Engineering Physics, Level V", photo: headshot("ShayavanShridar") },
+          { name: "Arub Syed", role: "Technical Advisor", program: "Mechanical Engineering & Management, Level IV", photo: headshot("ArubSyed") },
+          { name: "Gabriel Lonuzzo", role: "Technical Advisor", program: "Masters, Biomedical Engineering", photo: headshot("GabrielLonuzzo") },
         ],
       },
       { name: "Outreach Team", members: [] },
@@ -64,6 +72,7 @@ export const TEAMS: Team[] = [
     id: "solaris",
     tab: "SOLARIS",
     years: "Present",
+    projectSlug: "solaris",
     description:
       "SOLARIS investigates how atmospheric distortion affects optical signal transmission from ground level to 30 kilometres up, and how well optical coatings reduce it, to support ground-to-satellite laser communication.",
     groups: [
@@ -85,6 +94,7 @@ export const TEAMS: Team[] = [
     id: "stellarscope",
     tab: "Stellarscope",
     years: "2023–2024",
+    projectSlug: "stellarscope",
     description:
       "Stellarscope is a multi-phase project to build an array of radio telescopes and the synchronization software that links them, to collect data from and image celestial objects.",
     groups: [
@@ -93,15 +103,17 @@ export const TEAMS: Team[] = [
         members: [
           { name: "Kamyar Lakdashti", role: "Project Manager", program: "Electrical Engineering, Level IV" },
           { name: "Dhavin Tandon", role: "Electrical Engineering Team Lead", program: "Electrical Engineering, Level IV" },
-          { name: "Marco Puchetti", role: "Mechanical Engineering Team Lead", program: "Mechanical Engineering, Level III" },
+          { name: "Marco Puchetti", role: "Mechanical Engineering Team Lead", program: "Mechanical Engineering, Level III", photo: headshot("MarcoPuchetti") },
         ],
       },
     ],
   },
   {
     id: "stratogene",
-    tab: "Stratogene",
-    groups: [{ name: "Stratogene Team", members: [] }],
+    tab: "StratoGene",
+    years: "2023–2024",
+    projectSlug: "stratogene",
+    groups: [{ name: "StratoGene Team", members: [] }],
   },
 ];
 

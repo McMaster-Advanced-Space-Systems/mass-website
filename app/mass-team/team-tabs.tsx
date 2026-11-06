@@ -1,19 +1,11 @@
 "use client";
 
 import { useEffect, useRef, useSyncExternalStore, type KeyboardEvent, type ReactNode } from "react";
-import { PAST_TEAMS, TEAMS, type MemberGroup, type PastTeam, type TeamMember } from "./team-data";
-
-/* Branding standards: Red and Blue are decorative only, never a font colour.
-   Yellow is the highlight colour, matching the active item in the nav. */
-const YELLOW = "#f7901f";
-/* Same lifted surface as the homepage cards (--mass-surface). */
-const SURFACE = "#1a1a1a";
-const CARD_BORDER = "rgba(245,245,245,0.1)";
-
-const DISPLAY = "var(--font-michroma), sans-serif";
-const MONO = "var(--font-space-mono), ui-monospace, monospace";
-const BODY =
-  '"Akzidenz-Grotesk", "Akzidenz-Grotesk Pro", var(--font-inter), "Helvetica Neue", Arial, sans-serif';
+import Image from "next/image";
+import Link from "next/link";
+import { CARD, CARD_BG, DISPLAY, MONO, Pill, TITLE } from "../components/ui";
+import { PROJECTS, type Project } from "../projects/data";
+import { PAST_TEAMS, TEAMS, type MemberGroup, type PastTeam, type Team, type TeamMember } from "./team-data";
 
 const PAST_ID = "past-teams";
 
@@ -22,17 +14,8 @@ const TABS = [
   { id: PAST_ID, label: "Past Teams", years: undefined },
 ];
 
-/* Every member grid uses the same columns, so every card is the same width;
-   auto-rows-fr keeps the cards in a grid the same height. */
-const CARD_GRID =
-  "grid auto-rows-fr grid-cols-1 gap-4 min-[480px]:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5";
-
-const GROUP_HEADING = {
-  fontFamily: MONO,
-  fontSize: "0.8rem",
-  letterSpacing: "0.12em",
-  textTransform: "uppercase",
-} as const;
+/* Member cards: two across on phones, up to four on wide screens. */
+const CARD_GRID = "grid grid-cols-2 gap-4 sm:gap-5 md:grid-cols-3 lg:grid-cols-4";
 
 /* The selected tab lives in the URL hash so a tab can be linked to directly,
    e.g. /mass-team#solaris. */
@@ -87,8 +70,7 @@ export default function TeamTabs() {
         ref={tablistRef}
         role="tablist"
         aria-label="MASS teams"
-        className="flex gap-x-6 overflow-x-auto border-b [scrollbar-width:none] sm:gap-x-10"
-        style={{ borderColor: "rgba(245,245,245,0.15)" }}
+        className="-mx-4 flex gap-2 overflow-x-auto px-4 pb-1 [scrollbar-width:none] sm:mx-0 sm:flex-wrap sm:px-0"
       >
         {TABS.map((tab, index) => {
           const selected = tab.id === active;
@@ -106,13 +88,15 @@ export default function TeamTabs() {
               tabIndex={selected ? 0 : -1}
               onClick={() => selectTab(tab.id)}
               onKeyDown={(e) => onTabKeyDown(e, index)}
-              className={`-mb-px whitespace-nowrap border-b-2 py-4 text-[0.95rem] font-medium transition-colors ${
-                selected ? "text-[#f5f5f5]" : "border-transparent text-[#f5f5f5]/55 hover:text-[#f5f5f5]"
+              className={`min-h-11 cursor-pointer whitespace-nowrap rounded-full border px-5 text-sm font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--mass-paper)] ${
+                selected
+                  ? "border-[var(--mass-paper)] bg-[var(--mass-paper)] text-[var(--mass-ink)]"
+                  : "border-white/20 text-[var(--mass-paper)]/70 hover:border-white/50 hover:text-[var(--mass-paper)]"
               }`}
-              style={{ fontFamily: BODY, borderBottomColor: selected ? YELLOW : undefined }}
+              style={TITLE}
             >
               {tab.label}
-              {tab.years && <span className="ml-1.5 opacity-60">({tab.years})</span>}
+              {tab.years && <span className="ml-1.5 font-normal opacity-60">({tab.years})</span>}
             </button>
           );
         })}
@@ -130,7 +114,7 @@ export default function TeamTabs() {
           hidden={active !== team.id}
           className="animate-fade-up pt-10 focus-visible:outline-none md:pt-12"
         >
-          {team.description && <PanelIntro>{team.description}</PanelIntro>}
+          <PanelHeader team={team} project={PROJECTS.find((p) => p.slug === team.projectSlug)} />
           <TeamGroups teamId={team.id} groups={team.groups} />
         </div>
       ))}
@@ -143,11 +127,11 @@ export default function TeamTabs() {
         hidden={active !== PAST_ID}
         className="animate-fade-up pt-10 focus-visible:outline-none md:pt-12"
       >
-        <PanelIntro>
+        <p className="mb-10 max-w-3xl text-lg leading-8 text-slate-300">
           These teams completed their projects and are no longer active. They are
           listed here to recognise the work that got MASS where it is today.
-        </PanelIntro>
-        <ul role="list" className="grid gap-4 md:grid-cols-2">
+        </p>
+        <ul role="list" className="grid gap-5 md:grid-cols-2">
           {PAST_TEAMS.map((team) => (
             <PastTeamCard key={team.id} team={team} />
           ))}
@@ -157,14 +141,53 @@ export default function TeamTabs() {
   );
 }
 
-function PanelIntro({ children }: { children: ReactNode }) {
+/* Top of a team's panel. Project teams get the project's photo, status and a
+   link to its page; Management is just a heading and a description. */
+function PanelHeader({ team, project }: { team: Team; project?: Project }) {
+  const description = team.description ?? project?.blurb;
+
+  if (!project) {
+    return (
+      <div className="mb-12 max-w-3xl">
+        <h2 style={{ fontFamily: DISPLAY, fontSize: "clamp(1.35rem, 2.6vw, 1.9rem)", lineHeight: 1.2 }}>
+          {team.tab}
+        </h2>
+        {description && <p className="mt-4 text-lg leading-8 text-slate-300">{description}</p>}
+      </div>
+    );
+  }
+
+  const active = project.status === "current";
+  const photo = project.card ?? project.hero;
+
   return (
-    <p
-      className="mb-12"
-      style={{ fontFamily: BODY, fontSize: "1.05rem", lineHeight: 1.75, opacity: 0.75, maxWidth: "68ch", textWrap: "pretty" }}
-    >
-      {children}
-    </p>
+    <div className={`mb-12 grid overflow-hidden md:grid-cols-[20rem_1fr] ${CARD}`} style={CARD_BG}>
+      <div className="relative aspect-[16/10] md:aspect-auto md:min-h-56">
+        <Image
+          src={photo.image ?? "/earth.jpg"}
+          alt={photo.alt}
+          fill
+          sizes="(max-width: 768px) 100vw, 320px"
+          className="object-cover"
+          style={photo.position ? { objectPosition: photo.position } : undefined}
+        />
+      </div>
+      <div className="flex flex-col items-start p-6 sm:p-8">
+        <Pill active={active}>
+          {active ? "Active" : "Completed"} · {project.years}
+        </Pill>
+        <h2 className="mt-4" style={{ fontFamily: DISPLAY, fontSize: "clamp(1.35rem, 2.6vw, 1.9rem)", lineHeight: 1.2 }}>
+          {project.name}
+        </h2>
+        {description && <p className="mt-3 max-w-2xl leading-7 text-slate-300">{description}</p>}
+        <Link
+          href={`/projects/${project.slug}`}
+          className="mt-6 inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-white transition-colors hover:text-[var(--mass-highlight)]"
+        >
+          View project <span aria-hidden>→</span>
+        </Link>
+      </div>
+    </div>
   );
 }
 
@@ -193,7 +216,7 @@ function TeamGroups({ teamId, groups }: { teamId: string; groups: MemberGroup[] 
       {pending.length > 0 && (
         <section aria-labelledby={headingId(teamId, "to-be-announced")}>
           <GroupHeading id={headingId(teamId, "to-be-announced")}>To be announced</GroupHeading>
-          <ul role="list" className={CARD_GRID}>
+          <ul role="list" className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {pending.map((group) => (
               <PendingCard key={group.name} name={group.name} />
             ))}
@@ -213,85 +236,102 @@ function GroupHeading({ id, count, children }: { id: string; count?: number; chi
   return (
     <h2
       id={id}
-      className="mb-5 flex items-baseline gap-3 border-b pb-3"
-      style={{ ...GROUP_HEADING, borderColor: "rgba(245,245,245,0.1)" }}
+      className="mb-5 flex items-baseline gap-3 border-b border-white/10 pb-3 text-[0.8rem] tracking-[0.14em] uppercase"
+      style={{ fontFamily: MONO }}
     >
       {children}
-      {count !== undefined && <span style={{ opacity: 0.45 }}>{count}</span>}
+      {count !== undefined && <span className="opacity-45">{count}</span>}
     </h2>
   );
 }
 
 /* Keeps "Level IV" together so the year never wraps onto a line by itself. */
 function formatProgram(program: string) {
-  return program.replace(/Level (\S+)/, "Level\u00a0$1");
+  return program.replace(/Level (\S+)/, "Level $1");
 }
 
 function MemberCard({ member }: { member: TeamMember }) {
   return (
-    <li
-      className="flex h-full flex-col rounded-lg border p-5 transition-colors hover:border-[#f5f5f5]/25"
-      style={{ backgroundColor: SURFACE, borderColor: CARD_BORDER }}
-    >
-      <DefaultHeadshot />
-      <h3 className="mt-4" style={{ fontFamily: MONO, fontWeight: 700, fontSize: "1.05rem", lineHeight: 1.3 }}>
-        {member.name}
-      </h3>
-      <p className="mt-1" style={{ fontFamily: BODY, fontSize: "0.9rem", fontWeight: 600, opacity: 0.85 }}>
-        {member.role}
-      </p>
-      <p
-        className="mt-auto pt-5"
-        style={{ fontFamily: BODY, fontSize: "0.85rem", lineHeight: 1.5, opacity: 0.55, textWrap: "pretty" }}
-      >
-        {formatProgram(member.program)}
-      </p>
+    <li className={`group flex h-full flex-col overflow-hidden transition-colors hover:border-white/25 ${CARD}`} style={CARD_BG}>
+      <div className="relative aspect-[4/5] overflow-hidden bg-[#222]">
+        {member.photo ? (
+          <Image
+            src={member.photo}
+            alt={`${member.name}, ${member.role}`}
+            fill
+            sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+            className="object-cover object-[center_22%] transition-transform duration-500 group-hover:scale-[1.03]"
+          />
+        ) : (
+          <Initials name={member.name} />
+        )}
+      </div>
+      <div className="flex flex-1 flex-col p-4 sm:p-5">
+        <h3 className="text-base font-semibold text-white sm:text-lg" style={TITLE}>
+          {member.name}
+        </h3>
+        <p
+          className="mt-1 text-[0.68rem] tracking-[0.12em] uppercase"
+          style={{ fontFamily: MONO, color: "var(--mass-highlight)" }}
+        >
+          {member.role}
+        </p>
+        <p className="mt-auto pt-4 text-sm leading-5 text-slate-400" style={{ textWrap: "pretty" }}>
+          {formatProgram(member.program)}
+        </p>
+      </div>
     </li>
   );
 }
 
-/* Grey placeholder shown until real headshots are added. */
-function DefaultHeadshot() {
+/* Shown until a member's headshot is added. */
+function Initials({ name }: { name: string }) {
+  const initials = name
+    .split(/\s+/)
+    .map((word) => word[0])
+    .slice(0, 2)
+    .join("")
+    .toUpperCase();
   return (
-    <svg viewBox="0 0 64 64" aria-hidden="true" className="h-16 w-16 shrink-0 rounded-full" style={{ backgroundColor: "#2e2e2e" }}>
-      <circle cx="32" cy="25" r="11" fill="#6b6b6b" />
-      <path d="M10 64c0-13 10-22 22-22s22 9 22 22Z" fill="#6b6b6b" />
-    </svg>
+    <div
+      aria-hidden
+      className="absolute inset-0 flex items-center justify-center"
+      style={{
+        background: "repeating-linear-gradient(135deg, rgba(245,245,245,0.03) 0 12px, transparent 12px 24px), #1d1d1d",
+        fontFamily: DISPLAY,
+        fontSize: "2.5rem",
+        color: "rgba(245,245,245,0.35)",
+      }}
+    >
+      {initials}
+    </div>
   );
 }
 
 function PendingCard({ name }: { name: string }) {
   return (
-    <li
-      className="flex h-full min-h-32 flex-col rounded-lg border border-dashed p-5"
-      style={{ borderColor: "rgba(245,245,245,0.25)" }}
-    >
-      <h3 style={{ fontFamily: MONO, fontWeight: 700, fontSize: "1.05rem", lineHeight: 1.3 }}>{name}</h3>
-      <p className="mt-auto pt-5" style={{ fontFamily: BODY, fontSize: "0.85rem", opacity: 0.55 }}>
-        Members coming soon
-      </p>
+    <li className="flex min-h-28 flex-col rounded-2xl border border-dashed border-white/25 p-5">
+      <h3 className="text-base font-semibold text-white" style={TITLE}>
+        {name}
+      </h3>
+      <p className="mt-auto pt-4 text-sm text-slate-500">Members coming soon</p>
     </li>
   );
 }
 
 function PastTeamCard({ team }: { team: PastTeam }) {
   return (
-    <li
-      className="flex h-full flex-col rounded-lg border p-6 sm:p-7"
-      style={{ backgroundColor: SURFACE, borderColor: CARD_BORDER }}
-    >
-      <p style={{ fontFamily: MONO, fontSize: "0.75rem", letterSpacing: "0.12em", textTransform: "uppercase", opacity: 0.55 }}>
+    <li className={`flex h-full flex-col p-6 sm:p-8 ${CARD}`} style={CARD_BG}>
+      <p className="text-xs tracking-[0.12em] uppercase text-slate-400" style={{ fontFamily: MONO }}>
         Completed {team.year} · {team.location}
       </p>
       <h3 className="mt-3" style={{ fontFamily: DISPLAY, fontSize: "1.25rem", lineHeight: 1.3 }}>
         {team.name}
       </h3>
-      <p className="mb-6 mt-3" style={{ fontFamily: BODY, fontSize: "0.95rem", lineHeight: 1.7, opacity: 0.75, textWrap: "pretty" }}>
+      <p className="mb-6 mt-3 leading-7 text-slate-300" style={{ textWrap: "pretty" }}>
         {team.description}
       </p>
-      <p className="mt-auto border-t pt-4" style={{ fontFamily: BODY, fontSize: "0.9rem", borderColor: "rgba(245,245,245,0.1)" }}>
-        {team.legacy}
-      </p>
+      <p className="mt-auto border-t border-white/10 pt-4 text-sm text-slate-200">{team.legacy}</p>
     </li>
   );
 }
