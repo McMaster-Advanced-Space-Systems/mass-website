@@ -42,6 +42,8 @@ export type Project = {
   note?: string;
 
   hero: Media & { caption: string; credit: string };
+  /** Photo for the homepage project card. Falls back to `hero`. */
+  card?: Media;
 
   /** 1-based index into `phases`. Past projects show every phase as complete. */
   currentPhase: number;
@@ -195,6 +197,10 @@ export const PROJECTS: Project[] = [
       position: "center 20%",
       caption: "Radio telescope & 21 cm hydrogen line measurements",
       credit: "Baie-Saint-Paul, QC · 2024",
+    },
+    card: {
+      image: "/projects/stellarscope/using-telescope.png",
+      alt: "Team members operating the radio telescope on a mountain summit",
     },
 
     currentPhase: 5,
